@@ -5,7 +5,7 @@ import path from "path"
 export default defineConfig(({ command }) => {
   const isProd = command === 'build';
   // This must match your FTP subfolder exactly
-  const base = isProd ? '/staging/newbuilds/' : '/';
+  const base = isProd ? '/newbuilds/' : '/';
 
   return {
     base: base,

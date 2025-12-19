@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # This matches your subdomain path staging.sunnycasas.com/newbuilds/
+  RewriteBase /newbuilds/
+
+  # If the browser is asking for a real file (like a .css or .js file), serve it
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Otherwise, redirect to index.html so React can take over
+  RewriteRule . /newbuilds/index.html [L]
+</IfModule>
