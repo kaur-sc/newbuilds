@@ -53,9 +53,12 @@ export function LaVistaBoulevard() {
         {/* HERO */}
         <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900 text-white">
           <div className="absolute inset-0 z-0">
-             {/* Placeholder for Hero Image - using a gradient/colored block if no image available */}
-             <div className="w-full h-full bg-gradient-to-br from-green-900 via-emerald-900 to-slate-900 opacity-80" />
-             <div className="absolute inset-0 bg-black/30" />
+             <img 
+               src="/assets/golf.jpg" 
+               alt="La Vista Boulevard Golf Course" 
+               className="w-full h-full object-cover"
+             />
+             <div className="absolute inset-0 bg-black/50" />
           </div>
 
           <Container className="relative z-10 text-center max-w-4xl">
