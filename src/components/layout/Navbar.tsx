@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import type { LandingPageData } from "@/models/landing-page";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface NavbarProps {
   data: LandingPageData;
@@ -16,10 +17,28 @@ export function Navbar({ data }: NavbarProps) {
   const contactSection = data.sections.find(s => s.type === 'contact' && s.enabled);
   const contactCta = contactSection?.cta;
 
+  // Determine the home path for this development
+  const homePath = data.id === 'sunny-hills' 
+    ? '/' 
+    : (data.id === 'la-vista-boulevard' ? '/la-vista-boulevard' : `/developments/${data.id}`);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (window.location.pathname === homePath) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
       <Container className="h-16 flex items-center justify-between">
-        <div className="font-bold text-xl tracking-tight">{name}</div>
+        <Link 
+          to={homePath} 
+          className="font-bold text-xl tracking-tight hover:opacity-80 transition-opacity"
+          onClick={handleLogoClick}
+        >
+          {name}
+        </Link>
         
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
