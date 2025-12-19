@@ -5,17 +5,17 @@ import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { Check, MapPin, Sun, Home, ArrowRight } from 'lucide-react';
 import type { LandingPageData } from '@/models/landing-page';
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg';
 import { useTranslation, Trans } from 'react-i18next';
 import golfImage from '../assets/golf.jpg';
 
-export function LaVistaBoulevard() {
-  const { t } = useTranslation('la-vista-boulevard');
+export function GolfProperties() {
+  const { t } = useTranslation('costa-blanca');
 
   // Mock data for Navbar/Footer compatibility
   const pageData: LandingPageData = {
-    id: 'la-vista-boulevard',
-    name: 'La Vista Boulevard',
+    id: 'costa-blanca',
+    name: 'Golf Properties',
     brand: {
       colors: {
         primary: '142.1 76.2% 36.3%', // Green for Golf
@@ -42,10 +42,10 @@ export function LaVistaBoulevard() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-foreground bg-background" style={style}>
-      <Helmet>
+      <Head>
         <title>{pageData.seo.title}</title>
         <meta name="description" content={pageData.seo.description} />
-      </Helmet>
+      </Head>
       
       <Navbar data={pageData} />
 
@@ -56,16 +56,13 @@ export function LaVistaBoulevard() {
           <div className="absolute inset-0 z-0">
              <img 
                src={golfImage} 
-               alt="La Vista Boulevard Golf Course" 
+               alt="Modern new build villa overlooking a golf course in Costa Blanca" 
                className="w-full h-full object-cover"
              />
              <div className="absolute inset-0 bg-black/50" />
           </div>
 
           <Container className="relative z-10 text-center max-w-4xl">
-            <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-medium mb-6 animate-fade-in-up">
-              {t('hero.badge')}
-            </span>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
               {t('hero.title_start')} <br className="hidden md:block"/> {t('hero.title_middle')} <span className="text-emerald-400">{t('hero.title_highlight')}</span>
             </h1>

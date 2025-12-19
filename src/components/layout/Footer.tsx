@@ -9,7 +9,7 @@ interface FooterProps {
 export function Footer({ data }: FooterProps) {
   const homePath = data.id === 'sunny-hills' 
     ? '/' 
-    : (data.id === 'la-vista-boulevard' ? '/la-vista-boulevard' : `/developments/${data.id}`);
+    : (data.id === 'costa-blanca' ? '/new-build-golf-properties-costa-blanca' : `/developments/${data.id}`);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (window.location.pathname === homePath) {

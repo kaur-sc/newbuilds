@@ -1,14 +1,13 @@
 {
   "seo": {
-    "title": "New build golf villas in La Zenia – La Vista Boulevard",
-    "description": "Modern 3-bedroom villas in La Zenia, the perfect home for golf, sea, and sun."
+    "title": "New Build Golf Properties for Sale in Spain",
+    "description": "Explore exclusive new build golf properties in Costa Blanca. From frontline villas to luxury apartments near top courses. Find your dream golf home in the sun today."
   },
   "hero": {
-    "badge": "New Development in La Zenia",
-    "title_start": "New build golf villas",
-    "title_middle": "in",
-    "title_highlight": "La Vista Boulevard",
-    "description": "La Vista Boulevard gives you a modern 3‑bedroom villa a short drive from several 18‑hole golf courses, the Mediterranean and all everyday services in La Zenia.",
+    "title_start": "Exclusive New Build",
+    "title_middle": "Golf Properties in",
+    "title_highlight": "Costa Blanca",
+    "description": "A modern 3‑bedroom villa a short drive from several 18‑hole golf courses, the Mediterranean and all everyday services in a big shopping center nearby.",
     "cta_brochure": "Send me the brochure",
     "cta_explore": "Explore the villas",
     "footer_note": "Lock-up-and-leave homes made for golf trips, winter stays & family holidays."
@@ -25,7 +24,7 @@
   },
   "golf": {
     "title": "Your base in the Orihuela Costa golf belt",
-    "description_1": "From La Vista Boulevard you are only a short drive from several well‑known 18‑hole courses in the Orihuela Costa area. You can vary where you play, adjust difficulty to the group and keep golf fresh week after week.",
+    "description_1": "From Costa Blanca you are only a short drive from several well‑known 18‑hole courses in the Orihuela Costa area. You can vary where you play, adjust difficulty to the group and keep golf fresh week after week.",
     "description_2": "The climate gives you many sunny days and mild winters, so the villa works for long winter stays, spring and autumn trips – not just a two‑week summer holiday.",
     "points": {
         "cluster": "Cluster of golf courses nearby instead of a single option.",
@@ -35,7 +34,7 @@
   },
   "location": {
     "title": "La Zenia: easy living by the sea",
-    "description": "La Vista Boulevard sits in a residential part of La Zenia with supermarkets, cafés, restaurants and services close by. A large shopping centre in the area adds more shops, dining and entertainment in one place.",
+    "description": "Costa Blanca sits in a residential part of La Zenia with supermarkets, cafés, restaurants and services close by. A large shopping centre in the area adds more shops, dining and entertainment in one place.",
     "points": {
         "services": {
             "title": "Services & Leisure",
@@ -64,10 +63,10 @@
   },
   "contact": {
     "title": "Price, scarcity and next step",
-    "price_info": "La Vista Boulevard consists of a small number of villas. Current prices are in the range of <0>449,900 to 479,900 euros</0>, depending on plot and configuration.",
+    "price_info": "Costa Blanca consists of a small number of villas. Current prices are in the range of <0>449,900 to 479,900 euros</0>, depending on plot and configuration.",
     "warning": "With limited units, availability can change quickly.",
     "cta_intro": "If you are looking for a golf‑oriented home in La Zenia, the next step is simple:",
-    "cta_brochure": "Send me the La Vista Boulevard brochure",
+    "cta_brochure": "Send me the Costa Blanca brochure",
     "cta_availability": "Check availability & exact prices",
     "cta_visit": "Help me arrange a visit"
   }

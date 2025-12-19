@@ -2,11 +2,15 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 // Directly import translations to bundle them for static sites
-import enLVB from './locales/en/la-vista-boulevard.json';
+import enCostaBlanca from './locales/en/costa-blanca.json';
+import frCostaBlanca from './locales/fr/costa-blanca.json';
 
 const resources = {
   en: {
-    'la-vista-boulevard': enLVB,
+    'costa-blanca': enCostaBlanca,
+  },
+  fr: {
+    'costa-blanca': frCostaBlanca,
   },
 };
 
@@ -14,10 +18,11 @@ export const i18nPromise = i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en',
+    lng: 'en', // default language
     fallbackLng: 'en',
-    ns: ['la-vista-boulevard'],
-    defaultNS: 'la-vista-boulevard',
+    supportedLngs: ['en', 'fr'],
+    ns: ['costa-blanca'],
+    defaultNS: 'costa-blanca',
     interpolation: {
       escapeValue: false, // React already safe from XSS
     },

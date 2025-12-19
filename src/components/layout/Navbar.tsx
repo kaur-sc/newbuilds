@@ -4,6 +4,7 @@ import type { LandingPageData } from "@/models/landing-page";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 interface NavbarProps {
   data: LandingPageData;
@@ -20,7 +21,7 @@ export function Navbar({ data }: NavbarProps) {
   // Determine the home path for this development
   const homePath = data.id === 'sunny-hills' 
     ? '/' 
-    : (data.id === 'la-vista-boulevard' ? '/la-vista-boulevard' : `/developments/${data.id}`);
+    : (data.id === 'costa-blanca' ? '/new-build-golf-properties-costa-blanca' : `/developments/${data.id}`);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (window.location.pathname === homePath) {
@@ -56,6 +57,9 @@ export function Navbar({ data }: NavbarProps) {
               <a href={contactCta.href}>{contactCta.label}</a>
             </Button>
           )}
+          <div className="pl-2 border-l ml-2">
+            <LanguageSwitcher />
+          </div>
         </div>
 
         {/* Mobile Toggle */}
@@ -82,6 +86,9 @@ export function Navbar({ data }: NavbarProps) {
               <a href={contactCta.href}>{contactCta.label}</a>
             </Button>
           )}
+          <div className="flex justify-center pt-2">
+            <LanguageSwitcher />
+          </div>
         </div>
       )}
     </nav>

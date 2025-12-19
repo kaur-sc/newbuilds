@@ -1,0 +1,73 @@
+{
+  "seo": {
+    "title": "Propriétés de golf neuves à vendre en Espagne",
+    "description": "Découvrez des propriétés de golf neuves exclusives sur la Costa Blanca. Des villas en première ligne aux appartements de luxe près des meilleurs parcours. Trouvez votre maison de golf de rêve au soleil dès aujourd'hui."
+  },
+  "hero": {
+    "title_start": "Propriétés de golf",
+    "title_middle": "neuves exclusives sur la",
+    "title_highlight": "Costa Blanca",
+    "description": "Costa Blanca vous propose une villa moderne de 3 chambres à quelques minutes en voiture de plusieurs parcours de golf de 18 trous, de la Méditerranée et de tous les services quotidiens à La Zenia.",
+    "cta_brochure": "Envoyez-moi la brochure",
+    "cta_explore": "Explorer les villas",
+    "footer_note": "Maisons prêtes à vivre conçues pour les séjours de golf, les hivers et les vacances en famille."
+  },
+  "villas": {
+    "title": "Des villas conçues pour le golf",
+    "description_1": "Vous bénéficiez d'une villa de trois chambres et deux salles de bains d'environ 106 m² construits, avec une utilisation intelligente de l'espace et de la lumière. Le salon et la cuisine à aire ouverte communiquent directement avec la terrasse et le jardin, pour que rentrer après une partie soit facile et relaxant.",
+    "description_2": "Une chambre et une salle de bain se trouvent au rez-de-chaussée ; deux chambres et une autre salle de bain sont à l'étage avec accès à une grande terrasse. Il y a de la place pour que des amis ou de la famille vous rejoignent, sans perdre en intimité ni en confort.",
+    "points": {
+        "layout": "3 chambres, 2 salles de bains sur deux niveaux.",
+        "space": "Environ 106 m² construits, environ 85 m² intérieurs, 56 m² de terrasses.",
+        "garden": "Jardin privé d'environ 150–213 m² avec espace sur la parcelle pour le parking et la vie en plein air."
+    }
+  },
+  "golf": {
+    "title": "Votre base dans la ceinture de golf d'Orihuela Costa",
+    "description_1": "Depuis Costa Blanca, vous n'êtes qu'à quelques minutes en voiture de plusieurs parcours de 18 trous renommés dans la région d'Orihuela Costa. Vous pouvez varier les endroits où vous jouez, adapter la difficulté au groupe et garder le golf frais semaine après semaine.",
+    "description_2": "Le climat vous offre de nombreux jours ensoleillés et des hivers doux, de sorte que la villa convient aux longs séjours d'hiver, aux escapades de printemps et d'automne – pas seulement pour deux semaines de vacances d'été.",
+    "points": {
+        "cluster": "Groupe de parcours de golf à proximité au lieu d'une seule option.",
+        "season": "Longue saison de jeu avec des températures hivernales confortables.",
+        "routine": "Routine facile à construire : golf le matin, mer ou temps sur la terrasse l'après-midi."
+    }
+  },
+  "location": {
+    "title": "La Zenia : la vie facile en bord de mer",
+    "description": "Costa Blanca se situe dans une partie résidentielle de La Zenia avec des supermarchés, des cafés, des restaurants et des services à proximité. Un grand centre commercial dans le secteur ajoute plus de boutiques, de restaurants et de divertissements en un seul endroit.",
+    "points": {
+        "services": {
+            "title": "Services et Loisirs",
+            "description": "Services quotidiens et loisirs à courte distance."
+        },
+        "beaches": {
+            "title": "Plages",
+            "description": "Plages de sable et promenades côtières à proximité."
+        },
+        "year_round": {
+            "title": "Toute l'année",
+            "description": "Idéal pour les courts séjours et les séjours d'hiver plus longs."
+        }
+    },
+    "note": "Les plages et les petites criques ne sont qu'à quelques minutes en voiture, idéal pour les jours de repos ou pour les membres de la famille qui préfèrent la mer aux fairways. Vous n'avez pas à choisir entre golf, plage et commodité – vous avez les trois."
+  },
+  "lifestyle": {
+    "title": "Confort moderne et peu d'entretien",
+    "description_1": "Ce sont des villas de construction neuve avec un design propre et contemporain. Des armoires encastrées, une cuisine moderne et des salles de bains bien conçues rendent la maison pratique et ordonnée.",
+    "description_2": "Les parcelles privées sont assez grandes pour les terrasses, les plantations et, selon la configuration, une piscine – mais pas assez grandes pour devenir un fardeau à entretenir. Les installations sont préparées pour une utilisation toute l'année, pas seulement pour le plein été.",
+    "points": {
+        "construction": "Construction neuve avec des matériaux et équipements modernes.",
+        "outdoor": "Espace extérieur axé sur la vie, les repas et la détente.",
+        "maintenance": "Une maison facile à fermer, à quitter et à rouvrir plusieurs fois par an."
+    }
+  },
+  "contact": {
+    "title": "Prix, rareté et étape suivante",
+    "price_info": "Costa Blanca se compose d'un petit nombre de villas. Les prix actuels se situent dans la fourchette de <0>449 900 à 479 900 euros</0>, selon la parcelle et la configuration.",
+    "warning": "Avec un nombre limité d'unités, la disponibilité peut changer rapidement.",
+    "cta_intro": "Si vous recherchez une maison orientée golf à La Zenia, l'étape suivante est simple :",
+    "cta_brochure": "Envoyez-moi la brochure Costa Blanca",
+    "cta_availability": "Vérifier la disponibilité et les prix exacts",
+    "cta_visit": "Aidez-moi à organiser une visite"
+  }
+}

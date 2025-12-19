@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/sections/Hero";
 import { FeaturesSection } from "@/sections/Features";
 import { ContactSection } from "@/sections/Contact";
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg';
 import React from "react";
 
 interface LandingPageProps {
@@ -21,11 +21,11 @@ export function LandingPage({ data }: LandingPageProps) {
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-foreground bg-background" style={style}>
-      <Helmet>
+      <Head>
         <title>{data.seo.title}</title>
         <meta name="description" content={data.seo.description} />
         {data.seo.ogImage && <meta property="og:image" content={data.seo.ogImage} />}
-      </Helmet>
+      </Head>
 
       <Navbar data={data} />
       
