@@ -1,0 +1,74 @@
+{
+  "seo": {
+    "title": "New build golf villas in La Zenia – La Vista Boulevard",
+    "description": "Modern 3-bedroom villas in La Zenia, the perfect home for golf, sea, and sun."
+  },
+  "hero": {
+    "badge": "New Development in La Zenia",
+    "title_start": "New build golf villas",
+    "title_middle": "in",
+    "title_highlight": "La Vista Boulevard",
+    "description": "La Vista Boulevard gives you a modern 3‑bedroom villa a short drive from several 18‑hole golf courses, the Mediterranean and all everyday services in La Zenia.",
+    "cta_brochure": "Send me the brochure",
+    "cta_explore": "Explore the villas",
+    "footer_note": "Lock-up-and-leave homes made for golf trips, winter stays & family holidays."
+  },
+  "villas": {
+    "title": "Villas made for golf days",
+    "description_1": "You get a three‑bedroom, two‑bathroom villa of about 106 m² built, with smart use of space and light. The open‑plan living and kitchen area connects directly to the terrace and garden, so coming home after a round feels easy and relaxed.",
+    "description_2": "One bedroom and one bathroom are on the ground floor; two bedrooms and another bathroom are upstairs with access to a large terrace. There is room for friends or family to join you, without losing privacy or comfort.",
+    "points": {
+        "layout": "3 bedrooms, 2 bathrooms over two levels.",
+        "space": "Approx. 106 m² built, about 85 m² indoors, 56 m² of terraces.",
+        "garden": "Private garden of roughly 150–213 m² with on‑plot space for parking and outdoor living."
+    }
+  },
+  "golf": {
+    "title": "Your base in the Orihuela Costa golf belt",
+    "description_1": "From La Vista Boulevard you are only a short drive from several well‑known 18‑hole courses in the Orihuela Costa area. You can vary where you play, adjust difficulty to the group and keep golf fresh week after week.",
+    "description_2": "The climate gives you many sunny days and mild winters, so the villa works for long winter stays, spring and autumn trips – not just a two‑week summer holiday.",
+    "points": {
+        "cluster": "Cluster of golf courses nearby instead of a single option.",
+        "season": "Long playing season with comfortable winter temperatures.",
+        "routine": "Easy to build a routine: golf in the morning, sea or terrace time in the afternoon."
+    }
+  },
+  "location": {
+    "title": "La Zenia: easy living by the sea",
+    "description": "La Vista Boulevard sits in a residential part of La Zenia with supermarkets, cafés, restaurants and services close by. A large shopping centre in the area adds more shops, dining and entertainment in one place.",
+    "points": {
+        "services": {
+            "title": "Services & Leisure",
+            "description": "Everyday services and leisure within a short distance."
+        },
+        "beaches": {
+            "title": "Beaches",
+            "description": "Sandy beaches and coastal walks nearby."
+        },
+        "year_round": {
+            "title": "Year-round",
+            "description": "Suitable for both short breaks and longer winter stays."
+        }
+    },
+    "note": "Beaches and small coves are only a short drive away, ideal for rest days or for family members who prefer the sea to the fairways. You do not need to choose between golf, beach and convenience – you get all three."
+  },
+  "lifestyle": {
+    "title": "Modern, low‑maintenance comfort",
+    "description_1": "These are new build villas with a clean, contemporary design. Fitted wardrobes, a modern kitchen and well‑planned bathrooms keep the house practical and uncluttered.",
+    "description_2": "Private plots are big enough for terraces, planting and, depending on configuration, a pool area – but not so large that they become a burden to maintain. Installations are prepared for year‑round use, not just high summer.",
+    "points": {
+        "construction": "New construction with modern materials and equipment.",
+        "outdoor": "Outdoor space focused on living, dining and relaxing.",
+        "maintenance": "A home that is easy to close, leave and open again several times a year."
+    }
+  },
+  "contact": {
+    "title": "Price, scarcity and next step",
+    "price_info": "La Vista Boulevard consists of a small number of villas. Current prices are in the range of <0>449,900 to 479,900 euros</0>, depending on plot and configuration.",
+    "warning": "With limited units, availability can change quickly.",
+    "cta_intro": "If you are looking for a golf‑oriented home in La Zenia, the next step is simple:",
+    "cta_brochure": "Send me the La Vista Boulevard brochure",
+    "cta_availability": "Check availability & exact prices",
+    "cta_visit": "Help me arrange a visit"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["id", "name", "seo", "sections"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "brand": {
+      "type": "object",
+      "properties": {
+        "colors": {
+          "type": "object",
+          "properties": {
+            "primary": { "type": "string" },
+            "secondary": { "type": "string" }
+          }
+        }
+      }
+    },
+    "seo": {
+      "type": "object",
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "ogImage": { "type": "string" }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "enabled", "order"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string", "enum": ["hero", "features", "location", "gallery", "floor_plans", "testimonials", "faq", "contact"] },
+          "enabled": { "type": "boolean" },
+          "order": { "type": "number" },
+          "title": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "items": { "type": "array" }
+        }
+      }
+    }
+  }
+}

@@ -1,73 +1,112 @@
-# React + TypeScript + Vite
+# Real Estate Landing Page System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fast, static-only landing page system optimized for real estate developments.
+Built with React, Vite, TailwindCSS, and Spec Kit.
 
-Currently, two official plugins are available:
+## 🚀 Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Install dependencies**:
+   ```bash
+   npm install
+   # Use --legacy-peer-deps if you encounter conflicts with React 19/18
+   npm install --legacy-peer-deps
+   ```
 
-## React Compiler
+2. **Run locally**:
+   ```bash
+   npm run dev
+   ```
+   Visit `http://localhost:5173`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. **Validate content**:
+   ```bash
+   npm run spec
+   ```
 
-## Expanding the ESLint configuration
+4. **Build static site**:
+   ```bash
+   npm run build
+   ```
+   The output will be in `dist/`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📁 Project Structure
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- `src/developments/`: **Content Files**. Add new JSON files here to create
+  pages.
+- `src/spec/`: **Spec Kit**. Validation schema (`schema.json`).
+- `src/sections/`: UI Sections (Hero, Features, etc.).
+- `src/components/ui/`: Reusable primitives (Buttons, Cards).
+- `scripts/`: Validation scripts.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📝 How to Add a New Development
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Create a new JSON file in `src/developments/` (e.g., `ocean-view.json`).
+2. Copy the structure from `sunny-hills.json`:
+   ```json
+   {
+     "id": "ocean-view",
+     "name": "Ocean View Residences",
+     "brand": { ... },
+     "seo": { ... },
+     "sections": [ ... ]
+   }
+   ```
+3. Fill in your content.
+4. Run `npm run spec` to verify your file matches the schema.
+   `/developments/ocean-view`.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Alternative: Custom Pages
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+For pages that require custom layouts or logic beyond the standard schema:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Create a new component in `src/pages/` (e.g., `src/pages/MyPage.tsx`).
+2. Import components from `src/components/ui` and `src/sections` as needed.
+3. Register the route manually in `src/routes.tsx`.
+4. **Important**: Add a link to the new page in the main navigation or front
+   page list (e.g., in `src/pages/LandingPage.tsx` or
+   `src/components/layout/Navbar.tsx`) to ensure users can find it.
+
+## 🌍 Multilingual Support
+
+The project uses `i18next` for translations. Content is stored in
+`src/locales/{lang}/{namespace}.json`.
+
+### Adding Translations
+
+1. **Create JSON Files**:
+   - Create a JSON file for your page in `src/locales/en/` (e.g.,
+     `my-page.json`).
+   - Create corresponding files for other languages (e.g.,
+     `src/locales/es/my-page.json`).
+
+2. **Use in Components**:
+   - Use the `useTranslation` hook:
+     ```tsx
+     import { useTranslation } from "react-i18next";
+
+     export function MyPage() {
+        const { t } = useTranslation("my-page"); // 'my-page' matches the filename
+        return <h1>{t("hero.title")}</h1>;
+     }
+     ```
+
+3. **Update Configuration**:
+   - Add your new namespace to `src/i18n.ts` in the `ns` array to ensure it's
+     loaded.
+
+## 🛠️ Spec Kit
+
+This project includes a local "Spec Kit" implementation to ensure data
+integrity. The schema is defined in `src/spec/schema.json`. The validation
+script `scripts/validate.js` uses `ajv` to check all files in
+`src/developments/` against the schema.
+
+## 📦 Deployment
+
+This is a **Static Site**. You can deploy the `dist/` folder to any static host:
+
+- Vercel / Netlify / Cloudflare Pages
+- GitHub Pages
+- Amazon S3 / Google Cloud Storage
+
+No database or backend server is required.

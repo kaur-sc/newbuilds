@@ -1,0 +1,55 @@
+{
+  "id": "sunny-hills",
+  "name": "Sunny Hills Estate",
+  "brand": {
+    "colors": {
+      "primary": "222.2 47.4% 11.2%",
+      "secondary": "210 40% 96.1%"
+    }
+  },
+  "seo": {
+    "title": "Sunny Hills - Luxury Living",
+    "description": "Experience the pinnacle of luxury at Sunny Hills Estate. Modern homes, stunning views, and premium amenities."
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "type": "hero",
+      "enabled": true,
+      "order": 1,
+      "title": "Welcome to Sunny Hills",
+      "subtitle": "Your Dream Home Awaits",
+      "cta": {
+        "label": "View Residences",
+        "href": "#features",
+        "variant": "primary"
+      },
+      "media": "https://images.unsplash.com/photo-1600596542815-2a4d9f10134e?auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "features",
+      "type": "features",
+      "enabled": true,
+      "order": 2,
+      "title": "Premium Amenities",
+      "items": [
+        { "title": "Golf Course", "description": "Championship 18-hole course" },
+        { "title": "Swimming Pool", "description": "Olympic sized infinity pool" },
+        { "title": "24/7 Security", "description": "Gated community with patrols" }
+      ]
+    },
+    {
+      "id": "contact",
+      "type": "contact",
+      "enabled": true,
+      "order": 10,
+      "title": "Get in Touch",
+      "subtitle": "Schedule a private tour today.",
+      "cta": {
+        "label": "Contact Sales",
+        "href": "mailto:sales@sunnyhills.com",
+        "variant": "primary"
+      }
+    }
+  ]
+}
