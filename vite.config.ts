@@ -4,7 +4,7 @@ import path from "path"
 
 export default defineConfig(({ command }) => {
   const isProd = command === 'build';
-  // Use the full staging URL path for production
+  // This must match your FTP subfolder exactly
   const base = isProd ? '/staging/newbuilds/' : '/';
 
   return {
@@ -15,10 +15,10 @@ export default defineConfig(({ command }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
-    // SSG needs the base path passed here as well
     ssgOptions: {
       script: 'async',
       formatting: 'minify',
+      // Adding base here ensures the pre-rendered HTML files use the correct prefix
       base: base, 
     },
   }
