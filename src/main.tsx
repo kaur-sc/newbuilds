@@ -1,7 +1,7 @@
 import { ViteReactSSG } from 'vite-react-ssg'
 import { routes } from './routes'
 import './index.css'
-import './i18n'
+import { i18nPromise } from './i18n'
 
 // Root component, can be a layout or simple fragment if routes handle everything
 const app = ViteReactSSG(
@@ -11,10 +11,10 @@ const app = ViteReactSSG(
 // In development/client-side, we need to invoke the app to mount it
 // The SSG builder will import createApp and call it manually
 if (!import.meta.env.SSR) {
-  // ViteReactSSG returns a promise-like or function, we execute it
-  // Check strict signature: (client?, routePath?) => Promise<Context>
-  // passing true for client
-  (app as any)(true);
+  // Wait for i18n to be ready before hydrating
+  i18nPromise.then(() => {
+    (app as any)(true);
+  });
 }
 
 export const createApp = app;
