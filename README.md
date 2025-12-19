@@ -101,6 +101,34 @@ integrity. The schema is defined in `src/spec/schema.json`. The validation
 script `scripts/validate.js` uses `ajv` to check all files in
 `src/developments/` against the schema.
 
+## 🖼️ Asset Handling
+
+To ensure images work correctly in all environments (including external static
+hosting), always **import** assets as modules in your React components. Do not
+use string paths for internal assets.
+
+### Rule: Use Imports for Images
+
+1. **Store assets** in `src/assets/`.
+2. **Import the image** at the top of your component file.
+3. **Use the imported variable** as the `src` attribute.
+
+**Example:**
+
+```tsx
+import golfImage from "../assets/golf.jpg";
+
+export function MyComponent() {
+   return (
+      <img
+         src={golfImage}
+         alt="Description"
+         className="w-full h-full object-cover"
+      />
+   );
+}
+```
+
 ## 📦 Deployment
 
 This is a **Static Site**. You can deploy the `dist/` folder to any static host:

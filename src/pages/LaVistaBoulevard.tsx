@@ -7,6 +7,7 @@ import { Check, MapPin, Sun, Home, ArrowRight } from 'lucide-react';
 import type { LandingPageData } from '@/models/landing-page';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation, Trans } from 'react-i18next';
+import golfImage from '../assets/golf.jpg';
 
 export function LaVistaBoulevard() {
   const { t } = useTranslation('la-vista-boulevard');
@@ -54,7 +55,7 @@ export function LaVistaBoulevard() {
         <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900 text-white">
           <div className="absolute inset-0 z-0">
              <img 
-               src="../assets/golf.jpg" 
+               src={golfImage} 
                alt="La Vista Boulevard Golf Course" 
                className="w-full h-full object-cover"
              />

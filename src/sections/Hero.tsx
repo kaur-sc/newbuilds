@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { type Section as SectionData } from "@/models/landing-page";
+import { resolveAsset } from "@/lib/assets";
 
 export function HeroSection({ data }: { data: SectionData }) {
   if (!data.enabled) return null;
@@ -10,7 +11,7 @@ export function HeroSection({ data }: { data: SectionData }) {
         {/* Background Image */}
         {data.media && typeof data.media === 'string' && (
             <div className="absolute inset-0 z-0">
-                <img src={data.media} alt={data.title} className="w-full h-full object-cover" />
+                <img src={resolveAsset(data.media)} alt={data.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/40" />
             </div>
         )}
