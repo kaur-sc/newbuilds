@@ -3,21 +3,23 @@ import react from '@vitejs/plugin-react'
 import path from "path"
 
 export default defineConfig(({ command }) => {
+  const isProd = command === 'build';
+  // Use the full staging URL path for production
+  const base = isProd ? '/staging/newbuilds/' : '/';
+
   return {
-    // If we are building for production, use the subfolder. 
-    // Otherwise (local dev), use the root '/'
-    base: command === 'build' ? '/staging/newbuilds/' : '/',
-    
+    base: base,
     plugins: [react()],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
       },
     },
-    // @ts-expect-error - ssg options might not be strictly typed in default config
+    // SSG needs the base path passed here as well
     ssgOptions: {
       script: 'async',
       formatting: 'minify',
+      base: base, 
     },
   }
 })
