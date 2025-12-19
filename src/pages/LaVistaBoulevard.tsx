@@ -54,7 +54,7 @@ export function LaVistaBoulevard() {
         <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900 text-white">
           <div className="absolute inset-0 z-0">
              <img 
-               src="/assets/golf.jpg" 
+               src="../assets/golf.jpg" 
                alt="La Vista Boulevard Golf Course" 
                className="w-full h-full object-cover"
              />
