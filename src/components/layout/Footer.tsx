@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
 import type { LandingPageData } from "@/models/landing-page";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface FooterProps {
   data: LandingPageData;
@@ -11,8 +11,9 @@ export function Footer({ data }: FooterProps) {
     ? '/' 
     : (data.id === 'costa-blanca' ? '/new-build-golf-properties-costa-blanca' : `/developments/${data.id}`);
 
+  const location = useLocation();
   const handleLogoClick = (e: React.MouseEvent) => {
-    if (window.location.pathname === homePath) {
+    if (location.pathname === homePath) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }

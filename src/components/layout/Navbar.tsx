@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import type { LandingPageData } from "@/models/landing-page";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 interface NavbarProps {
@@ -23,8 +23,9 @@ export function Navbar({ data }: NavbarProps) {
     ? '/' 
     : (data.id === 'costa-blanca' ? '/new-build-golf-properties-costa-blanca' : `/developments/${data.id}`);
 
+  const location = useLocation();
   const handleLogoClick = (e: React.MouseEvent) => {
-    if (window.location.pathname === homePath) {
+    if (location.pathname === homePath) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
