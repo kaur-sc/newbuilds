@@ -17,7 +17,7 @@ export function FeaturesSection({ data }: { data: SectionData }) {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {data.items?.map((item: { title: string, description: string }, idx) => (
-            <Card key={idx} className="border-none shadow-md">
+            <Card key={idx} className="border-none">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-2">
                     <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">

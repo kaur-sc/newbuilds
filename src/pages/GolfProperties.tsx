@@ -8,6 +8,7 @@ import type { LandingPageData } from '@/models/landing-page';
 import { Head } from 'vite-react-ssg';
 import { useTranslation, Trans } from 'react-i18next';
 import golfImage from '../assets/golf.jpg';
+import { Gallery } from '@/components/ui/Gallery';
 
 export function GolfProperties() {
   const { t } = useTranslation('costa-blanca');
@@ -70,7 +71,7 @@ export function GolfProperties() {
               {t('hero.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 h-14 bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-900/20" asChild>
+              <Button size="lg" className="text-lg px-8 h-14 bg-emerald-600 hover:bg-emerald-700 text-white" asChild>
                 <a href="#contact">{t('hero.cta_brochure')}</a>
               </Button>
                <Button size="lg" variant="outline" className="text-lg px-8 h-14 bg-white/5 hover:bg-white/10 text-white border-white/30 backdrop-blur-sm" asChild>
@@ -84,13 +85,15 @@ export function GolfProperties() {
         {/* SECTION 1: VILLAS */}
         <section id="villas" className="py-20 md:py-32 bg-white">
           <Container>
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-stretch">
               <div className="order-2 md:order-1">
-                 {/* Visual Placeholder */}
-                <div className="aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden relative shadow-2xl">
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-400 bg-slate-100">
-                        Villa Interior / Terrace Concept
-                    </div>
+                 {/* Villa Image */}
+                <div className="h-full rounded-2xl overflow-hidden relative">
+                    <img 
+                      src="/assets/lvb/lvb-01-3d.jpg" 
+                      alt="Modern villa interior design concept" 
+                      className="w-full h-full object-cover"
+                    />
                 </div>
               </div>
               <div className="order-1 md:order-2">
@@ -112,10 +115,13 @@ export function GolfProperties() {
           </Container>
         </section>
 
+        {/* PHOTO GALLERY */}
+        <Gallery />
+
         {/* SECTION 2: GOLF */}
         <section id="golf" className="py-20 md:py-32 bg-slate-50">
           <Container>
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-stretch">
               <div>
                 <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight text-slate-900">{t('golf.title')}</h2>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
@@ -124,18 +130,20 @@ export function GolfProperties() {
                  <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                   {t('golf.description_2')}
                 </p>
-                 <div className="space-y-4 bg-white p-8 rounded-xl shadow-sm border border-slate-100">
+                 <div className="space-y-4 bg-white p-8 rounded-xl border border-slate-100">
                   <KeyPoint text={t('golf.points.cluster')} icon={<MapPin className="w-5 h-5 text-emerald-600" />} />
                   <KeyPoint text={t('golf.points.season')} icon={<Sun className="w-5 h-5 text-emerald-600" />} />
                   <KeyPoint text={t('golf.points.routine')} icon={<Check className="w-5 h-5 text-emerald-600" />} />
                 </div>
               </div>
                <div className="h-full">
-                 {/* Visual Placeholder */}
-                <div className="aspect-[3/4] md:aspect-auto md:h-full bg-emerald-900/5 rounded-2xl overflow-hidden relative shadow-xl min-h-[400px]">
-                    <div className="absolute inset-0 flex items-center justify-center text-emerald-800/20 bg-emerald-50">
-                        Golf Course / Map Visual
-                    </div>
+                 {/* Golf Image */}
+                <div className="h-full rounded-2xl overflow-hidden relative">
+                    <img 
+                      src="/assets/lvb/golf-06-s.jpg" 
+                      alt="Golf course at Orihuela Costa" 
+                      className="w-full h-full object-cover"
+                    />
                 </div>
               </div>
             </div>
@@ -169,13 +177,15 @@ export function GolfProperties() {
          {/* SECTION 4: COMFORT */}
         <section id="lifestyle" className="py-20 md:py-32 bg-slate-900 text-white">
           <Container>
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-stretch">
                <div className="order-2 md:order-1">
-                 {/* Visual Placeholder */}
-                <div className="aspect-video bg-white/5 rounded-2xl overflow-hidden relative border border-white/10">
-                    <div className="absolute inset-0 flex items-center justify-center text-white/20">
-                        Modern Villa Exterior / Pool
-                    </div>
+                 {/* Villa Image */}
+                <div className="h-full rounded-2xl overflow-hidden relative border border-white/10">
+                   <img 
+                      src="/assets/lvb/lvb-13-3d.jpg" 
+                      alt="Modern villa design with low-maintenance pool area" 
+                      className="w-full h-full object-cover"
+                    />
                 </div>
               </div>
 
@@ -203,7 +213,7 @@ export function GolfProperties() {
              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50" />
 
           <Container className="relative z-10">
-            <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl p-8 md:p-16 text-center border border-emerald-100">
+            <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-16 text-center border border-emerald-100">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">{t('contact.title')}</h2>
                 <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
                     <Trans i18nKey="contact.price_info" t={t} components={[<span className="font-semibold text-emerald-700" key="0" />]} />
@@ -216,7 +226,7 @@ export function GolfProperties() {
                 <div className="space-y-4 max-w-md mx-auto">
                     <p className="font-medium text-slate-900 mb-6">{t('contact.cta_intro')}</p>
                     
-                    <Button size="lg" className="w-full text-lg h-14 bg-emerald-600 hover:bg-emerald-700 shadow-md">
+                    <Button size="lg" className="w-full text-lg h-14 bg-emerald-600 hover:bg-emerald-700">
                         {t('contact.cta_brochure')}
                     </Button>
                     <Button size="lg" variant="outline" className="w-full text-lg h-14 border-emerald-200 text-emerald-700 hover:bg-emerald-50">
@@ -251,8 +261,8 @@ function KeyPoint({ text, icon, light = false }: { text: string, icon?: React.Re
 
 function Card({ title, description, icon }: { title: string, description: string, icon: React.ReactNode }) {
     return (
-        <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition-shadow duration-300">
-            <div className="h-12 w-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6">
+        <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 transition-shadow duration-300">
+            <div className="h-12 w-12 bg-white rounded-xl flex items-center justify-center mb-6">
                 {icon}
             </div>
             <h3 className="font-bold text-xl mb-3 text-slate-900">{title}</h3>

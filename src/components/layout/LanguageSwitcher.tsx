@@ -27,7 +27,7 @@ export function LanguageSwitcher() {
           onClick={() => changeLanguage(lang.code)}
           className={`h-7 px-2 text-[10px] font-bold transition-all ${
             i18n.language === lang.code 
-              ? 'bg-white shadow-sm text-foreground' 
+              ? 'bg-white text-foreground' 
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >

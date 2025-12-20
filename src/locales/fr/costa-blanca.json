@@ -22,6 +22,13 @@
         "garden": "Jardin privé d'environ 150–213 m² avec espace sur la parcelle pour le parking et la vie en plein air."
     }
   },
+  "gallery": {
+    "title": "Détails et Agencement de la Propriété",
+    "tabs": {
+      "photos": "Photos du Projet",
+      "plans": "Plans"
+    }
+  },
   "golf": {
     "title": "Votre base dans la ceinture de golf d'Orihuela Costa",
     "description_1": "Depuis Costa Blanca, vous n'êtes qu'à quelques minutes en voiture de plusieurs parcours de 18 trous renommés dans la région d'Orihuela Costa. Vous pouvez varier les endroits où vous jouez, adapter la difficulté au groupe et garder le golf frais semaine après semaine.",
