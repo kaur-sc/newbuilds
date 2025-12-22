@@ -9,7 +9,7 @@ export function ContactSection({ data }: { data: SectionData }) {
   return (
     <Section id={data.id} className="bg-primary text-primary-foreground">
       <Container className="text-center">
-        <h2 className="text-3xl font-bold tracking-tight mb-4">{data.title}</h2>
+        <h2 className="h2 mb-4">{data.title}</h2>
         {data.subtitle && <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">{data.subtitle}</p>}
         
         {data.cta && (

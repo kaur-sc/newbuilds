@@ -11,7 +11,7 @@ export function FeaturesSection({ data }: { data: SectionData }) {
     <Section id={data.id} className="bg-muted/50">
       <Container>
         <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">{data.title}</h2>
+            <h2 className="h2 mb-4">{data.title}</h2>
             {data.subtitle && <p className="text-muted-foreground">{data.subtitle}</p>}
         </div>
         

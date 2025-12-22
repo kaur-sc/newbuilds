@@ -1,0 +1,670 @@
+/* Golf Theme CSS - Defines theme classes that consume CSS variables */
+[data-theme="golf"] {
+    /* Colors (HSL format for Tailwind) */
+    --primary: 160 84% 39%; /* #10b981 */
+    --primary-foreground: 0 0% 100%; /* #ffffff */
+    --secondary: 210 40% 96%; /* #f1f5f9 */
+    --secondary-foreground: 222 47% 11%; /* #0f172a */
+    --accent: 210 40% 96%; /* #f1f5f9 */
+    --accent-foreground: 222 47% 11%; /* #0f172a */
+    --muted: 210 40% 96%; /* #f1f5f9 */
+    --muted-foreground: 215 16% 47%; /* #64748b */
+    --background: 0 0% 100%; /* #ffffff */
+    --foreground: 222 47% 11%; /* #0f172a */
+    --card: 0 0% 100%; /* #ffffff */
+    --card-foreground: 222 47% 11%; /* #0f172a */
+    --popover: 0 0% 100%; /* #ffffff */
+    --popover-foreground: 222 47% 11%; /* #0f172a */
+    --border: 210 40% 96%; /* #f1f5f9 */
+    --input: 210 40% 96%; /* #f1f5f9 */
+    --ring: 222 47% 11%; /* #0f172a */
+    --radius: 0 0% 0%; /* 0.5rem */
+    --destructive: 0 84% 60%; /* #ef4444 */
+    --destructive-foreground: 0 0% 100%; /* #ffffff */
+    
+    /* Global Typography */
+    --font-base-size: 16px;
+    --font-base-family: ui-sans-serif, system-ui, sans-serif;
+
+    /* Granular Element Styles */
+    --h1-size: 3.75rem;
+    --h1-weight: 700;
+    --h1-line-height: 1;
+    --h1-letter-spacing: -0.02em;
+    --h1-color: var(--foreground);
+    --h1-mobile-size: 2.25rem;
+    --h1-mobile-line-height: 2.5rem;
+
+    --h2-size: 3rem;
+    --h2-weight: 700;
+    --h2-line-height: 1;
+    --h2-letter-spacing: -0.01em;
+    --h2-color: var(--foreground);
+    --h2-mobile-size: 1.875rem;
+    --h2-mobile-line-height: 2.25rem;
+
+    --h3-size: 1.875rem;
+    --h3-weight: 700;
+    --h3-line-height: 2.25rem;
+    --h3-letter-spacing: 0;
+    --h3-color: var(--foreground);
+    --h3-mobile-size: 1.5rem;
+    --h3-mobile-line-height: 2rem;
+
+    --body-size: 1rem;
+    --body-weight: 400;
+    --body-line-height: 1.5rem;
+    --body-letter-spacing: 0;
+    --body-color: var(--foreground);
+    --body-mobile-size: 1rem;
+    --body-mobile-line-height: 1.5rem;
+
+    --small-size: 0.875rem;
+    --small-weight: 400;
+    --small-line-height: 1.5;
+    --small-letter-spacing: 0.01em;
+    --small-color: var(--foreground);
+    --small-mobile-size: 0.8rem;
+    --small-mobile-line-height: 1.6;
+
+    --caption-size: 0.75rem;
+    --caption-weight: 400;
+    --caption-line-height: 1.4;
+    --caption-letter-spacing: 0.02em;
+    --caption-color: var(--foreground);
+    --caption-mobile-size: 0.6875rem;
+    --caption-mobile-line-height: 1.5;
+
+    --btn-primary-bg: var(--primary);
+    --btn-primary-text: var(--primary-foreground);
+    --btn-primary-radius: 9999px;
+    --btn-primary-px: 1.5rem;
+    --btn-primary-py: 0.625rem;
+    --btn-primary-weight: 700;
+    --btn-primary-hover-bg: 163 94% 24%;
+    --btn-primary-hover-text: var(--primary-foreground);
+    --btn-primary-hover-scale: 1.05;
+    --btn-primary-active-bg: var(--primary);
+    --btn-primary-active-text: var(--primary-foreground);
+    --btn-primary-active-scale: 0.95;
+    --btn-primary-mobile-px: 1.5rem;
+    --btn-primary-mobile-py: 0.625rem;
+
+    --btn-secondary-bg: var(--secondary);
+    --btn-secondary-text: var(--secondary-foreground);
+    --btn-secondary-radius: 9999px;
+    --btn-secondary-px: 2rem;
+    --btn-secondary-py: 0.75rem;
+    --btn-secondary-weight: 700;
+    --btn-secondary-hover-bg: var(--secondary);
+    --btn-secondary-hover-text: var(--secondary-foreground);
+    --btn-secondary-hover-scale: 1.05;
+    --btn-secondary-active-bg: var(--secondary);
+    --btn-secondary-active-text: var(--secondary-foreground);
+    --btn-secondary-active-scale: 0.95;
+    --btn-secondary-mobile-px: 1.5rem;
+    --btn-secondary-mobile-py: 0.625rem;
+
+    --btn-outline-bg: transparent;
+    --btn-outline-text: var(--primary);
+    --btn-outline-radius: 9999px;
+    --btn-outline-px: 2rem;
+    --btn-outline-py: 0.75rem;
+    --btn-outline-border: var(--border);
+    --btn-outline-weight: 700;
+    --btn-outline-hover-bg: var(--primary);
+    --btn-outline-hover-text: var(--primary-foreground);
+    --btn-outline-hover-border: var(--primary);
+    --btn-outline-hover-scale: 1.05;
+    --btn-outline-active-bg: var(--primary);
+    --btn-outline-active-text: var(--primary-foreground);
+    --btn-outline-active-border: var(--primary);
+    --btn-outline-active-scale: 0.95;
+    --btn-outline-mobile-px: 1.5rem;
+    --btn-outline-mobile-py: 0.625rem;
+
+    --btn-ghost-bg: transparent;
+    --btn-ghost-text: var(--primary);
+    --btn-ghost-radius: 9999px;
+    --btn-ghost-px: 2rem;
+    --btn-ghost-py: 0.75rem;
+    --btn-ghost-weight: 700;
+    --btn-ghost-hover-bg: var(--primary);
+    --btn-ghost-hover-text: var(--primary);
+    --btn-ghost-hover-scale: 1.05;
+    --btn-ghost-active-bg: var(--primary);
+    --btn-ghost-active-text: var(--primary);
+    --btn-ghost-active-scale: 0.95;
+    --btn-ghost-mobile-px: 1.5rem;
+    --btn-ghost-mobile-py: 0.625rem;
+
+    --link-std-text: var(--primary);
+    --link-std-weight: 500;
+    --link-std-under: underline;
+    --link-std-hover-text: var(--primary);
+    --link-std-hover-scale: 1.02;
+    --link-std-active-text: var(--primary);
+    --link-std-active-scale: 0.98;
+
+    --link-bold-text: var(--primary);
+    --link-bold-weight: 700;
+    --link-bold-under: none;
+    --link-bold-hover-text: var(--primary);
+    --link-bold-hover-scale: 1.02;
+    --link-bold-active-text: var(--primary);
+    --link-bold-active-scale: 0.98;
+
+    --header-title-size: 1.5rem;
+    --header-title-weight: 600;
+    --header-title-line-height: 1.2;
+    --header-title-letter-spacing: -0.01em;
+
+    --header-subtitle-size: 0.875rem;
+    --header-subtitle-weight: 400;
+    --header-subtitle-line-height: 1.4;
+    --header-subtitle-letter-spacing: 0.01em;
+
+    --header-nav-size: 0.9rem;
+    --header-nav-weight: 500;
+    --header-nav-line-height: 1.5;
+    --header-nav-letter-spacing: 0;
+
+    --site-title-size: 1.25rem;
+    --site-title-weight: 700;
+    --site-title-line-height: 1.2;
+    --site-title-letter-spacing: -0.01em;
+
+    --mobile-menu-btn-size: 0.875rem;
+    --mobile-menu-btn-weight: 600;
+    --mobile-menu-btn-line-height: 1.4;
+    --mobile-menu-btn-letter-spacing: 0.01em;
+
+    --mobile-menu-links-size: 1rem;
+    --mobile-menu-links-weight: 500;
+    --mobile-menu-links-line-height: 1.5;
+    --mobile-menu-links-letter-spacing: 0;
+    
+    /* Header/Navigation Variables */
+    --navbar-bg-color: 0 0% 100%; /* Base color */
+    --navbar-bg-transparency: 0.9; /* Transparency level */
+    --navbar-bg-blur: 12px; /* Blur amount */
+    --navbar-border: hsl(var(--border));
+    --navbar-text: hsl(var(--foreground));
+    --navbar-height: 4rem;
+    --navbar-logo-size: var(--site-title-size);
+    --navbar-logo-weight: var(--site-title-weight);
+    --navbar-logo-line-height: var(--site-title-line-height);
+    --navbar-logo-letter-spacing: var(--site-title-letter-spacing);
+    --navbar-link-size: var(--header-nav-size);
+    --navbar-link-weight: var(--header-nav-weight);
+    --navbar-link-line-height: var(--header-nav-line-height);
+    --navbar-link-letter-spacing: var(--header-nav-letter-spacing);
+    --navbar-mobile-bg: hsl(var(--background)); /* Solid for mobile */
+    --navbar-mobile-border: hsl(var(--border));
+    
+    /* Navigation Layout Variables */
+    --nav-gap: 1.5rem;
+    --nav-separator-padding: 0.5rem;
+    --nav-separator-margin: 0.5rem;
+    --nav-mobile-padding: 1rem;
+    --nav-mobile-gap: 1rem;
+}
+
+/* Theme Classes - These consume the CSS variables defined above */
+
+/* Typography Classes */
+.h1 {
+    font-size: var(--h1-size);
+    font-weight: var(--h1-weight);
+    line-height: var(--h1-line-height);
+    letter-spacing: var(--h1-letter-spacing);
+    color: hsl(var(--h1-color));
+}
+
+.h2 {
+    font-size: var(--h2-size);
+    font-weight: var(--h2-weight);
+    line-height: var(--h2-line-height);
+    letter-spacing: var(--h2-letter-spacing);
+    color: hsl(var(--h2-color));
+}
+
+.h3 {
+    font-size: var(--h3-size);
+    font-weight: var(--h3-weight);
+    line-height: var(--h3-line-height);
+    letter-spacing: var(--h3-letter-spacing);
+    color: hsl(var(--h3-color));
+}
+
+.body {
+    font-size: var(--body-size);
+    font-weight: var(--body-weight);
+    line-height: var(--body-line-height);
+    letter-spacing: var(--body-letter-spacing);
+    color: hsl(var(--body-color));
+}
+
+.small {
+    font-size: var(--small-size);
+    font-weight: var(--small-weight);
+    line-height: var(--small-line-height);
+    letter-spacing: var(--small-letter-spacing);
+    color: hsl(var(--small-color));
+}
+
+.caption {
+    font-size: var(--caption-size);
+    font-weight: var(--caption-weight);
+    line-height: var(--caption-line-height);
+    letter-spacing: var(--caption-letter-spacing);
+    color: hsl(var(--caption-color));
+}
+
+/* Button Classes */
+.btn-primary {
+    background: hsl(var(--btn-primary-bg));
+    color: hsl(var(--btn-primary-text));
+    border-radius: var(--btn-primary-radius);
+    padding-left: var(--btn-primary-px);
+    padding-right: var(--btn-primary-px);
+    padding-top: var(--btn-primary-py);
+    padding-bottom: var(--btn-primary-py);
+    font-weight: var(--btn-primary-weight);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: hsl(var(--btn-primary-hover-bg));
+    color: hsl(var(--btn-primary-hover-text));
+    transform: scale(var(--btn-primary-hover-scale));
+}
+
+.btn-primary:active {
+    background: hsl(var(--btn-primary-active-bg));
+    color: hsl(var(--btn-primary-active-text));
+    transform: scale(var(--btn-primary-active-scale));
+}
+
+.btn-secondary {
+    background: hsl(var(--btn-secondary-bg));
+    color: hsl(var(--btn-secondary-text));
+    border-radius: var(--btn-secondary-radius);
+    padding-left: var(--btn-secondary-px);
+    padding-right: var(--btn-secondary-px);
+    padding-top: var(--btn-secondary-py);
+    padding-bottom: var(--btn-secondary-py);
+    font-weight: var(--btn-secondary-weight);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: hsl(var(--btn-secondary-hover-bg));
+    color: hsl(var(--btn-secondary-hover-text));
+    transform: scale(var(--btn-secondary-hover-scale));
+}
+
+.btn-secondary:active {
+    background: hsl(var(--btn-secondary-active-bg));
+    color: hsl(var(--btn-secondary-active-text));
+    transform: scale(var(--btn-secondary-active-scale));
+}
+
+.btn-outline {
+    background: hsl(var(--btn-outline-bg));
+    color: hsl(var(--btn-outline-text));
+    border-radius: var(--btn-outline-radius);
+    padding-left: var(--btn-outline-px);
+    padding-right: var(--btn-outline-px);
+    padding-top: var(--btn-outline-py);
+    padding-bottom: var(--btn-outline-py);
+    font-weight: var(--btn-outline-weight);
+    border: 1px solid hsl(var(--btn-outline-border));
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-outline:hover {
+    background: hsl(var(--btn-outline-hover-bg));
+    color: hsl(var(--btn-outline-hover-text));
+    border-color: hsl(var(--btn-outline-hover-border));
+    transform: scale(var(--btn-outline-hover-scale));
+}
+
+.btn-outline:active {
+    background: hsl(var(--btn-outline-active-bg));
+    color: hsl(var(--btn-outline-active-text));
+    border-color: hsl(var(--btn-outline-active-border));
+    transform: scale(var(--btn-outline-active-scale));
+}
+
+.btn-ghost {
+    background: hsl(var(--btn-ghost-bg));
+    color: hsl(var(--btn-ghost-text));
+    border-radius: var(--btn-ghost-radius);
+    padding-left: var(--btn-ghost-px);
+    padding-right: var(--btn-ghost-px);
+    padding-top: var(--btn-ghost-py);
+    padding-bottom: var(--btn-ghost-py);
+    font-weight: var(--btn-ghost-weight);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-ghost:hover {
+    background: hsl(var(--btn-ghost-hover-bg));
+    color: hsl(var(--btn-ghost-hover-text));
+    transform: scale(var(--btn-ghost-hover-scale));
+}
+
+.btn-ghost:active {
+    background: hsl(var(--btn-ghost-active-bg));
+    color: hsl(var(--btn-ghost-active-text));
+    transform: scale(var(--btn-ghost-active-scale));
+}
+
+/* Link Classes */
+.link-std {
+    color: hsl(var(--link-std-text));
+    font-weight: var(--link-std-weight);
+    text-decoration: var(--link-std-under);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.link-std:hover {
+    color: hsl(var(--link-std-hover-text));
+    transform: scale(var(--link-std-hover-scale));
+}
+
+.link-std:active {
+    color: hsl(var(--link-std-active-text));
+    transform: scale(var(--link-std-active-scale));
+}
+
+.link-bold {
+    color: hsl(var(--link-bold-text));
+    font-weight: var(--link-bold-weight);
+    text-decoration: var(--link-bold-under);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.link-bold:hover {
+    color: hsl(var(--link-bold-hover-text));
+    transform: scale(var(--link-bold-hover-scale));
+}
+
+.link-bold:active {
+    color: hsl(var(--link-bold-active-text));
+    transform: scale(var(--link-bold-active-scale));
+}
+
+/* Header/Navigation Classes */
+.navbar {
+    background: hsla(var(--navbar-bg-color) / var(--navbar-bg-transparency));
+    border-bottom: 1px solid hsl(var(--navbar-border));
+    backdrop-filter: blur(var(--navbar-bg-blur));
+    -webkit-backdrop-filter: blur(var(--navbar-bg-blur));
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.navbar-container {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-title {
+    font-size: var(--navbar-logo-size);
+    font-weight: var(--navbar-logo-weight);
+    line-height: var(--navbar-logo-line-height);
+    letter-spacing: var(--navbar-logo-letter-spacing);
+    color: hsl(var(--navbar-text));
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.site-title:hover {
+    color: hsl(var(--primary));
+}
+
+.nav-link {
+    font-size: var(--navbar-link-size);
+    font-weight: var(--navbar-link-weight);
+    line-height: var(--navbar-link-line-height);
+    letter-spacing: var(--navbar-link-letter-spacing);
+    color: hsl(var(--navbar-text));
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: hsl(var(--primary));
+}
+
+.mobile-menu-btn {
+    font-size: var(--mobile-menu-btn-size);
+    font-weight: var(--mobile-menu-btn-weight);
+    line-height: var(--mobile-menu-btn-line-height);
+    letter-spacing: var(--mobile-menu-btn-letter-spacing);
+    color: hsl(var(--navbar-text));
+}
+
+.mobile-menu {
+    background: hsl(var(--navbar-mobile-bg));
+    border-top: 1px solid hsl(var(--navbar-mobile-border));
+}
+
+.mobile-menu-links {
+    font-size: var(--mobile-menu-links-size);
+    font-weight: var(--mobile-menu-links-weight);
+    line-height: var(--mobile-menu-links-line-height);
+    letter-spacing: var(--mobile-menu-links-letter-spacing);
+    color: hsl(var(--navbar-text));
+    transition: color 0.2s ease;
+}
+
+/* Navigation Layout Classes */
+.nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: var(--nav-gap);
+}
+
+.nav-desktop-mobile {
+    display: none;
+}
+
+/* Hamburger menu button - hidden by default, overridden in mobile */
+[data-theme="golf"] .nav-desktop-mobile-show {
+    display: none !important;
+}
+
+.nav-language-separator {
+    padding-left: var(--nav-separator-padding);
+    border-left: 1px solid hsl(var(--border));
+    margin-left: var(--nav-separator-margin);
+}
+
+.nav-mobile-padding {
+    padding: var(--nav-mobile-padding);
+}
+
+.nav-mobile-gap {
+    gap: var(--nav-mobile-gap);
+}
+
+.nav-mobile-center {
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive Mobile Variants */
+@media (max-width: 768px) {
+    .h1 {
+        font-size: var(--h1-mobile-size);
+        line-height: var(--h1-mobile-line-height);
+    }
+    
+    .h2 {
+        font-size: var(--h2-mobile-size);
+        line-height: var(--h2-mobile-line-height);
+    }
+    
+    .h3 {
+        font-size: var(--h3-mobile-size);
+        line-height: var(--h3-mobile-line-height);
+    }
+    
+    .body {
+        font-size: var(--body-mobile-size);
+        line-height: var(--body-mobile-line-height);
+    }
+    
+    .small {
+        font-size: var(--small-mobile-size);
+        line-height: var(--small-mobile-line-height);
+    }
+    
+    .caption {
+        font-size: var(--caption-mobile-size);
+        line-height: var(--caption-mobile-line-height);
+    }
+    
+    .btn-primary {
+        padding-left: var(--btn-primary-mobile-px);
+        padding-right: var(--btn-primary-mobile-px);
+        padding-top: var(--btn-primary-mobile-py);
+        padding-bottom: var(--btn-primary-mobile-py);
+    }
+    
+    .btn-secondary {
+        padding-left: var(--btn-secondary-mobile-px);
+        padding-right: var(--btn-secondary-mobile-px);
+        padding-top: var(--btn-secondary-mobile-py);
+        padding-bottom: var(--btn-secondary-mobile-py);
+    }
+    
+    .btn-outline {
+        padding-left: var(--btn-outline-mobile-px);
+        padding-right: var(--btn-outline-mobile-px);
+        padding-top: var(--btn-outline-mobile-py);
+        padding-bottom: var(--btn-outline-mobile-py);
+    }
+    
+    .btn-ghost {
+        padding-left: var(--btn-ghost-mobile-px);
+        padding-right: var(--btn-ghost-mobile-px);
+        padding-top: var(--btn-ghost-mobile-py);
+        padding-bottom: var(--btn-ghost-mobile-py);
+    }
+    
+    .nav-desktop {
+        display: none;
+    }
+    
+    .nav-desktop-mobile {
+        display: flex;
+    }
+    
+    /* Show hamburger menu only on mobile */
+    [data-theme="golf"] .nav-desktop-mobile-show {
+        display: flex !important;
+    }
+    
+    .nav-mobile-padding {
+        padding: var(--nav-mobile-padding);
+    }
+    
+    .nav-mobile-gap {
+        gap: var(--nav-mobile-gap);
+    }
+    
+    .nav-mobile-center {
+        justify-content: center;
+    }
+}
+
+/* Style Editor Device-Specific Overrides */
+.preview-mobile .h1 {
+    font-size: var(--h1-mobile-size) !important;
+    line-height: var(--h1-mobile-line-height) !important;
+}
+
+.preview-mobile .h2 {
+    font-size: var(--h2-mobile-size) !important;
+    line-height: var(--h2-mobile-line-height) !important;
+}
+
+.preview-mobile .h3 {
+    font-size: var(--h3-mobile-size) !important;
+    line-height: var(--h3-mobile-line-height) !important;
+}
+
+.preview-mobile .body {
+    font-size: var(--body-mobile-size) !important;
+    line-height: var(--body-mobile-line-height) !important;
+}
+
+.preview-mobile .small {
+    font-size: var(--small-mobile-size) !important;
+    line-height: var(--small-mobile-line-height) !important;
+}
+
+.preview-mobile .caption {
+    font-size: var(--caption-mobile-size) !important;
+    line-height: var(--caption-mobile-line-height) !important;
+}
+
+.preview-mobile .btn-primary {
+    padding-left: var(--btn-primary-mobile-px) !important;
+    padding-right: var(--btn-primary-mobile-px) !important;
+    padding-top: var(--btn-primary-mobile-py) !important;
+    padding-bottom: var(--btn-primary-mobile-py) !important;
+}
+
+.preview-mobile .btn-secondary {
+    padding-left: var(--btn-secondary-mobile-px) !important;
+    padding-right: var(--btn-secondary-mobile-px) !important;
+    padding-top: var(--btn-secondary-mobile-py) !important;
+    padding-bottom: var(--btn-secondary-mobile-py) !important;
+}
+
+.preview-mobile .btn-outline {
+    padding-left: var(--btn-outline-mobile-px) !important;
+    padding-right: var(--btn-outline-mobile-px) !important;
+    padding-top: var(--btn-outline-mobile-py) !important;
+    padding-bottom: var(--btn-outline-mobile-py) !important;
+}
+
+.preview-mobile .btn-ghost {
+    padding-left: var(--btn-ghost-mobile-px) !important;
+    padding-right: var(--btn-ghost-mobile-px) !important;
+    padding-top: var(--btn-ghost-mobile-py) !important;
+    padding-bottom: var(--btn-ghost-mobile-py) !important;
+}

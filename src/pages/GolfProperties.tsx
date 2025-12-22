@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Container } from '@/components/ui/container';
@@ -9,9 +9,24 @@ import { Head } from 'vite-react-ssg';
 import { useTranslation, Trans } from 'react-i18next';
 import golfImage from '../assets/golf.jpg';
 import { Gallery } from '@/components/ui/Gallery';
+import { getPageTheme } from '@/lib/pageThemeManager';
+import { applyTheme } from '@/themes/resolver';
+import type { ThemeKey } from '@/themes';
 
 export function GolfProperties() {
   const { t } = useTranslation('costa-blanca');
+
+  // Apply saved theme on page load
+  useEffect(() => {
+    // Check if there's a saved theme for this page
+    const currentPath = window.location.pathname;
+    const savedTheme = getPageTheme(currentPath);
+    
+    if (savedTheme) {
+      console.log(`🎨 Applying saved theme "${savedTheme}" to Golf Properties page`);
+      applyTheme(savedTheme);
+    }
+  }, []);
 
   // Mock data for Navbar/Footer compatibility
   const pageData: LandingPageData = {
@@ -36,13 +51,8 @@ export function GolfProperties() {
     ]
   };
 
-  const style = {
-    '--primary': pageData.brand.colors?.primary,
-    '--secondary': pageData.brand.colors?.secondary,
-  } as React.CSSProperties;
-
   return (
-    <div className="min-h-screen flex flex-col font-sans text-foreground bg-background" style={style}>
+    <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
       <Head>
         <title>{pageData.seo.title}</title>
         <meta name="description" content={pageData.seo.description} />
@@ -53,7 +63,7 @@ export function GolfProperties() {
       <main className="flex-1">
         
         {/* HERO */}
-        <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900 text-white">
+        <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-primary text-primary-foreground">
           <div className="absolute inset-0 z-0">
              <img 
                src={golfImage} 
@@ -64,26 +74,26 @@ export function GolfProperties() {
           </div>
 
           <Container className="relative z-10 text-center max-w-4xl">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
-              {t('hero.title_start')} <br className="hidden md:block"/> {t('hero.title_middle')} <span className="text-emerald-400">{t('hero.title_highlight')}</span>
+            <h1 className="h1 mb-6">
+              {t('hero.title_start')} <br className="hidden md:block"/> {t('hero.title_middle')} <span className="text-accent">{t('hero.title_highlight')}</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="body text-xl md:text-2xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
               {t('hero.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 h-14 bg-emerald-600 hover:bg-emerald-700 text-white" asChild>
-                <a href="#contact">{t('hero.cta_brochure')}</a>
-              </Button>
-               <Button size="lg" variant="outline" className="text-lg px-8 h-14 bg-white/5 hover:bg-white/10 text-white border-white/30 backdrop-blur-sm" asChild>
-                <a href="#villas">{t('hero.cta_explore')}</a>
-              </Button>
+              <a href="#contact" className="btn-primary text-lg px-8 h-14 inline-flex items-center justify-center">
+                {t('hero.cta_brochure')}
+              </a>
+               <a href="#villas" className="btn-outline text-lg px-8 h-14 inline-flex items-center justify-center">
+                {t('hero.cta_explore')}
+              </a>
             </div>
-            <p className="mt-8 text-sm text-gray-400">{t('hero.footer_note')}</p>
+            <p className="caption mt-8 text-primary-foreground/60">{t('hero.footer_note')}</p>
           </Container>
         </div>
 
         {/* SECTION 1: VILLAS */}
-        <section id="villas" className="py-20 md:py-32 bg-white">
+        <section id="villas" className="py-20 md:py-32 bg-card">
           <Container>
             <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-stretch">
               <div className="order-2 md:order-1">
@@ -97,11 +107,11 @@ export function GolfProperties() {
                 </div>
               </div>
               <div className="order-1 md:order-2">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight text-slate-900">{t('villas.title')}</h2>
-                <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                <h2 className="h2 mb-6">{t('villas.title')}</h2>
+                <p className="body text-lg mb-6">
                   {t('villas.description_1')}
                 </p>
-                <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                <p className="body text-lg mb-8">
                   {t('villas.description_2')}
                 </p>
 
@@ -119,21 +129,21 @@ export function GolfProperties() {
         <Gallery />
 
         {/* SECTION 2: GOLF */}
-        <section id="golf" className="py-20 md:py-32 bg-slate-50">
+        <section id="golf" className="py-20 md:py-32 bg-muted">
           <Container>
             <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-stretch">
               <div>
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight text-slate-900">{t('golf.title')}</h2>
-                <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                <h2 className="h2 mb-6">{t('golf.title')}</h2>
+                <p className="body text-lg mb-6">
                   {t('golf.description_1')}
                 </p>
-                 <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                 <p className="body text-lg mb-8">
                   {t('golf.description_2')}
                 </p>
-                 <div className="space-y-4 bg-white p-8 rounded-xl border border-slate-100">
-                  <KeyPoint text={t('golf.points.cluster')} icon={<MapPin className="w-5 h-5 text-emerald-600" />} />
-                  <KeyPoint text={t('golf.points.season')} icon={<Sun className="w-5 h-5 text-emerald-600" />} />
-                  <KeyPoint text={t('golf.points.routine')} icon={<Check className="w-5 h-5 text-emerald-600" />} />
+                 <div className="space-y-4 bg-card p-8 rounded-xl border border-border">
+                  <KeyPoint text={t('golf.points.cluster')} icon={<MapPin className="w-5 h-5 text-primary" />} />
+                  <KeyPoint text={t('golf.points.season')} icon={<Sun className="w-5 h-5 text-primary" />} />
+                  <KeyPoint text={t('golf.points.routine')} icon={<Check className="w-5 h-5 text-primary" />} />
                 </div>
               </div>
                <div className="h-full">
@@ -151,23 +161,23 @@ export function GolfProperties() {
         </section>
 
         {/* SECTION 3: LOCATION */}
-        <section id="location" className="py-20 md:py-32 bg-white">
+        <section id="location" className="py-20 md:py-32 bg-card">
            <Container>
              <div className="max-w-3xl mx-auto text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight text-slate-900">{t('location.title')}</h2>
-                <p className="text-xl text-slate-600 leading-relaxed">
+                <h2 className="h2 mb-6">{t('location.title')}</h2>
+                <p className="body text-xl">
                   {t('location.description')}
                 </p>
              </div>
             
             <div className="grid md:grid-cols-3 gap-8">
-               <Card title={t('location.points.services.title')} description={t('location.points.services.description')} icon={<Home className="w-6 h-6 text-blue-500" />} />
-               <Card title={t('location.points.beaches.title')} description={t('location.points.beaches.description')} icon={<MapPin className="w-6 h-6 text-blue-500" />} />
-               <Card title={t('location.points.year_round.title')} description={t('location.points.year_round.description')} icon={<Sun className="w-6 h-6 text-blue-500" />} />
+               <Card title={t('location.points.services.title')} description={t('location.points.services.description')} icon={<Home className="w-6 h-6 text-primary" />} />
+               <Card title={t('location.points.beaches.title')} description={t('location.points.beaches.description')} icon={<MapPin className="w-6 h-6 text-primary" />} />
+               <Card title={t('location.points.year_round.title')} description={t('location.points.year_round.description')} icon={<Sun className="w-6 h-6 text-primary" />} />
             </div>
 
             <div className="mt-12 text-center max-w-3xl mx-auto">
-                 <p className="text-lg text-slate-600">
+                 <p className="body text-lg">
                   {t('location.note')}
                 </p>
             </div>
@@ -175,12 +185,12 @@ export function GolfProperties() {
         </section>
 
          {/* SECTION 4: COMFORT */}
-        <section id="lifestyle" className="py-20 md:py-32 bg-slate-900 text-white">
+        <section id="lifestyle" className="py-20 md:py-32 bg-foreground text-background">
           <Container>
             <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-stretch">
                <div className="order-2 md:order-1">
                  {/* Villa Image */}
-                <div className="h-full rounded-2xl overflow-hidden relative border border-white/10">
+                <div className="h-full rounded-2xl overflow-hidden relative border border-border">
                    <img 
                       src="/assets/lvb/lvb-13-3d.jpg" 
                       alt="Modern villa design with low-maintenance pool area" 
@@ -190,11 +200,11 @@ export function GolfProperties() {
               </div>
 
               <div className="order-1 md:order-2">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">{t('lifestyle.title')}</h2>
-                <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+                <h2 className="h2 mb-6">{t('lifestyle.title')}</h2>
+                <p className="body text-lg mb-6">
                   {t('lifestyle.description_1')}
                 </p>
-                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                <p className="body text-lg mb-8">
                   {t('lifestyle.description_2')}
                 </p>
                 <div className="space-y-4">
@@ -208,33 +218,33 @@ export function GolfProperties() {
         </section>
 
         {/* PRICE & CALL TO ACTION */}
-        <section id="contact" className="py-24 bg-emerald-50 relative overflow-hidden">
+        <section id="contact" className="py-24 bg-accent relative overflow-hidden">
              {/* Decorative blob */}
-             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50" />
+             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-muted rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50" />
 
           <Container className="relative z-10">
-            <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-16 text-center border border-emerald-100">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">{t('contact.title')}</h2>
-                <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-                    <Trans i18nKey="contact.price_info" t={t} components={[<span className="font-semibold text-emerald-700" key="0" />]} />
+            <div className="max-w-4xl mx-auto bg-card rounded-3xl p-8 md:p-16 text-center border border-border">
+                <h2 className="h2 mb-6">{t('contact.title')}</h2>
+                <p className="body text-xl mb-8 max-w-2xl mx-auto">
+                    <Trans i18nKey="contact.price_info" t={t} components={[<span className="font-semibold text-primary" key="0" />]} />
                 </p>
                 
-                <div className="bg-amber-50 text-amber-900 px-6 py-4 rounded-xl mb-10 inline-block text-sm font-medium border border-amber-100">
+                <div className="bg-secondary text-secondary-foreground px-6 py-4 rounded-xl mb-10 inline-block text-sm font-medium border border-border">
                     ⚠️ {t('contact.warning')}
                 </div>
 
                 <div className="space-y-4 max-w-md mx-auto">
-                    <p className="font-medium text-slate-900 mb-6">{t('contact.cta_intro')}</p>
+                    <p className="font-medium mb-6">{t('contact.cta_intro')}</p>
                     
-                    <Button size="lg" className="w-full text-lg h-14 bg-emerald-600 hover:bg-emerald-700">
+                    <button className="btn-primary w-full text-lg h-14">
                         {t('contact.cta_brochure')}
-                    </Button>
-                    <Button size="lg" variant="outline" className="w-full text-lg h-14 border-emerald-200 text-emerald-700 hover:bg-emerald-50">
+                    </button>
+                    <button className="btn-outline w-full text-lg h-14">
                         {t('contact.cta_availability')}
-                    </Button>
-                    <Button size="lg" variant="ghost" className="w-full text-lg h-14 hover:bg-slate-100 text-slate-600">
+                    </button>
+                    <button className="btn-ghost w-full text-lg h-14">
                         {t('contact.cta_visit')} <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
+                    </button>
                 </div>
             </div>
           </Container>
@@ -251,22 +261,22 @@ export function GolfProperties() {
 function KeyPoint({ text, icon, light = false }: { text: string, icon?: React.ReactNode, light?: boolean }) {
     return (
         <div className="flex items-start gap-3">
-             <div className={`mt-1 min-w-5 ${light ? 'text-emerald-400' : 'text-emerald-600'}`}>
+             <div className={`mt-1 min-w-5 ${light ? 'text-accent' : 'text-primary'}`}>
                 {icon || <Check className="w-5 h-5" />}
              </div>
-             <span className={`text-base font-medium ${light ? 'text-slate-200' : 'text-slate-700'}`}>{text}</span>
+             <span className={`text-base font-medium ${light ? 'text-muted-foreground' : 'text-foreground'}`}>{text}</span>
         </div>
     )
 }
 
 function Card({ title, description, icon }: { title: string, description: string, icon: React.ReactNode }) {
     return (
-        <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 transition-shadow duration-300">
-            <div className="h-12 w-12 bg-white rounded-xl flex items-center justify-center mb-6">
+        <div className="bg-muted p-8 rounded-2xl border border-border transition-shadow duration-300">
+            <div className="h-12 w-12 bg-card rounded-xl flex items-center justify-center mb-6">
                 {icon}
             </div>
-            <h3 className="font-bold text-xl mb-3 text-slate-900">{title}</h3>
-            <p className="text-slate-600 leading-relaxed">
+            <h3 className="font-bold text-xl mb-3">{title}</h3>
+            <p className="body leading-relaxed">
                 {description}
             </p>
         </div>

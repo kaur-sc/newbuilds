@@ -16,12 +16,12 @@ export function HeroSection({ data }: { data: SectionData }) {
             </div>
         )}
 
-      <Container className="relative z-10 text-center text-white">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+      <Container className="relative z-10 text-center text-primary-foreground">
+        <h1 className="h1 mb-6">
           {data.title}
         </h1>
         {data.subtitle && (
-          <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             {data.subtitle}
           </p>
         )}

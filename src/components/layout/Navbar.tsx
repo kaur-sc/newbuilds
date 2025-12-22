@@ -32,23 +32,23 @@ export function Navbar({ data }: NavbarProps) {
   };
 
   return (
-    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-      <Container className="h-16 flex items-center justify-between">
+    <nav className="navbar">
+      <Container className="navbar-container">
         <Link 
           to={homePath} 
-          className="font-bold text-xl tracking-tight hover:opacity-80 transition-opacity"
+          className="site-title"
           onClick={handleLogoClick}
         >
           {name}
         </Link>
         
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="nav-desktop">
           {data.sections.filter(s => s.enabled && s.type !== 'hero').map(section => (
             <a 
               key={section.id} 
               href={`#${section.id}`}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="nav-link"
             >
               {section.title || section.type}
             </a>
@@ -58,25 +58,25 @@ export function Navbar({ data }: NavbarProps) {
               <a href={contactCta.href}>{contactCta.label}</a>
             </Button>
           )}
-          <div className="pl-2 border-l ml-2">
+          <div className="nav-language-separator">
             <LanguageSwitcher />
           </div>
         </div>
 
-        {/* Mobile Toggle */}
-        <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        {/* Mobile Toggle - Only shows on mobile */}
+        <Button variant="ghost" size="icon" className="nav-desktop-mobile-show" onClick={() => setIsOpen(!isOpen)}>
           <Menu className="h-5 w-5" />
         </Button>
       </Container>
       
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Only shows on mobile */}
       {isOpen && (
-        <div className="md:hidden border-t p-4 space-y-4 bg-background">
+        <div className="mobile-menu nav-desktop-mobile-show border-t nav-mobile-padding nav-mobile-gap">
            {data.sections.filter(s => s.enabled && s.type !== 'hero').map(section => (
             <a 
               key={section.id} 
               href={`#${section.id}`}
-              className="block text-sm font-medium hover:text-primary transition-colors"
+              className="mobile-menu-links block"
               onClick={() => setIsOpen(false)}
             >
               {section.title || section.type}
@@ -87,7 +87,7 @@ export function Navbar({ data }: NavbarProps) {
               <a href={contactCta.href}>{contactCta.label}</a>
             </Button>
           )}
-          <div className="flex justify-center pt-2">
+          <div className="nav-mobile-center pt-2">
             <LanguageSwitcher />
           </div>
         </div>

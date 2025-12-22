@@ -5,22 +5,29 @@ import { HeroSection } from "@/sections/Hero";
 import { FeaturesSection } from "@/sections/Features";
 import { ContactSection } from "@/sections/Contact";
 import { Head } from 'vite-react-ssg';
-import React from "react";
+import React, { useEffect } from "react";
+import { getPageTheme } from "@/lib/pageThemeManager";
+import { applyTheme } from "@/themes/resolver";
 
 interface LandingPageProps {
   data: LandingPageData;
 }
 
 export function LandingPage({ data }: LandingPageProps) {
-  // Inject brand colors into CSS variables for this page
-  // In a real app we might use a ThemeProvider, but inline style on a wrapper works for static gen too.
-  const style = {
-    '--primary': data.brand.colors?.primary || '222.2 47.4% 11.2%',
-    '--secondary': data.brand.colors?.secondary || '210 40% 96.1%',
-  } as React.CSSProperties;
+  // Apply saved theme on page load
+  useEffect(() => {
+    // Check if there's a saved theme for this page
+    const currentPath = window.location.pathname;
+    const savedTheme = getPageTheme(currentPath);
+    
+    if (savedTheme) {
+      console.log(`🎨 Applying saved theme "${savedTheme}" to Landing page`);
+      applyTheme(savedTheme);
+    }
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-foreground bg-background" style={style}>
+    <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
       <Head>
         <title>{data.seo.title}</title>
         <meta name="description" content={data.seo.description} />

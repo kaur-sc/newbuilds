@@ -2,6 +2,7 @@ import { ViteReactSSG } from 'vite-react-ssg'
 import { routes } from './routes'
 import './index.css'
 import { i18nPromise } from './i18n'
+import { applyTheme, DEFAULT_THEME } from './themes'
 
 // Root component, can be a layout or simple fragment if routes handle everything
 const app = ViteReactSSG(
@@ -11,6 +12,9 @@ const app = ViteReactSSG(
 // In development/client-side, we need to invoke the app to mount it
 // The SSG builder will import createApp and call it manually
 if (!import.meta.env.SSR) {
+  // Apply default theme
+  applyTheme(DEFAULT_THEME);
+  
   // Wait for i18n to be ready before hydrating
   i18nPromise.then(() => {
     (app as any)(true);
