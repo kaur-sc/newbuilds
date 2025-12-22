@@ -59,6 +59,13 @@
     --body-mobile-size: 1rem;
     --body-mobile-line-height: 1.5rem;
 
+    --body-l-size: 1.25rem;
+    --body-l-weight: 400;
+    --body-l-line-height: 1.6rem;
+    --body-l-letter-spacing: 0;
+    --body-l-mobile-size: 1.125rem;
+    --body-l-mobile-line-height: 1.5rem;
+
     --small-size: 0.875rem;
     --small-weight: 400;
     --small-line-height: 1.5;
@@ -183,6 +190,27 @@
     --mobile-menu-links-weight: 500;
     --mobile-menu-links-line-height: 1.5;
     --mobile-menu-links-letter-spacing: 0;
+
+    /* Gallery Tab Variables */
+    --gallery-tab-container-bg: var(--muted);
+    --gallery-tab-container-px: 0.25rem;
+    --gallery-tab-container-py: 0.25rem;
+    --gallery-tab-container-radius: 0.75rem;
+    --gallery-tab-container-gap: 0.25rem;
+
+    --gallery-tab-px: 1.5rem;
+    --gallery-tab-py: 0.625rem;
+    --gallery-tab-radius: 0.5rem;
+    --gallery-tab-weight: 600;
+    --gallery-tab-size: 0.875rem;
+    --gallery-tab-letter-spacing: 0.025em;
+    --gallery-tab-bg: transparent;
+    --gallery-tab-text: var(--muted-foreground);
+    --gallery-tab-hover-bg: var(--background);
+    --gallery-tab-hover-text: var(--foreground);
+    --gallery-tab-active-bg: var(--background);
+    --gallery-tab-active-text: var(--primary);
+    --gallery-tab-transition: 200ms;
     
     /* Header/Navigation Variables */
     --navbar-bg-color: 0 0% 100%; /* Base color */
@@ -259,6 +287,14 @@
     line-height: var(--caption-line-height);
     letter-spacing: var(--caption-letter-spacing);
     color: hsl(var(--caption-color));
+}
+
+.body-l {
+    font-size: var(--body-l-size);
+    font-weight: var(--body-l-weight);
+    line-height: var(--body-l-line-height);
+    letter-spacing: var(--body-l-letter-spacing);
+    color: hsl(var(--body-color));
 }
 
 /* Button Classes */
@@ -489,6 +525,44 @@
     transition: color 0.2s ease;
 }
 
+/* Gallery Tab Classes */
+.gallery-tab-container {
+    background: hsl(var(--gallery-tab-container-bg));
+    padding-left: var(--gallery-tab-container-px);
+    padding-right: var(--gallery-tab-container-px);
+    padding-top: var(--gallery-tab-container-py);
+    padding-bottom: var(--gallery-tab-container-py);
+    border-radius: var(--gallery-tab-container-radius);
+    display: inline-flex;
+    gap: var(--gallery-tab-container-gap);
+}
+
+.gallery-tab {
+    background: hsl(var(--gallery-tab-bg));
+    color: hsl(var(--gallery-tab-text));
+    border-radius: var(--gallery-tab-radius);
+    padding-left: var(--gallery-tab-px);
+    padding-right: var(--gallery-tab-px);
+    padding-top: var(--gallery-tab-py);
+    padding-bottom: var(--gallery-tab-py);
+    font-weight: var(--gallery-tab-weight);
+    font-size: var(--gallery-tab-size);
+    letter-spacing: var(--gallery-tab-letter-spacing);
+    transition: all var(--gallery-tab-transition) ease;
+    cursor: pointer;
+    border: none;
+}
+
+.gallery-tab:hover {
+    background: hsl(var(--gallery-tab-hover-bg));
+    color: hsl(var(--gallery-tab-hover-text));
+}
+
+.gallery-tab.active {
+    background: hsl(var(--gallery-tab-active-bg));
+    color: hsl(var(--gallery-tab-active-text));
+}
+
 /* Navigation Layout Classes */
 .nav-desktop {
     display: flex;
@@ -554,6 +628,11 @@
     .caption {
         font-size: var(--caption-mobile-size);
         line-height: var(--caption-mobile-line-height);
+    }
+
+    .body-l {
+        font-size: var(--body-l-mobile-size);
+        line-height: var(--body-l-mobile-line-height);
     }
     
     .btn-primary {
@@ -667,4 +746,43 @@
     padding-right: var(--btn-ghost-mobile-px) !important;
     padding-top: var(--btn-ghost-mobile-py) !important;
     padding-bottom: var(--btn-ghost-mobile-py) !important;
+}
+
+.preview-mobile .body-l {
+    font-size: var(--body-l-mobile-size) !important;
+    line-height: var(--body-l-mobile-line-height) !important;
+}
+
+.preview-mobile .gallery-tab-container {
+    background: hsl(var(--gallery-tab-container-bg)) !important;
+    padding-left: var(--gallery-tab-container-px) !important;
+    padding-right: var(--gallery-tab-container-px) !important;
+    padding-top: var(--gallery-tab-container-py) !important;
+    padding-bottom: var(--gallery-tab-container-py) !important;
+    border-radius: var(--gallery-tab-container-radius) !important;
+    gap: var(--gallery-tab-container-gap) !important;
+}
+
+.preview-mobile .gallery-tab {
+    background: hsl(var(--gallery-tab-bg)) !important;
+    color: hsl(var(--gallery-tab-text)) !important;
+    border-radius: var(--gallery-tab-radius) !important;
+    padding-left: var(--gallery-tab-px) !important;
+    padding-right: var(--gallery-tab-px) !important;
+    padding-top: var(--gallery-tab-py) !important;
+    padding-bottom: var(--gallery-tab-py) !important;
+    font-weight: var(--gallery-tab-weight) !important;
+    font-size: var(--gallery-tab-size) !important;
+    letter-spacing: var(--gallery-tab-letter-spacing) !important;
+    transition: all var(--gallery-tab-transition) ease !important;
+}
+
+.preview-mobile .gallery-tab:hover {
+    background: hsl(var(--gallery-tab-hover-bg)) !important;
+    color: hsl(var(--gallery-tab-hover-text)) !important;
+}
+
+.preview-mobile .gallery-tab.active {
+    background: hsl(var(--gallery-tab-active-bg)) !important;
+    color: hsl(var(--gallery-tab-active-text)) !important;
 }

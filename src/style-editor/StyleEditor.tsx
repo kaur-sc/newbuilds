@@ -58,6 +58,8 @@ type ElementConfig = {
     px?: string;
     py?: string;
     border?: string;
+    gap?: string;
+    transition?: string;
     // Header Background
     transparency?: string;
     blur?: string;
@@ -147,6 +149,15 @@ const DEFAULT_ELEMENT_STYLES: ElementMap = {
       color: 'var(--foreground)',
       mobile: { size: '0.9rem', lineHeight: '1.7' },
       desktop: { size: '1.1rem', lineHeight: '1.5' }
+    },
+    'body-l': { 
+      size: '1.25rem', 
+      weight: '400', 
+      lineHeight: '1.6', 
+      letterSpacing: '0',
+      color: 'var(--foreground)',
+      mobile: { size: '1.125rem', lineHeight: '1.5' },
+      desktop: { size: '1.375rem', lineHeight: '1.7' }
     },
     small: { 
       size: '0.875rem', 
@@ -250,6 +261,28 @@ const DEFAULT_ELEMENT_STYLES: ElementMap = {
       hoverScale: '1.02',
       activeText: 'var(--primary)',
       activeScale: '0.98'
+    },
+    'gallery-tab-container': { 
+      bg: 'hsl(var(--muted))', 
+      px: '0.25rem', 
+      py: '0.25rem', 
+      radius: '0.75rem', 
+      gap: '0.25rem' 
+    },
+    'gallery-tab': { 
+      px: '1.5rem', 
+      py: '0.625rem', 
+      radius: '0.5rem', 
+      weight: '600', 
+      size: '0.875rem',
+      letterSpacing: '0.025em',
+      bg: 'transparent',
+      text: 'hsl(var(--muted-foreground))',
+      hoverBg: 'hsl(var(--background))',
+      hoverText: 'hsl(var(--foreground))',
+      activeBg: 'hsl(var(--background))',
+      activeText: 'hsl(var(--primary))',
+      transition: '200ms'
     }
 };
 
@@ -798,21 +831,21 @@ export const StyleEditor = () => {
           <div className="space-y-2">
              <div className="p-3 bg-foreground rounded-xl text-background space-y-3 shadow-lg">
                 <div className="space-y-1">
-                    <div className="text-[10px] uppercase font-bold text-muted-foreground">Base Font Size</div>
+                    <div className="text-[10px] uppercase font-bold text-background">Base Font Size</div>
                     <select 
                         value={activeTheme.baseTypo.fontSize}
                         onChange={(e) => handleBaseTypoChange('fontSize', e.target.value)}
-                        className="w-full bg-card border-none rounded-lg p-2 text-sm focus:ring-1 focus:ring-primary/20 outline-none"
+                        className="w-full bg-card text-foreground border-none rounded-lg p-2 text-sm focus:ring-1 focus:ring-primary/20 outline-none"
                     >
                         {['14px', '16px', '18px', '20px'].map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
                 </div>
                 <div className="space-y-1">
-                    <div className="text-[10px] uppercase font-bold text-muted-foreground">Font Family</div>
+                    <div className="text-[10px] uppercase font-bold text-background">Font Family</div>
                     <select 
                         value={activeTheme.baseTypo.fontFamily}
                         onChange={(e) => handleBaseTypoChange('fontFamily', e.target.value)}
-                        className="w-full bg-card border-none rounded-lg p-2 text-sm focus:ring-1 focus:ring-primary/20 outline-none"
+                        className="w-full bg-card text-foreground border-none rounded-lg p-2 text-sm focus:ring-1 focus:ring-primary/20 outline-none"
                     >
                         <option value="ui-sans-serif, system-ui, sans-serif">Sans (System)</option>
                         <option value="Inter, sans-serif">Inter</option>
@@ -968,6 +1001,9 @@ export const StyleEditor = () => {
                             <div className="cursor-pointer hover:ring-2 hover:ring-primary/20 hover:bg-primary/5 rounded px-2 -mx-2 transition-all border-t pt-4" onClick={() => setEditingStyle('h3')}>
                                 <h3 className="h3">Headline Level 3</h3>
                             </div>
+                            <div className="cursor-pointer hover:ring-2 hover:ring-primary/20 hover:bg-primary/5 rounded px-2 -mx-2 transition-all border-t pt-4" onClick={() => setEditingStyle('body-l')}>
+                                <p className="body-l">Body Text L: A modern 3-bedroom villa a short drive from several 18-hole golf courses, Mediterranean and all everyday services in a big shopping center nearby.</p>
+                            </div>
                             <div className="cursor-pointer hover:ring-2 hover:ring-primary/20 hover:bg-primary/5 rounded px-2 -mx-2 transition-all border-t pt-4" onClick={() => setEditingStyle('body')}>
                                 <p className="body">Body Text: The quick brown fox jumps over lazy dog. This demonstrates readable paragraph text with proper line height and spacing.</p>
                             </div>
@@ -1026,6 +1062,28 @@ export const StyleEditor = () => {
                         </div>
                     </div>
 
+                    {/* Gallery Tab Showcase */}
+                    <div className="space-y-8 border-t pt-8">
+                        <div className="text-[10px] uppercase font-bold text-muted-foreground">Gallery Tab System</div>
+                        <div className="space-y-6">
+                            <div className="cursor-pointer hover:ring-2 hover:ring-primary/20 hover:bg-primary/5 rounded px-2 -mx-2 transition-all" onClick={() => setEditingStyle('gallery-tab-container')}>
+                                <div className="gallery-tab-container inline-flex">
+                                    <button className="gallery-tab active cursor-pointer">Active Tab</button>
+                                    <button className="gallery-tab cursor-pointer">Inactive Tab</button>
+                                    <button className="gallery-tab cursor-pointer">Third Tab</button>
+                                </div>
+                            </div>
+                            <div className="cursor-pointer hover:ring-2 hover:ring-primary/20 hover:bg-primary/5 rounded px-2 -mx-2 transition-all" onClick={() => setEditingStyle('gallery-tab')}>
+                                <button className="gallery-tab cursor-pointer">Single Tab Preview</button>
+                            </div>
+                            <div className="text-sm text-muted-foreground">
+                                <span>• Click container to edit wrapper styles</span>
+                                <span>• Click individual tab to edit tab styles</span>
+                                <span>• Hover and active states with smooth transitions</span>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* Color Palette Showcase */}
                     <div className="space-y-8 border-t pt-8">
                         <div className="text-[10px] uppercase font-bold text-muted-foreground">Color Palette</div>
@@ -1071,9 +1129,17 @@ export const StyleEditor = () => {
                         {editingStyle === 'h2' && <h2 className="h2">Heading 2 Preview</h2>}
                         {editingStyle === 'h3' && <h3 className="h3">Heading 3 Preview</h3>}
                         {editingStyle === 'body' && <p className="body">Body Paragraph Preview Style</p>}
+                        {editingStyle === 'body-l' && <p className="body-l">Body Text L: A modern 3-bedroom villa a short drive from several 18-hole golf courses, the Mediterranean and all everyday services in a big shopping center nearby.</p>}
                         {editingStyle === 'small' && <small className="small">Small Caption Preview</small>}
                         {editingStyle === 'caption' && <div className="caption">Caption text preview</div>}
                         {editingStyle === 'site-title' && <div className="site-title">Golf Properties</div>}
+                        {editingStyle === 'gallery-tab-container' && (
+                            <div className="gallery-tab-container inline-flex">
+                                <button className="gallery-tab active">Active Tab</button>
+                                <button className="gallery-tab">Inactive Tab</button>
+                            </div>
+                        )}
+                        {editingStyle === 'gallery-tab' && <button className="gallery-tab active">Gallery Tab</button>}
                         {editingStyle.startsWith('btn') && <button className={editingStyle}>
                             {editingStyle.replace('btn-', '')} Label
                         </button>}

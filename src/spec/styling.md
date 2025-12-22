@@ -1,5 +1,10 @@
 # Styling Specification
 
+## System Overview
+
+This document provides complete styling guidelines for the landing page system.
+For detailed architecture documentation, see `SYSTEM_ARCHITECTURE.md`.
+
 ## Theme System Architecture
 
 ### CSS Variables Structure

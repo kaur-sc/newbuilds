@@ -80,7 +80,7 @@ export function Gallery() {
     <section className="py-20 md:py-32 bg-white overflow-hidden">
       <Container>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight text-slate-900">
+          <h2 className="h2">
             {t('gallery.title')}
           </h2>
           

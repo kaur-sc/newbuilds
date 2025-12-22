@@ -14,6 +14,8 @@ export type ElementConfig = {
     px?: string;
     py?: string;
     border?: string;
+    gap?: string;
+    transition?: string;
     // States
     hoverBg?: string;
     hoverText?: string;
@@ -107,6 +109,7 @@ export const themes: Record<ThemeKey, ThemeConfig> = {
       h2: { size: '3rem', weight: '700', lineHeight: '1', letterSpacing: '-0.01em' },
       h3: { size: '1.875rem', weight: '700', lineHeight: '2.25rem', letterSpacing: '0' },
       body: { size: '1rem', weight: '400', lineHeight: '1.5rem', letterSpacing: '0' },
+      'body-l': { size: '1.25rem', weight: '400', lineHeight: '1.6rem', letterSpacing: '0' },
       small: { size: '0.875rem', weight: '400', lineHeight: '1.5', letterSpacing: '0.01em' },
       caption: { size: '0.75rem', weight: '400', lineHeight: '1.4', letterSpacing: '0.02em' },
       'btn-primary': { bg: 'var(--primary)', text: 'var(--primary-foreground)', radius: '9999px', px: '1.5rem', py: '0.625rem', weight: '700' },
@@ -117,7 +120,29 @@ export const themes: Record<ThemeKey, ThemeConfig> = {
       'link-bold': { text: 'var(--primary)', weight: '700', under: 'none' },
       'site-title': { size: '1.25rem', weight: '700', lineHeight: '1.2', letterSpacing: '-0.01em' },
       'mobile-menu-btn': { size: '0.875rem', weight: '600', lineHeight: '1.4', letterSpacing: '0.01em' },
-      'mobile-menu-links': { size: '1rem', weight: '500', lineHeight: '1.5', letterSpacing: '0' }
+      'mobile-menu-links': { size: '1rem', weight: '500', lineHeight: '1.5', letterSpacing: '0' },
+      'gallery-tab-container': { 
+        bg: 'var(--muted)', 
+        px: '0.25rem', 
+        py: '0.25rem', 
+        radius: '0.75rem',
+        gap: '0.25rem'
+      },
+      'gallery-tab': { 
+        px: '1.5rem', 
+        py: '0.625rem', 
+        radius: '0.5rem', 
+        weight: '600', 
+        size: '0.875rem',
+        letterSpacing: '0.025em',
+        bg: 'transparent',
+        text: 'var(--muted-foreground)',
+        hoverBg: 'var(--background)',
+        hoverText: 'var(--foreground)',
+        activeBg: 'var(--background)',
+        activeText: 'var(--primary)',
+        transition: '200ms'
+      }
     }
   },
 
@@ -155,6 +180,7 @@ export const themes: Record<ThemeKey, ThemeConfig> = {
       h2: { size: '3rem', weight: '700', lineHeight: '1', letterSpacing: '-0.01em' },
       h3: { size: '1.875rem', weight: '700', lineHeight: '2.25rem', letterSpacing: '0' },
       body: { size: '1rem', weight: '400', lineHeight: '1.5rem', letterSpacing: '0' },
+      'body-l': { size: '1.25rem', weight: '400', lineHeight: '1.6rem', letterSpacing: '0' },
       small: { size: '0.875rem', weight: '400', lineHeight: '1.5', letterSpacing: '0.01em' },
       caption: { size: '0.75rem', weight: '400', lineHeight: '1.4', letterSpacing: '0.02em' },
       'btn-primary': { bg: 'var(--primary)', text: 'var(--primary-foreground)', radius: '9999px', px: '1.5rem', py: '0.625rem', weight: '700' },
@@ -165,7 +191,29 @@ export const themes: Record<ThemeKey, ThemeConfig> = {
       'link-bold': { text: 'var(--primary)', weight: '700', under: 'none' },
       'site-title': { size: '1.25rem', weight: '700', lineHeight: '1.2', letterSpacing: '-0.01em' },
       'mobile-menu-btn': { size: '0.875rem', weight: '600', lineHeight: '1.4', letterSpacing: '0.01em' },
-      'mobile-menu-links': { size: '1rem', weight: '500', lineHeight: '1.5', letterSpacing: '0' }
+      'mobile-menu-links': { size: '1rem', weight: '500', lineHeight: '1.5', letterSpacing: '0' },
+      'gallery-tab-container': { 
+        bg: 'var(--muted)', 
+        px: '0.25rem', 
+        py: '0.25rem', 
+        radius: '0.75rem',
+        gap: '0.25rem'
+      },
+      'gallery-tab': { 
+        px: '1.5rem', 
+        py: '0.625rem', 
+        radius: '0.5rem', 
+        weight: '600', 
+        size: '0.875rem',
+        letterSpacing: '0.025em',
+        bg: 'transparent',
+        text: 'var(--muted-foreground)',
+        hoverBg: 'var(--background)',
+        hoverText: 'var(--foreground)',
+        activeBg: 'var(--background)',
+        activeText: 'var(--primary)',
+        transition: '200ms'
+      }
     }
   },
 
@@ -203,6 +251,7 @@ export const themes: Record<ThemeKey, ThemeConfig> = {
       h2: { size: '3rem', weight: '700', lineHeight: '1', letterSpacing: '-0.01em' },
       h3: { size: '1.875rem', weight: '700', lineHeight: '2.25rem', letterSpacing: '0' },
       body: { size: '1rem', weight: '400', lineHeight: '1.5rem', letterSpacing: '0' },
+      'body-l': { size: '1.25rem', weight: '400', lineHeight: '1.6rem', letterSpacing: '0' },
       small: { size: '0.875rem', weight: '400', lineHeight: '1.5', letterSpacing: '0.01em' },
       caption: { size: '0.75rem', weight: '400', lineHeight: '1.4', letterSpacing: '0.02em' },
       'btn-primary': { bg: 'var(--primary)', text: 'var(--primary-foreground)', radius: '9999px', px: '1.5rem', py: '0.625rem', weight: '700' },
@@ -213,7 +262,29 @@ export const themes: Record<ThemeKey, ThemeConfig> = {
       'link-bold': { text: 'var(--primary)', weight: '700', under: 'none' },
       'site-title': { size: '1.25rem', weight: '700', lineHeight: '1.2', letterSpacing: '-0.01em' },
       'mobile-menu-btn': { size: '0.875rem', weight: '600', lineHeight: '1.4', letterSpacing: '0.01em' },
-      'mobile-menu-links': { size: '1rem', weight: '500', lineHeight: '1.5', letterSpacing: '0' }
+      'mobile-menu-links': { size: '1rem', weight: '500', lineHeight: '1.5', letterSpacing: '0' },
+      'gallery-tab-container': { 
+        bg: 'var(--muted)', 
+        px: '0.25rem', 
+        py: '0.25rem', 
+        radius: '0.75rem',
+        gap: '0.25rem'
+      },
+      'gallery-tab': { 
+        px: '1.5rem', 
+        py: '0.625rem', 
+        radius: '0.5rem', 
+        weight: '600', 
+        size: '0.875rem',
+        letterSpacing: '0.025em',
+        bg: 'transparent',
+        text: 'var(--muted-foreground)',
+        hoverBg: 'var(--background)',
+        hoverText: 'var(--foreground)',
+        activeBg: 'var(--background)',
+        activeText: 'var(--primary)',
+        transition: '200ms'
+      }
     }
   }
 };
