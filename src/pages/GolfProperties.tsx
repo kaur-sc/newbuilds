@@ -202,10 +202,10 @@ export function GolfProperties() {
 
               <div className="order-1 md:order-2">
                 <h2 className="h2 mb-6 text-gray-200">{t('lifestyle.title')}</h2>
-                <p className="body text-lg mb-6 text-gray-300">
+                <p className="body text-lg mb-6 text-gray-400">
                   {t('lifestyle.description_1')}
                 </p>
-                <p className="body text-lg mb-8 text-gray-300">
+                <p className="body text-lg mb-8 text-gray-400">
                   {t('lifestyle.description_2')}
                 </p>
                 <div className="space-y-4 text-gray-200">

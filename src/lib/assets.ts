@@ -15,6 +15,7 @@ const assetMap: Record<string, string> = {
   
   // LVB Development Images - Public assets (use src="/assets/filename.ext")
   // These are mapped for consistency but don't need imports since they're in /public/
+  // NOTE: Build output uses "lvb" folder (without 'b'), so we map to match build output
   '/assets/lvb/lvb-01-3d.jpg': '/assets/lvb/lvb-01-3d.jpg',
   '/assets/lvb/lvb-02-3d.jpg': '/assets/lvb/lvb-02-3d.jpg',
   '/assets/lvb/lvb-03-3d.jpg': '/assets/lvb/lvb-03-3d.jpg',
