@@ -7,9 +7,8 @@ import { Check, MapPin, Sun, Home, ArrowRight } from 'lucide-react';
 import type { LandingPageData } from '@/models/landing-page';
 import { Head } from 'vite-react-ssg';
 import { useTranslation, Trans } from 'react-i18next';
-import golfImage from '../assets/golf.jpg';
-import { Gallery } from '@/components/ui/Gallery';
 import { resolveAsset } from '@/lib/assets';
+import { Gallery } from '@/components/ui/Gallery';
 import { getPageTheme } from '@/lib/pageThemeManager';
 import { applyTheme } from '@/themes/resolver';
 import type { ThemeKey } from '@/themes';
@@ -67,7 +66,7 @@ export function GolfProperties() {
         <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-primary text-primary-foreground">
           <div className="absolute inset-0 z-0">
              <img 
-               src={golfImage} 
+               src={resolveAsset('/assets/golf.jpg')} 
                alt="Modern new build villa overlooking a golf course in Costa Blanca" 
                className="w-full h-full object-cover"
              />

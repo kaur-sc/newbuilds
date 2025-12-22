@@ -1,39 +1,21 @@
-import golfImage from '@/assets/golf.jpg';
-
 /**
- * Maps static string paths from JSON to imported assets.
- * Vite requires assets to be imported for them to be processed correctly for production/external hosting.
- * 
- * PUBLIC ASSETS: Images in /public/assets/ should use src="/assets/filename.ext"
- * IMPORTED ASSETS: Images that need processing should be imported and mapped here
+ * Resolves the public path for an asset, ensuring it works correctly in both
+ * development and production (subdirectory) environments.
+ *
+ * This function prepends the base URL provided by Vite (`import.meta.env.BASE_URL`),
+ * which is '/' in development and '/newbuilds/' in production. This is the
+ * recommended way to reference public assets.
+ *
+ * @param pathFromPublic - The path to the asset starting from the `public` directory.
+ *   It must begin with a forward slash, e.g., '/assets/image.png'.
+ * @returns The fully resolved, environment-aware asset path.
  */
-const assetMap: Record<string, string> = {
-  // Imported assets (for processed/optimized images)
-  '/assets/golf.jpg': golfImage,
-  '../assets/golf.jpg': golfImage,
-  'assets/golf.jpg': golfImage,
-  
-  // LVB Development Images - Public assets (use src="/assets/filename.ext")
-  // These are mapped for consistency but don't need imports since they're in /public/
-  // NOTE: Build output uses "lvb" folder (without 'b'), so we map to match build output
-  '/assets/lvb/lvb-01-3d.jpg': '/assets/lvb/lvb-01-3d.jpg',
-  '/assets/lvb/lvb-02-3d.jpg': '/assets/lvb/lvb-02-3d.jpg',
-  '/assets/lvb/lvb-03-3d.jpg': '/assets/lvb/lvb-03-3d.jpg',
-  '/assets/lvb/lvb-04-edited.jpg': '/assets/lvb/lvb-04-edited.jpg',
-  '/assets/lvb/lvb-05-edited.jpg': '/assets/lvb/lvb-05-edited.jpg',
-  '/assets/lvb/lvb-06-edited.jpg': '/assets/lvb/lvb-06-edited.jpg',
-  '/assets/lvb/lvb-06-s.jpg': '/assets/lvb/lvb-06-s.jpg',
-  '/assets/lvb/lvb-07-edited.jpg': '/assets/lvb/lvb-07-edited.jpg',
-  '/assets/lvb/lvb-08-edited.jpg': '/assets/lvb/lvb-08-edited.jpg',
-  '/assets/lvb/lvb-09-edited.jpg': '/assets/lvb/lvb-09-edited.jpg',
-  '/assets/lvb/lvb-10-edited.jpg': '/assets/lvb/lvb-10-edited.jpg',
-  '/assets/lvb/lvb-11-3d.jpg': '/assets/lvb/lvb-11-3d.jpg',
-  '/assets/lvb/lvb-12-3d.jpg': '/assets/lvb/lvb-12-3d.jpg',
-  '/assets/lvb/lvb-13-3d.jpg': '/assets/lvb/lvb-13-3d.jpg',
-  '/assets/lvb/lvb-development-block.webp': '/assets/lvb/lvb-development-block.webp',
-  '/assets/lvb/lvb-development-floors.webp': '/assets/lvb/lvb-development-floors.webp',
-};
-
-export function resolveAsset(path: string): string {
-  return assetMap[path] || path;
+export function resolveAsset(pathFromPublic: string): string {
+  if (!pathFromPublic.startsWith('/')) {
+    console.warn(`[resolveAsset] Path should start with a '/', but got: ${pathFromPublic}`);
+    pathFromPublic = `/${pathFromPublic}`;
+  }
+  // `import.meta.env.BASE_URL` is '/' in dev and '/newbuilds/' in prod.
+  // The join logic prevents double slashes (e.g., '/newbuilds//assets').
+  return `${import.meta.env.BASE_URL.replace(/\/$/, '')}${pathFromPublic}`;
 }
