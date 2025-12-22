@@ -679,3 +679,258 @@ useEffect(() => {
 
 These rules ensure themes are truly swappable, system remains consistent and
 maintainable, and all future developments follow the same patterns.
+
+## 11. 🖼️ Image Handling Guidelines
+
+### Critical: Use Absolute Paths for Production Compatibility
+
+**PROBLEM**: Images work in localhost but break on external server due to
+incorrect path handling.
+
+**SOLUTION**: Always use absolute paths from root for public assets.
+
+### Asset Location Strategy
+
+#### Public Assets (/public/assets/)
+
+Images in `/public/assets/` should use absolute paths:
+
+```tsx
+// ✅ CORRECT: Absolute path from root
+<img src="/assets/lvb/lvb-13-3d.jpg" alt="Description" />
+
+// ❌ WRONG: Relative path (breaks in production)
+<img src="../assets/lvb/lvb-13-3d.jpg" alt="Description" />
+```
+
+#### Imported Assets (src/assets/)
+
+Images that need processing should be imported:
+
+```tsx
+// ✅ CORRECT: Import for processed assets
+import heroImage from '@/assets/golf.jpg';
+<img src={heroImage} alt="Description" />
+
+// ❌ WRONG: Direct reference to src assets
+<img src="/assets/golf.jpg" alt="Description" />
+```
+
+### Asset Management with resolveAsset Function
+
+Use the centralized asset mapping system in `src/lib/assets.ts`:
+
+```tsx
+import { resolveAsset } from '@/lib/assets';
+
+// ✅ GOOD: Use resolveAsset for consistency
+<img src={resolveAsset('/assets/lvb/lvb-13-3d.jpg')} alt="Description" />
+
+// ✅ ALSO GOOD: Direct absolute paths work fine
+<img src="/assets/lvb/lvb-13-3d.jpg" alt="Description" />
+```
+
+### Asset Map Configuration
+
+All public assets should be mapped in `src/lib/assets.ts`:
+
+```typescript
+const assetMap: Record<string, string> = {
+    // Imported assets (for processed/optimized images)
+    "/assets/golf.jpg": golfImage,
+
+    // LVB Development Images - Public assets
+    "/assets/lvb/lvb-01-3d.jpg": "/assets/lvb/lvb-01-3d.jpg",
+    "/assets/lvb/lvb-13-3d.jpg": "/assets/lvb/lvb-13-3d.jpg",
+    // ... add all other LVB images here
+};
+```
+
+### Vite Configuration and Base Path
+
+The `vite.config.ts` handles base path automatically:
+
+```typescript
+export default defineConfig(({ command }) => {
+    const isProd = command === "build";
+    const base = isProd ? "/newbuilds/" : "/"; // Production base path
+
+    return {
+        base: base,
+        // ... rest of config
+    };
+});
+```
+
+### Image Path Rules
+
+#### 1. Use Absolute Paths for Public Assets
+
+```tsx
+// ✅ CORRECT: Works in both dev and production
+<img src="/assets/lvb/lvb-13-3d.jpg" alt="Description" />
+
+// ❌ WRONG: Breaks in production
+<img src="../assets/lvb/lvb-13-3d.jpg" alt="Description" />
+```
+
+#### 2. Import Assets That Need Processing
+
+```tsx
+// ✅ CORRECT: For optimized/processed images
+import optimizedImage from '@/assets/image.jpg';
+<img src={optimizedImage} alt="Description" />
+
+// ❌ WRONG: Won't be processed by Vite
+<img src="/assets/image.jpg" alt="Description" />
+```
+
+#### 3. Use resolveAsset for Consistency
+
+```tsx
+import { resolveAsset } from '@/lib/assets';
+
+// ✅ GOOD: Centralized asset management
+const imagePath = resolveAsset('/assets/lvb/lvb-13-3d.jpg');
+<img src={imagePath} alt="Description" />
+
+// ✅ ALSO GOOD: Direct absolute path
+<img src="/assets/lvb/lvb-13-3d.jpg" alt="Description" />
+```
+
+### Component Implementation Patterns
+
+#### Gallery Components
+
+```tsx
+import { resolveAsset } from "@/lib/assets";
+
+const galleryImages = [
+    {
+        src: resolveAsset("/assets/lvb/lvb-01-3d.jpg"),
+        alt: "Description",
+    },
+    {
+        src: resolveAsset("/assets/lvb/lvb-02-3d.jpg"),
+        alt: "Description",
+    },
+    // ... more images
+];
+```
+
+#### Page Components
+
+```tsx
+import { resolveAsset } from "@/lib/assets";
+
+export function PageComponent() {
+    return (
+        <div>
+            {/* Hero image - use absolute path */}
+            <img src="/assets/hero-image.jpg" alt="Hero" />
+
+            {/* Content images - use resolveAsset */}
+            <img
+                src={resolveAsset("/assets/lvb/content-image.jpg")}
+                alt="Content"
+            />
+        </div>
+    );
+}
+```
+
+### Development vs Production Behavior
+
+#### Development (localhost:5173)
+
+- Absolute paths work: `/assets/lvb/lvb-13-3d.jpg` →
+  `http://localhost:5173/assets/lvb/lvb-13-3d.jpg`
+- Base path is `/`
+
+#### Production (external server)
+
+- Absolute paths work: `/assets/lvb/lvb-13-3d.jpg` →
+  `https://yoursite.com/newbuilds/assets/lvb/lvb-13-3d.jpg`
+- Base path is `/newbuilds/` (configured in vite.config.ts)
+
+### Quality Assurance Checklist
+
+**For all new image implementations:**
+
+- [ ] **Use absolute paths** for public assets: `src="/assets/filename.ext"`
+- [ ] **Import processed assets** from `src/assets/` when needed
+- [ ] **Map all assets** in `src/lib/assets.ts` for consistency
+- [ ] **Test in development** to verify images load correctly
+- [ ] **Test production build** to verify paths work on external server
+- [ ] **Avoid relative paths** like `../assets/filename.ext`
+- [ ] **Use resolveAsset function** for centralized asset management
+
+### Troubleshooting Image Issues
+
+#### Issue: Images Work Locally, Break in Production
+
+**Cause**: Using relative paths instead of absolute paths
+
+**Solution**: Convert all relative paths to absolute paths
+
+```tsx
+// ❌ PROBLEM: Relative path
+<img src="../assets/lvb/lvb-13-3d.jpg" alt="Description" />
+
+// ✅ SOLUTION: Absolute path
+<img src="/assets/lvb/lvb-13-3d.jpg" alt="Description" />
+```
+
+#### Issue: Images Not Found After Build
+
+**Cause**: Assets not in correct directory or path mapping incorrect
+
+**Solution**: Verify asset location and path configuration
+
+1. Check file exists in `/public/assets/`
+2. Verify path in `src/lib/assets.ts` mapping
+3. Test with both direct path and `resolveAsset()`
+
+#### Issue: Build Errors for Imported Assets
+
+**Cause**: Importing public assets instead of src assets
+
+**Solution**: Move assets to correct location
+
+```tsx
+// ❌ WRONG: Importing from public
+import image from "/public/assets/image.jpg";
+
+// ✅ CORRECT: Import from src
+import image from "@/assets/image.jpg";
+```
+
+### File Structure for Images
+
+```
+public/
+├── assets/
+│   ├── golf.jpg                 # Main hero image (imported)
+│   └── lvb/
+│       ├── lvb-01-3d.jpg       # Gallery images (public)
+│       ├── lvb-02-3d.jpg
+│       ├── lvb-13-3d.jpg
+│       └── ...other LVB images
+
+src/
+├── assets/
+│   └── golf.jpg                 # Imported version
+└── lib/
+    └── assets.ts                # Asset mapping configuration
+```
+
+### Summary
+
+1. **Always use absolute paths** for public assets: `src="/assets/filename.ext"`
+2. **Import assets** that need processing from `src/assets/`
+3. **Use resolveAsset()** function for centralized management
+4. **Map all assets** in `src/lib/assets.ts` for consistency
+5. **Test production builds** to verify external server compatibility
+
+Following these guidelines ensures images work reliably in both development and
+production environments.

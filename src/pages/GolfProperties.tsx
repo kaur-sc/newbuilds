@@ -9,6 +9,7 @@ import { Head } from 'vite-react-ssg';
 import { useTranslation, Trans } from 'react-i18next';
 import golfImage from '../assets/golf.jpg';
 import { Gallery } from '@/components/ui/Gallery';
+import { resolveAsset } from '@/lib/assets';
 import { getPageTheme } from '@/lib/pageThemeManager';
 import { applyTheme } from '@/themes/resolver';
 import type { ThemeKey } from '@/themes';
@@ -70,12 +71,12 @@ export function GolfProperties() {
                alt="Modern new build villa overlooking a golf course in Costa Blanca" 
                className="w-full h-full object-cover"
              />
-             <div className="absolute inset-0 bg-black/50" />
+             <div className="absolute inset-0 bg-black/40" />
           </div>
 
           <Container className="relative z-10 text-center max-w-4xl">
-            <h1 className="h1 mb-6">
-              {t('hero.title_start')} <br className="hidden md:block"/> {t('hero.title_middle')} <span className="text-accent">{t('hero.title_highlight')}</span>
+            <h1 className="h1 mb-6 text-white">
+              {t('hero.title_start')} {t('hero.title_middle')} <span className="text-accent">{t('hero.title_highlight')}</span>
             </h1>
             <p className="body text-xl md:text-2xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
               {t('hero.description')}
@@ -100,7 +101,7 @@ export function GolfProperties() {
                  {/* Villa Image */}
                 <div className="h-full rounded-2xl overflow-hidden relative">
                     <img 
-                      src="/assets/lvb/lvb-01-3d.jpg" 
+                      src={resolveAsset('/assets/lvb/lvb-01-3d.jpg')} 
                       alt="Modern villa interior design concept" 
                       className="w-full h-full object-cover"
                     />
@@ -150,7 +151,7 @@ export function GolfProperties() {
                  {/* Golf Image */}
                 <div className="h-full rounded-2xl overflow-hidden relative">
                     <img 
-                      src="/assets/lvb/golf-06-s.jpg" 
+                      src={resolveAsset('/assets/lvb/golf-06-s.jpg')} 
                       alt="Golf course at Orihuela Costa" 
                       className="w-full h-full object-cover"
                     />
@@ -192,7 +193,7 @@ export function GolfProperties() {
                  {/* Villa Image */}
                 <div className="h-full rounded-2xl overflow-hidden relative border border-border">
                    <img 
-                      src="/assets/lvb/lvb-13-3d.jpg" 
+                      src={resolveAsset('/assets/lvb/lvb-13-3d.jpg')} 
                       alt="Modern villa design with low-maintenance pool area" 
                       className="w-full h-full object-cover"
                     />
@@ -200,14 +201,14 @@ export function GolfProperties() {
               </div>
 
               <div className="order-1 md:order-2">
-                <h2 className="h2 mb-6">{t('lifestyle.title')}</h2>
-                <p className="body text-lg mb-6">
+                <h2 className="h2 mb-6 text-gray-200">{t('lifestyle.title')}</h2>
+                <p className="body text-lg mb-6 text-gray-400">
                   {t('lifestyle.description_1')}
                 </p>
-                <p className="body text-lg mb-8">
+                <p className="body text-lg mb-8 text-gray-400">
                   {t('lifestyle.description_2')}
                 </p>
-                <div className="space-y-4">
+                <div className="space-y-4 text-gray-200">
                   <KeyPoint text={t('lifestyle.points.construction')} light />
                   <KeyPoint text={t('lifestyle.points.outdoor')} light />
                   <KeyPoint text={t('lifestyle.points.maintenance')} light />

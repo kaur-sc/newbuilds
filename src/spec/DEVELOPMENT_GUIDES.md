@@ -1481,3 +1481,56 @@ Do not consider work complete until:
 
 These checklists ensure consistent, high-quality development that maintains the
 system's integrity and extensibility.
+
+## 🔧 Development Tools & Techniques
+
+### Component Development
+
+- Use TypeScript for type safety
+- Follow React best practices
+- Implement proper error boundaries
+- Use semantic HTML5 elements
+
+### Image Handling Guidelines
+
+- **Use absolute paths** for public assets: `src="/assets/filename.ext"`
+- **Import processed assets** from `src/assets/` when optimization is needed
+- **Use resolveAsset()** function for centralized asset management
+- **Map all assets** in `src/lib/assets.ts` for consistency
+- **Test production builds** to verify external server compatibility
+
+### Asset Management Workflow
+
+1. **Add new images** to `/public/assets/` folder
+2. **Map assets** in `src/lib/assets.ts` with absolute paths
+3. **Use resolveAsset()** in components for consistent path handling
+4. **Test locally** to verify images load correctly
+5. **Test production build** to ensure paths work on external server
+
+### Common Image Pitfalls to Avoid
+
+- ❌ **Relative paths**: `../assets/image.jpg` breaks in production
+- ❌ **Wrong imports**: Importing from `/public/` instead of `src/`
+- ❌ **Hardcoded paths**: Not using asset management system
+- ❌ **Missing mapping**: Forgetting to add new assets to `assets.ts`
+
+### Image Implementation Examples
+
+```tsx
+// ✅ CORRECT: Public assets with absolute paths
+<img src="/assets/lvb/lvb-13-3d.jpg" alt="Description" />
+
+// ✅ CORRECT: Imported assets with processing
+import optimizedImage from '@/assets/golf.jpg';
+<img src={optimizedImage} alt="Description" />
+
+// ✅ CORRECT: Using resolveAsset for consistency
+import { resolveAsset } from '@/lib/assets';
+<img src={resolveAsset('/assets/lvb/lvb-13-3d.jpg')} alt="Description" />
+
+// ❌ WRONG: Relative paths break in production
+<img src="../assets/lvb/lvb-13-3d.jpg" alt="Description" />
+```
+
+Following these guidelines ensures images work reliably in both development and
+production environments.

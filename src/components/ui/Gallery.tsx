@@ -3,6 +3,7 @@ import { Container } from './container';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
+import { resolveAsset } from '@/lib/assets';
 
 type GallerySection = 'photos' | 'plans';
 
@@ -18,24 +19,24 @@ export function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const photos: GalleryItem[] = [
-    { src: '/assets/lvb/lvb-01-3d.jpg', alt: 'La Vista Boulevard 3D View 1' },
-    { src: '/assets/lvb/lvb-02-3d.jpg', alt: 'La Vista Boulevard 3D View 2' },
-    { src: '/assets/lvb/lvb-03-3d.jpg', alt: 'La Vista Boulevard 3D View 3' },
-    { src: '/assets/lvb/lvb-04-edited.jpg', alt: 'La Vista Boulevard Photo 4' },
-    { src: '/assets/lvb/lvb-05-edited.jpg', alt: 'La Vista Boulevard Photo 5' },
-    { src: '/assets/lvb/lvb-06-edited.jpg', alt: 'La Vista Boulevard Photo 6' },
-    { src: '/assets/lvb/lvb-07-edited.jpg', alt: 'La Vista Boulevard Photo 7' },
-    { src: '/assets/lvb/lvb-08-edited.jpg', alt: 'La Vista Boulevard Photo 8' },
-    { src: '/assets/lvb/lvb-09-edited.jpg', alt: 'La Vista Boulevard Photo 9' },
-    { src: '/assets/lvb/lvb-10-edited.jpg', alt: 'La Vista Boulevard Photo 10' },
-    { src: '/assets/lvb/lvb-11-3d.jpg', alt: 'La Vista Boulevard 3D View 11' },
-    { src: '/assets/lvb/lvb-12-3d.jpg', alt: 'La Vista Boulevard 3D View 12' },
-    { src: '/assets/lvb/lvb-13-3d.jpg', alt: 'La Vista Boulevard 3D View 13' },
+    { src: resolveAsset('/assets/lvb/lvb-01-3d.jpg'), alt: 'La Vista Boulevard 3D View 1' },
+    { src: resolveAsset('/assets/lvb/lvb-02-3d.jpg'), alt: 'La Vista Boulevard 3D View 2' },
+    { src: resolveAsset('/assets/lvb/lvb-03-3d.jpg'), alt: 'La Vista Boulevard 3D View 3' },
+    { src: resolveAsset('/assets/lvb/lvb-04-edited.jpg'), alt: 'La Vista Boulevard Photo 4' },
+    { src: resolveAsset('/assets/lvb/lvb-05-edited.jpg'), alt: 'La Vista Boulevard Photo 5' },
+    { src: resolveAsset('/assets/lvb/lvb-06-edited.jpg'), alt: 'La Vista Boulevard Photo 6' },
+    { src: resolveAsset('/assets/lvb/lvb-07-edited.jpg'), alt: 'La Vista Boulevard Photo 7' },
+    { src: resolveAsset('/assets/lvb/lvb-08-edited.jpg'), alt: 'La Vista Boulevard Photo 8' },
+    { src: resolveAsset('/assets/lvb/lvb-09-edited.jpg'), alt: 'La Vista Boulevard Photo 9' },
+    { src: resolveAsset('/assets/lvb/lvb-10-edited.jpg'), alt: 'La Vista Boulevard Photo 10' },
+    { src: resolveAsset('/assets/lvb/lvb-11-3d.jpg'), alt: 'La Vista Boulevard 3D View 11' },
+    { src: resolveAsset('/assets/lvb/lvb-12-3d.jpg'), alt: 'La Vista Boulevard 3D View 12' },
+    { src: resolveAsset('/assets/lvb/lvb-13-3d.jpg'), alt: 'La Vista Boulevard 3D View 13' },
   ];
 
   const plans: GalleryItem[] = [
-    { src: '/assets/lvb/lvb-development-block.webp', alt: 'Development Block Plan' },
-    { src: '/assets/lvb/lvb-development-floors.webp', alt: 'Development Floor Plans' },
+    { src: resolveAsset('/assets/lvb/lvb-development-block.webp'), alt: 'Development Block Plan' },
+    { src: resolveAsset('/assets/lvb/lvb-development-floors.webp'), alt: 'Development Floor Plans' },
   ];
 
   const activeContent = activeTab === 'photos' ? photos : plans;
@@ -80,7 +81,7 @@ export function Gallery() {
     <section className="py-20 md:py-32 bg-white overflow-hidden">
       <Container>
         <div className="text-center mb-12">
-          <h2 className="h2">
+          <h2 className="h2 mb-6">
             {t('gallery.title')}
           </h2>
           
