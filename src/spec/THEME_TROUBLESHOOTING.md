@@ -15,6 +15,26 @@ particularly when themes work in development but fail in production.
 
 **Root Causes & Solutions:**
 
+### 2. Theme Flickers and Reverts to Default
+
+**Symptoms:**
+
+- The correct theme is visible for a moment on page load, then quickly reverts to the default theme.
+- This might happen on every page load or intermittently.
+
+**Root Causes & Solutions:**
+
+This issue is often caused by a race condition within the `ThemeProvider`'s state management, especially during the component's render lifecycle in React.
+
+**Diagnosis:**
+- The `useTheme` hook or a similar mechanism inside the `ThemeProvider` might be initializing with a default theme and then asynchronously loading the correct theme.
+- If the component re-renders before the new theme is fully applied and committed to state, React might revert to the initial default theme.
+
+**Solution:**
+- The state management logic within the `ThemeProvider` and its associated hooks needs to be reviewed.
+- Ensure that the theme state is updated synchronously and that React's state updates correctly reflect the selected theme without race conditions.
+- Refactoring the `useTheme` hook to prevent this flicker might be necessary, ensuring the theme value is stable across re-renders.
+
 #### Issue: CSS Not Properly Loaded
 
 **Diagnosis:**

@@ -21,12 +21,12 @@ export function HeroSection({ data }: { data: SectionData }) {
           {data.title}
         </h1>
         {data.subtitle && (
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="body-l mb-8 max-w-2xl mx-auto">
             {data.subtitle}
           </p>
         )}
         {data.cta && (
-          <Button size="lg" asChild className="text-lg px-8">
+          <Button asChild className="btn-primary">
             <a href={data.cta.href}>{data.cta.label}</a>
           </Button>
         )}

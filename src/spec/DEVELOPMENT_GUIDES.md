@@ -165,6 +165,70 @@ import { Footer } from "@/components/layout/Footer";
 
 ---
 
+## Theme Application Guide
+
+### Overview
+
+This guide explains how to correctly apply themes to pages using the `ThemeProvider` component. Adhering to these patterns is crucial for preventing bugs like theme flickering or incorrect theme application.
+
+### Core Concept
+
+The `<ThemeProvider>` component is the single source of truth for managing and applying themes across the application. It works by setting a `data-theme` attribute on the `<html>` element, which activates the corresponding theme styles from the global CSS bundle.
+
+### How to Use `ThemeProvider`
+
+There are two ways to apply a theme to a page, both configured in `src/routes.tsx`.
+
+#### 1. Static Theme Assignment (For most pages)
+
+If a page should **always** use a specific theme, assign it directly in the routing configuration using the `routeTheme` prop. This is the most common and recommended approach.
+
+**Example from `src/routes.tsx`**:
+```tsx
+// This route will always render the GolfProperties page with the 'golf-elegant' theme.
+{
+  path: 'page-url-slug-with-theme',
+  element: (
+    <ThemeProvider routeTheme="golf-elegant">
+      <GolfProperties />
+    </ThemeProvider>
+  ),
+}
+```
+
+#### 2. Dynamic Theme Assignment
+
+If a page needs to have its theme user-selectable (e.g., via the `PageThemeSelector` component), you should still wrap it in `ThemeProvider` but **omit** the `routeTheme` prop.
+
+When `routeTheme` is not provided, the `ThemeProvider` will:
+1.  Look for a theme preference for that page in the browser's `localStorage`.
+2.  If none is found, it will fall back to the default theme.
+
+This allows components like the `PageThemeSelector` to dynamically change and persist the theme for that specific page.
+
+**Example from `src/routes.tsx`**:
+```tsx
+// This route allows the LandingPage's theme to be changed by the user.
+{
+  path: '/',
+  element: (
+    <ThemeProvider>
+      <LandingPage />
+    </ThemeProvider>
+  ),
+}
+```
+
+### Best Practices to Avoid Issues
+
+1.  **Always Wrap Your Page Component**: Every page defined in `src/routes.tsx` must be wrapped in `<ThemeProvider>`. Forgetting to do so will result in a page with no theme applied.
+
+2.  **Choose Static or Dynamic**: Decide upfront if a page's theme should be fixed (`routeTheme="theme-name"`) or user-configurable (omit `routeTheme`).
+
+3.  **Flickering or Incorrect Themes**: If you encounter issues where a theme appears briefly and then disappears ("flickers"), it is almost always a sign of a problem in how the `ThemeProvider` is implemented or used. Please refer to the **[Theme Troubleshooting Guide](./THEME_TROUBLESHOOTING.md)** for detailed diagnostic steps. Do not attempt to solve these issues with local state or `useEffect` hooks within your page components, as this will lead to further instability.
+
+---
+
 ## New Theme Creation Guide
 
 ### Overview

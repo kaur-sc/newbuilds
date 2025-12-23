@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { type ReactNode, useEffect } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Container } from '@/components/ui/container';
@@ -7,11 +7,26 @@ import { Check, MapPin, Sun, Home, ArrowRight } from 'lucide-react';
 import type { LandingPageData } from '@/models/landing-page';
 import { Head } from 'vite-react-ssg';
 import { useTranslation, Trans } from 'react-i18next';
+import { getPageTheme } from "@/lib/pageThemeManager";
+import { applyTheme } from "@/themes/resolver";
 import { resolveAsset } from '@/lib/assets';
 import { Gallery } from '@/components/ui/Gallery';
 
 export function GolfProperties() {
   const { t } = useTranslation('costa-blanca');
+
+  // Apply saved theme on page load
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const savedTheme = getPageTheme(currentPath);
+
+    if (savedTheme) {
+        console.log(
+            `🎨 Applying saved theme "${savedTheme}" to Custom page`,
+        );
+        applyTheme(savedTheme);
+    }
+  }, []);
 
   // Mock data for Navbar/Footer compatibility
   const pageData: LandingPageData = {

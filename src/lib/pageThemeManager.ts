@@ -168,9 +168,17 @@ export const getPageThemeAssignments = (): PageThemeAssignment[] => {
 
 // Get theme for a specific page
 export const getPageTheme = (pagePath: string): ThemeKey | undefined => {
-  const normalizedPath = pagePath.startsWith('/') ? pagePath.substring(1) : pagePath;
-  const pathWithoutTrailingSlash = normalizedPath.endsWith('/') ? normalizedPath.slice(0, -1) : normalizedPath;
+  console.log(`[getPageTheme] Input path: "${pagePath}"`);
+  
+  // Normalize path: remove leading/trailing slashes
+  const normalizedPath = pagePath.replace(/^\/|\/$/g, '');
+  console.log(`[getPageTheme] Normalized path: "${normalizedPath}"`);
+  
   const assignments = getPageThemeAssignments();
-  const assignment = assignments.find(a => a.pagePath === pathWithoutTrailingSlash);
+  console.log(`[getPageTheme] All assignments:`, assignments);
+
+  const assignment = assignments.find(a => a.pagePath.replace(/^\/|\/$/g, '') === normalizedPath);
+  console.log(`[getPageTheme] Found assignment:`, assignment);
+
   return assignment?.themeId;
 };

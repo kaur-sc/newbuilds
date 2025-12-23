@@ -43,7 +43,7 @@ export function Navbar({ data }: NavbarProps) {
         </Link>
         
         {/* Desktop Nav */}
-        <div className="nav-desktop">
+        <div className="hidden md:flex items-center gap-6">
           {data.sections.filter(s => s.enabled && s.type !== 'hero').map(section => (
             <a 
               key={section.id} 
@@ -54,24 +54,24 @@ export function Navbar({ data }: NavbarProps) {
             </a>
           ))}
           {contactCta && (
-            <Button asChild>
+            <Button asChild className="btn-primary">
               <a href={contactCta.href}>{contactCta.label}</a>
             </Button>
           )}
-          <div className="nav-language-separator">
+          <div className="border-l border-border h-6 mx-4">
             <LanguageSwitcher />
           </div>
         </div>
 
         {/* Mobile Toggle - Only shows on mobile */}
-        <Button variant="ghost" size="icon" className="nav-desktop-mobile-show" onClick={() => setIsOpen(!isOpen)}>
+        <Button asChild className="btn-ghost mobile-menu-btn md:hidden" onClick={() => setIsOpen(!isOpen)}>
           <Menu className="h-5 w-5" />
         </Button>
       </Container>
       
       {/* Mobile Menu - Only shows on mobile */}
       {isOpen && (
-        <div className="mobile-menu nav-desktop-mobile-show border-t nav-mobile-padding nav-mobile-gap">
+        <div className="mobile-menu md:hidden border-t p-4 space-y-4">
            {data.sections.filter(s => s.enabled && s.type !== 'hero').map(section => (
             <a 
               key={section.id} 
@@ -83,11 +83,11 @@ export function Navbar({ data }: NavbarProps) {
             </a>
           ))}
           {contactCta && (
-             <Button className="w-full" asChild>
+             <Button className="btn-primary w-full" asChild>
               <a href={contactCta.href}>{contactCta.label}</a>
             </Button>
           )}
-          <div className="nav-mobile-center pt-2">
+          <div className="flex justify-center pt-2">
             <LanguageSwitcher />
           </div>
         </div>

@@ -312,23 +312,6 @@ export const StyleEditor = () => {
   // Removed JavaScript CSS variable application to prevent conflicts with CSS theme files
   // Theme switching now relies solely on data-theme attribute and CSS files
 
-  // Load theme CSS reliably using theme attribute switching
-  useEffect(() => {
-    // Set theme attribute on HTML element to activate the correct theme
-    const htmlElement = document.documentElement;
-    htmlElement.setAttribute('data-theme', activeThemeId);
-    
-    console.log(`Activating theme: ${activeThemeId}`);
-    
-    // Force a re-render to ensure theme variables are applied
-    setTimeout(() => {
-      // Trigger a reflow to ensure CSS variables are applied
-      document.body.style.display = 'none';
-      document.body.offsetHeight; // Force reflow
-      document.body.style.display = '';
-    }, 100);
-  }, [activeThemeId]);
-
   const updateActiveTheme = (updater: (prev: ThemeConfig) => ThemeConfig) => {
     setAvailableThemes(prev => prev.map(t => t.id === activeThemeId ? updater(t) : t));
   };
@@ -894,7 +877,7 @@ export const StyleEditor = () => {
       </aside>
 
       {/* Main Preview Area */}
-      <main className={`flex-1 p-4 lg:p-12 overflow-y-auto bg-card/50 pattern-grid transition-all duration-500 ${previewDevice === 'mobile' ? 'flex justify-center' : ''}`}>
+      <main data-theme={activeThemeId} className={`flex-1 p-4 lg:p-12 overflow-y-auto bg-card/50 pattern-grid transition-all duration-500 ${previewDevice === 'mobile' ? 'flex justify-center' : ''}`}>
          <div className={`preview-${previewDevice} mx-auto space-y-12 transition-all duration-500 ${previewDevice === 'mobile' ? 'w-[375px] border-[12px] border-foreground rounded-[3rem] bg-background h-[812px] overflow-y-auto shadow-2xl relative' : 'max-w-5xl w-full'}`}>
             {previewDevice === 'mobile' && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-foreground rounded-b-2xl z-50"></div>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { LandingPageData } from "@/models/landing-page";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -5,6 +6,8 @@ import { HeroSection } from "@/sections/Hero";
 import { FeaturesSection } from "@/sections/Features";
 import { ContactSection } from "@/sections/Contact";
 import { Head } from 'vite-react-ssg';
+import { getPageTheme } from "@/lib/pageThemeManager";
+import { applyTheme } from "@/themes/resolver";
 
 
 interface LandingPageProps {
@@ -12,6 +15,25 @@ interface LandingPageProps {
 }
 
 export function LandingPage({ data }: LandingPageProps) {
+  // Apply saved theme on page load
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    console.log(`[LandingPage] useEffect running for path: "${currentPath}"`);
+
+    const savedTheme = getPageTheme(currentPath);
+    console.log(`[LandingPage] Saved theme found: "${savedTheme}"`);
+
+    if (savedTheme) {
+        console.log(
+            `🎨 Applying saved theme "${savedTheme}" to Landing page`,
+        );
+        applyTheme(savedTheme);
+    } else {
+        console.log(`[LandingPage] No saved theme found, using default.`);
+        applyTheme('golf'); // Explicitly apply default if none is found
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
       <Head>

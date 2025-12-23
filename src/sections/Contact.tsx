@@ -8,15 +8,17 @@ export function ContactSection({ data }: { data: SectionData }) {
 
   return (
     <Section id={data.id} className="bg-primary text-primary-foreground">
-      <Container className="text-center">
-        <h2 className="h2 mb-4">{data.title}</h2>
-        {data.subtitle && <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">{data.subtitle}</p>}
-        
-        {data.cta && (
-            <Button size="lg" variant="secondary" asChild>
-                <a href={data.cta.href}>{data.cta.label}</a>
-            </Button>
-        )}
+      <Container>
+        <div className="text-center">
+          <h2 className="h2 mb-4">{data.title}</h2>
+          {data.subtitle && <p className="body text-primary-foreground/80 mb-8 max-w-2xl mx-auto">{data.subtitle}</p>}
+          
+          {data.cta && (
+              <Button className="btn-secondary" asChild>
+                  <a href={data.cta.href}>{data.cta.label}</a>
+              </Button>
+          )}
+        </div>
       </Container>
     </Section>
   );

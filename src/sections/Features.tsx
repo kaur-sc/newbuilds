@@ -8,24 +8,24 @@ export function FeaturesSection({ data }: { data: SectionData }) {
   if (!data.enabled) return null;
 
   return (
-    <Section id={data.id} className="bg-muted/50">
+    <Section id={data.id}>
       <Container>
         <div className="text-center mb-12">
             <h2 className="h2 mb-4">{data.title}</h2>
-            {data.subtitle && <p className="text-muted-foreground">{data.subtitle}</p>}
+            {data.subtitle && <p className="body text-muted-foreground">{data.subtitle}</p>}
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="features-grid">
           {data.items?.map((item: { title: string, description: string }, idx) => (
-            <Card key={idx} className="border-none">
+            <Card key={idx}>
               <CardHeader>
                 <div className="flex items-center gap-4 mb-2">
-                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <div className="feature-icon">
                         <Check className="h-5 w-5" />
                     </div>
                     <CardTitle>{item.title}</CardTitle>
                 </div>
-                <CardDescription className="text-base">
+                <CardDescription className="body">
                   {item.description}
                 </CardDescription>
               </CardHeader>
