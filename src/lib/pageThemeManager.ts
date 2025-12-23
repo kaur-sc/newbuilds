@@ -18,10 +18,13 @@ export const extractPagesFromRoutes = (): PageInfo[] => {
   const pages: PageInfo[] = [];
   
   const processRoute = (route: any, parentPath = '') => {
-    const fullPath = parentPath + route.path;
-    
+    const fullPathWithTrailing = parentPath + route.path;
+    const fullPath = fullPathWithTrailing.endsWith('/') && fullPathWithTrailing.length > 1
+      ? fullPathWithTrailing.slice(0, -1)
+      : fullPathWithTrailing;
+
     // Skip wildcard routes, layout wrapper, and style editor (admin page)
-    if (route.path === '*' || route.path === undefined || route.element?.type?.name === 'RootLayout' || route.path === 'style-editor') {
+    if (route.path === '*' || route.path === undefined || route.element?.type?.name === 'RootLayout' || fullPath === 'style-editor') {
       return;
     }
     
@@ -76,7 +79,7 @@ export const extractPagesFromRoutes = (): PageInfo[] => {
     
     // Process children recursively
     if (route.children && Array.isArray(route.children)) {
-      route.children.forEach((child: any) => processRoute(child, fullPath));
+      route.children.forEach((child: any) => processRoute(child, fullPathWithTrailing));
     }
   };
   
@@ -101,17 +104,18 @@ export const getAvailableThemes = () => {
 // Helper function to detect if user is currently on the target page
 const isCurrentPage = (pagePath: string): boolean => {
   const currentPath = window.location.pathname.replace(/^\/|\/$/g, '');
+  const normalizedPagePath = pagePath.replace(/\/$/, '');
   
-  console.log(`🎨 [PageThemeManager] Checking if current path "${currentPath}" matches saved path "${pagePath}"`);
+  console.log(`🎨 [PageThemeManager] Checking if current path "${currentPath}" matches saved path "${normalizedPagePath}"`);
   
   // Handle root path
-  if (pagePath === '/' && currentPath === '') {
+  if (normalizedPagePath === '' && currentPath === '') {
     console.log(`🎨 [PageThemeManager] Root path match`);
     return true;
   }
   
   // Exact match
-  if (currentPath === pagePath) {
+  if (currentPath === normalizedPagePath) {
     console.log(`🎨 [PageThemeManager] Exact match found`);
     return true;
   }
@@ -120,7 +124,7 @@ const isCurrentPage = (pagePath: string): boolean => {
   const isGolfPropertiesPage = (path: string) => 
     path.includes('new-build-golf-properties-costa-blanca');
   
-  if (isGolfPropertiesPage(pagePath) && isGolfPropertiesPage(currentPath)) {
+  if (isGolfPropertiesPage(normalizedPagePath) && isGolfPropertiesPage(currentPath)) {
     console.log(`🎨 [PageThemeManager] Golf Properties page group match`);
     return true;
   }
@@ -165,7 +169,8 @@ export const getPageThemeAssignments = (): PageThemeAssignment[] => {
 // Get theme for a specific page
 export const getPageTheme = (pagePath: string): ThemeKey | undefined => {
   const normalizedPath = pagePath.startsWith('/') ? pagePath.substring(1) : pagePath;
+  const pathWithoutTrailingSlash = normalizedPath.endsWith('/') ? normalizedPath.slice(0, -1) : normalizedPath;
   const assignments = getPageThemeAssignments();
-  const assignment = assignments.find(a => a.pagePath === normalizedPath);
+  const assignment = assignments.find(a => a.pagePath === pathWithoutTrailingSlash);
   return assignment?.themeId;
 };
