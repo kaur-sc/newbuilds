@@ -2,27 +2,16 @@ import { ViteReactSSG } from 'vite-react-ssg'
 import { routes } from './routes'
 import './spec/themes' // Import all theme CSS for production bundling
 import './index.css'
-import { i18nPromise } from './i18n'
-import { applyTheme, DEFAULT_THEME } from './themes'
 
-// Root component, can be a layout or simple fragment if routes handle everything
-const app = ViteReactSSG(
+export const createApp = ViteReactSSG(
   { routes, basename: import.meta.env.BASE_URL }
 )
 
-// In development/client-side, we need to invoke the app to mount it
-// The SSG builder will import createApp and call it manually
+// In a client-only environment (dev server or after hydration),
+// we need to manually trigger the app mount.
+// The SSG process calls `createApp` directly.
 if (!import.meta.env.SSR) {
-  // Apply default theme
-  applyTheme(DEFAULT_THEME);
-  
-  // Wait for i18n to be ready before hydrating
-  i18nPromise.then(() => {
-    (app as any)(true);
-  });
+  createApp()
 }
 
-export const createApp = app;
-// Alias createRoot to satisfy vite-react-ssg v0.8.9 requirement
-export const createRoot = app;
-export default app;
+export default createApp;

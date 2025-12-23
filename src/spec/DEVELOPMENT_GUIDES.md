@@ -1,17 +1,16 @@
 # Development Guides
 
 This document provides step-by-step guides for creating new pages, themes,
-layout modifications, and content blocks while maintaining system consistency.
+components while maintaining system consistency.
 
 ## Table of Contents
 
 1. [New Page Creation Guide](#new-page-creation-guide)
 2. [New Theme Creation Guide](#new-theme-creation-guide)
-3. [Layout Modification Guide](#layout-modification-guide)
-4. [Content Block Addition Guide](#content-block-addition-guide)
+3. [Component & Layout Guide](#component--layout-guide)
+4. [Asset Handling Guide](#asset-handling-guide)
 5. [AI Development Guidelines](#ai-development-guidelines)
-6. [Quality Assurance Checklists](#quality-assurance-checklists)
-7. [Troubleshooting & Deployment](#troubleshooting--deployment)
+6. [Deployment & Server Configuration](#deployment--server-configuration)
 
 ---
 
@@ -24,15 +23,12 @@ maintain consistency across the application.
 
 ### Step 1: Create Page Component
 
-**File Location**: `src/pages/[PageName].tsx`
+**Location**: `src/pages/[PageName].tsx`
 
 **Template**:
 
 ```tsx
-import React, { useEffect } from "react";
-import { getPageTheme } from "@/lib/pageThemeManager";
-import { applyTheme } from "@/themes/resolver";
-import { Head } from "vite-react-ssg";
+import React from "react";
 
 interface PageProps {
     // Define your page props here
@@ -41,11 +37,6 @@ interface PageProps {
 export function PageName({/* props */}: PageProps) {
     return (
         <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
-            <Head>
-                <title>Page Title - Sunny Casas</title>
-                <meta name="description" content="Page description for SEO" />
-            </Head>
-
             {/* Page content using theme classes */}
             <main className="flex-1">
                 {/* Your page content here */}
@@ -59,7 +50,7 @@ export default PageName;
 
 ### Step 2: Add Route Configuration
 
-**File**: `src/routes.tsx`
+**Location**: `src/routes.tsx`
 
 **Add to routes array**:
 
@@ -171,7 +162,6 @@ import { Footer } from "@/components/layout/Footer";
 - [ ] Cross-theme compatibility verified
 - [ ] Mobile responsive design tested
 - [ ] SEO meta tags implemented
-- [ ] No `useEffect` for theme application (handled by `index.html` script)
 
 ---
 
@@ -845,12 +835,6 @@ export type ThemeKey = "golf" | "golf-elegant" | "midnight" | "new-theme";
 ### New Theme Checklist
 
 - [ ] Theme CSS file placed in `src/styles/` to be auto-bundled
-- [ ] Header background variables defined
-- [ ] Style Editor integration tested
-- [ ] Page theme switching tested
-- [ ] Cross-theme compatibility verified
-
----
 
 ## Layout Modification Guide
 
@@ -1201,13 +1185,11 @@ codebase to ensure consistency and maintainability.
 
 ### Required Imports
 
-**For Pages**:
+**For Pages (Minimal)**:
 
 ```tsx
-import React, { useEffect } from "react";
-import { getPageTheme } from "@/lib/pageThemeManager";
-import { applyTheme } from "@/themes/resolver";
-import { Head } from "vite-react-ssg";
+import React from "react";
+// Add other imports as needed, e.g., for components
 ```
 
 **For Components**:
@@ -1240,214 +1222,14 @@ export function ComponentName() {
 }
 ```
 
-**Section Component Template**:
-
-```tsx
-interface SectionProps {
-    data: Section;
-}
-
-export function SectionName({ data }: SectionProps) {
-    return (
-        <section className="section">
-            <div className="container">
-                <h2 className="h2">{data.title}</h2>
-                <div className="body">{data.content}</div>
-            </div>
-        </section>
-    );
-}
-```
-
 ### Forbidden Practices
 
 ❌ **NEVER do this**:
 
-- Use `useEffect` for theme application: `useEffect(() => { applyTheme(...) })`
+This causes a "flash of unstyled content".
 
-✅ **ALWAYS do this**:
-
-- Rely on the synchronous `index.html` script for initial theme load.
-
-### File Location Rules
-
-**Pages**: `src/pages/[PageName].tsx` **Sections**:
-`src/sections/[SectionName].tsx` **Components**:
-`src/components/[Category]/[ComponentName].tsx` **Themes**:
-`src/themes/index.ts` and `src/styles/[theme-name].css` **Models**:
-`src/models/[ModelName].ts`
-
-### Testing Requirements
-
-Before completing any task:
-
-1. **Theme Switching**: Test with all available themes
-2. **Page Integration**: Verify Page Theme Manager functionality
-3. **Responsive Design**: Test mobile/tablet/desktop layouts
-4. **Cross-browser**: Test Safari, Chrome, Firefox
-5. **Style Editor**: Verify preview matches production
-6. **Type Safety**: Ensure no TypeScript errors
-7. **Console Logging**: Check for theme application messages
-
-### Quality Gates
-
-Do not consider work complete until:
-
-- [ ] All styled elements use theme classes
-- [ ] No inline styles or hardcoded colors
-- [ ] Page Theme Manager integration works
-- [ ] Theme persistence functions correctly
-- [ ] Mobile responsive behavior tested
-- [ ] Cross-theme compatibility verified
-- [ ] TypeScript compilation succeeds
-- [ ] No console errors or warnings
-
----
-
-## Quality Assurance Checklists
-
-### New Page QA Checklist
-
-**Pre-Development**:
-
-- [ ] Page requirements clearly defined
-- [ ] Content structure planned
-- [ ] Theme integration requirements identified
-- [ ] Responsive design requirements established
-
-**Development**:
-
-- [ ] Page component created using the template
-- [ ] Route configuration added
-- [ ] SEO meta tags implemented
-
-**Testing**:
-
-- [ ] Theme switching works from Style Editor
-- [ ] Theme persistence across page refresh
-- [ ] Mobile responsive design tested
-- [ ] Tablet layout tested
-- [ ] Desktop layout tested
-- [ ] Cross-browser compatibility verified
-- [ ] Accessibility features tested
-
-**Final Review**:
-
-- [ ] Code follows project patterns
-- [ ] TypeScript types are correct
-- [ ] Performance optimization considered
-- [ ] Documentation updated if needed
-- [ ] Peer review completed
-
-### New Theme QA Checklist
-
-**Pre-Development**:
-
-- [ ] Color palette defined
-- [ ] Typography scales planned **Development**:
-
-- [ ] CSS file created with all variables
-
-**Testing**:
-
-- [ ] Style Editor controls work correctly
-- [ ] Live preview matches theme definition
-- [ ] CSS export generates correctly
-- [ ] All page types tested with theme
-- [ ] Theme switching works on all pages
-- [ ] Responsive behavior verified
-- [ ] Cross-browser testing completed
-
-**Final Review**:
-
-- [ ] All theme classes consume variables
-- [ ] No hardcoded values in theme CSS
-- [ ] Mobile variants properly implemented
-- [ ] Theme follows naming conventions
-- [ ] Documentation updated
-
-### Layout Modification QA Checklist
-
-**Pre-Development**:
-
-- [ ] Layout requirements clearly defined
-- [ ] Impact on existing components assessed
-- [ ] Responsive behavior planned
-- [ ] Theme integration strategy established
-
-**Development**:
-
-- [ ] Layout variables added to all theme files
-- [ ] Component classes updated appropriately
-- [ ] Responsive breakpoints handled correctly
-- [ ] Existing components maintain functionality
-- [ ] No breaking changes introduced
-- [ ] Backward compatibility maintained
-
-**Testing**:
-
-- [ ] Layout changes work with all themes
-- [ ] Mobile responsive behavior tested
-- [ ] Tablet layout tested
-- [ ] Desktop layout tested
-- [ ] Component integration verified
-- [ ] Style Editor preview reflects changes
-- [ ] Cross-browser compatibility checked
-
-**Final Review**:
-
-- [ ] Performance impact assessed
-- [ ] Accessibility features maintained
-- [ ] Code follows established patterns
-- [ ] Documentation updated
-- [ ] Team communication completed
-
-### Content Block Addition QA Checklist
-
-**Pre-Development**:
-
-- [ ] Section type clearly defined
-- [ ] Data structure planned
-- [ ] Component requirements identified
-- [ ] Theme integration needs assessed
-
-**Development**:
-
-- [ ] Section type added to interfaces
-- [ ] Section component created with theme classes
-- [ ] Page integration implemented
-- [ ] Theme variables defined
-- [ ] CSS classes created in all theme files
-- [ ] Mobile variants included
-
-**Testing**:
-
-- [ ] Section renders correctly in all contexts
-- [ ] Theme switching works for section
-- [ ] Responsive behavior tested
-- [ ] Data binding works correctly
-- [ ] Integration with existing pages verified
-- [ ] Cross-theme compatibility tested
-
-**Final Review**:
-
-- [ ] Component follows project patterns
-- [ ] TypeScript types are correct
-- [ ] Reusable where appropriate
-- [ ] Performance considered
-- [ ] Documentation updated
-
-These checklists ensure consistent, high-quality development that maintains the
-system's integrity and extensibility.
-
-## 🔧 Development Tools & Techniques
-
-### Component Development
-
-- Use TypeScript for type safety
-- Follow React best practices
-- Implement proper error boundaries
-- Use semantic HTML5 elements
+- Use inline styles (`style={{...}}`) or Tailwind classes (`bg-blue-500`) for
+  styling. **Always use theme classes.**
 
 ### Asset Handling Guidelines
 
