@@ -11,10 +11,11 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite-react-ssg build",
+    "build": "vite-react-ssg build && node scripts/validate-themes.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "spec": "node scripts/validate.js"
+    "spec": "node scripts/validate.js",
+    "validate-themes": "node scripts/validate-themes.js"
   },
   "dependencies": {
     "@types/js-yaml": "^4.0.9",

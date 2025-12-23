@@ -32,7 +32,11 @@ export const routes: RouteRecord[] = [
       },
       {
         path: 'new-build-golf-properties-costa-blanca',
-        element: <GolfProperties />,
+        element: (
+          <ThemeProvider>
+            <GolfProperties />
+          </ThemeProvider>
+        ),
       },
       {
         path: 'new-build-golf-properties-costa-blanca-golf-elegant',

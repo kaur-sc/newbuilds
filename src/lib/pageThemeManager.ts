@@ -113,21 +113,30 @@ export const getAvailableThemes = () => {
 const isCurrentPage = (pagePath: string): boolean => {
   const currentPath = window.location.pathname;
   
+  console.log(`🎨 [PageThemeManager] Checking if current path "${currentPath}" matches saved path "${pagePath}"`);
+  
   // Exact match
   if (currentPath === pagePath) {
+    console.log(`🎨 [PageThemeManager] Exact match found`);
     return true;
   }
   
   // Handle root path
   if (pagePath === '/' && currentPath === '/') {
+    console.log(`🎨 [PageThemeManager] Root path match`);
     return true;
   }
   
-  // Handle Golf Properties variations
-  if (pagePath.includes('new-build-golf-properties') && currentPath.includes('new-build-golf-properties')) {
+  // Handle Golf Properties variations - treat them as the same page
+  const isGolfPropertiesPage = (path: string) => 
+    path.includes('new-build-golf-properties-costa-blanca');
+  
+  if (isGolfPropertiesPage(pagePath) && isGolfPropertiesPage(currentPath)) {
+    console.log(`🎨 [PageThemeManager] Golf Properties page group match`);
     return true;
   }
   
+  console.log(`🎨 [PageThemeManager] No match found`);
   return false;
 };
 

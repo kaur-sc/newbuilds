@@ -11,6 +11,7 @@ layout modifications, and content blocks while maintaining system consistency.
 4. [Content Block Addition Guide](#content-block-addition-guide)
 5. [AI Development Guidelines](#ai-development-guidelines)
 6. [Quality Assurance Checklists](#quality-assurance-checklists)
+7. [Troubleshooting & Deployment](#troubleshooting--deployment)
 
 ---
 
@@ -465,7 +466,7 @@ export const themes: Record<ThemeKey, ThemeConfig> = {
     --btn-ghost-hover-text: var(--primary);
     --btn-ghost-hover-scale: 1.05;
     --btn-ghost-active-bg: var(--primary);
-    --btn-ghost-active-text: var(--primary);
+    --btn-ghost-active-text: var(--primary-foreground);
     --btn-ghost-active-scale: 0.95;
 
     --link-std-text: var(--primary);
@@ -1459,7 +1460,7 @@ Do not consider work complete until:
 - [ ] Section component created with theme classes
 - [ ] Page integration implemented
 - [ ] Theme variables defined
-- [ ] CSS classes created in all themes
+- [ ] CSS classes created in all theme files
 - [ ] Mobile variants included
 
 **Testing**:
@@ -1491,42 +1492,52 @@ system's integrity and extensibility.
 - Implement proper error boundaries
 - Use semantic HTML5 elements
 
-### Image Handling Guidelines
+### Asset Handling Guidelines
 
-- **Use absolute paths** for public assets: `src="/assets/filename.ext"`
+- **Always use resolveAsset()** for all images:
+  `resolveAsset('/assets/filename.ext')`
 - **Import processed assets** from `src/assets/` when optimization is needed
-- **Use resolveAsset()** function for centralized asset management
-- **Map all assets** in `src/lib/assets.ts` for consistency
-- **Test production builds** to verify external server compatibility
+- **Never use direct paths**: Don't bypass the asset resolution system
+- **Never use relative paths**: Always use resolveAsset for consistent behavior
 
 ### Asset Management Workflow
 
 1. **Add new images** to `/public/assets/` folder
-2. **Map assets** in `src/lib/assets.ts` with absolute paths
-3. **Use resolveAsset()** in components for consistent path handling
-4. **Test locally** to verify images load correctly
-5. **Test production build** to ensure paths work on external server
+2. **Use resolveAsset()** in components for consistent path handling
+3. **Test locally** to verify images load correctly
+4. **Test production build** to ensure paths work on external server
 
 ### Common Image Pitfalls to Avoid
 
 - ❌ **Relative paths**: `../assets/image.jpg` breaks in production
 - ❌ **Wrong imports**: Importing from `/public/` instead of `src/`
 - ❌ **Hardcoded paths**: Not using asset management system
-- ❌ **Missing mapping**: Forgetting to add new assets to `assets.ts`
+- ❌ **Missing mapping**: Forgetting to use resolveAsset for new assets
 
 ### Image Implementation Examples
 
 ```tsx
-// ✅ CORRECT: Public assets with absolute paths
-<img src="/assets/lvb/lvb-13-3d.jpg" alt="Description" />
+// ✅ CORRECT: Public assets with resolveAsset
+import { resolveAsset } from '@/lib/assets';
 
-// ✅ CORRECT: Imported assets with processing
+const galleryImages = [
+    {
+        src: resolveAsset("/assets/lvb/lvb-01-3d.jpg"),
+        alt: "Description",
+    },
+    {
+        src: resolveAsset("/assets/lvb/lvb-02-3d.jpg"),
+        alt: "Description",
+    },
+    // ... more images
+];
+
+// ✅ CORRECT: Imported assets when processing is needed
 import optimizedImage from '@/assets/golf.jpg';
 <img src={optimizedImage} alt="Description" />
 
-// ✅ CORRECT: Using resolveAsset for consistency
-import { resolveAsset } from '@/lib/assets';
-<img src={resolveAsset('/assets/lvb/lvb-13-3d.jpg')} alt="Description" />
+// ❌ WRONG: Direct absolute paths bypass asset resolution
+<img src="/assets/lvb/lvb-13-3d.jpg" alt="Description" />
 
 // ❌ WRONG: Relative paths break in production
 <img src="../assets/lvb/lvb-13-3d.jpg" alt="Description" />
@@ -1534,3 +1545,71 @@ import { resolveAsset } from '@/lib/assets';
 
 Following these guidelines ensures images work reliably in both development and
 production environments.
+
+---
+
+## Troubleshooting & Deployment
+
+### Theme Deployment Issues
+
+For comprehensive troubleshooting of theme-related deployment issues, see:
+**[Theme Troubleshooting Guide](./THEME_TROUBLESHOOTING.md)**
+
+This guide covers:
+
+- Theme falls back to default on production
+- CSS variables not applying correctly
+- Build validation failures
+- Performance and caching issues
+- Environment-specific problems
+
+### Quick Deployment Checklist
+
+Before deploying theme-related changes:
+
+1. **Run Full Validation**:
+   ```bash
+   npm run lint
+   npm run spec
+   npm run validate-themes
+   ```
+
+2. **Test Build Process**:
+   ```bash
+   npm run build
+   # Should show: 🎉 [ThemeValidator] All theme validations passed!
+   ```
+
+3. **Verify Theme Assets**:
+   - Check `dist/assets/app-[hash].css` contains all themes
+   - Confirm HTML files reference CSS correctly
+   - Test all theme URLs in development
+
+4. **Test Theme Functionality**:
+   - Theme switching works in Style Editor
+   - Page Theme Manager applies themes correctly
+   - localStorage persistence functions
+   - All themes work across different pages
+
+### Common Deployment Fixes
+
+**CSS Not Loading on Server:**
+
+- Verify `vite.config.ts` `base` path matches server structure
+- Check server serves CSS files with correct MIME types
+- Ensure no path rewriting rules interfere with asset loading
+
+**Theme Falls Back to Default:**
+
+- Confirm ThemeProvider wraps route components
+- Check console for theme resolution logs
+- Verify theme CSS selectors are present in build output
+
+**Performance Issues:**
+
+- Check CSS bundle size (should be ~68KB gzipped)
+- Verify theme switching is instant (no network requests)
+- Ensure proper caching headers for CSS files
+
+For detailed debugging steps and advanced troubleshooting, refer to the
+[Theme Troubleshooting Guide](./THEME_TROUBLESHOOTING.md).

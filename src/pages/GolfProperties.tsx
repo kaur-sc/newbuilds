@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Container } from '@/components/ui/container';
@@ -9,24 +9,9 @@ import { Head } from 'vite-react-ssg';
 import { useTranslation, Trans } from 'react-i18next';
 import { resolveAsset } from '@/lib/assets';
 import { Gallery } from '@/components/ui/Gallery';
-import { getPageTheme } from '@/lib/pageThemeManager';
-import { applyTheme } from '@/themes/resolver';
-import type { ThemeKey } from '@/themes';
 
 export function GolfProperties() {
   const { t } = useTranslation('costa-blanca');
-
-  // Apply saved theme on page load
-  useEffect(() => {
-    // Check if there's a saved theme for this page
-    const currentPath = window.location.pathname;
-    const savedTheme = getPageTheme(currentPath);
-    
-    if (savedTheme) {
-      console.log(`🎨 Applying saved theme "${savedTheme}" to Golf Properties page`);
-      applyTheme(savedTheme);
-    }
-  }, []);
 
   // Mock data for Navbar/Footer compatibility
   const pageData: LandingPageData = {
