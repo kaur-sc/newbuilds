@@ -35,7 +35,7 @@ export const routes: RouteRecord[] = [
         ), // Default/Home
       },
       {
-        path: 'new-build-golf-properties-costa-blanca',
+        path: 'new-build-golf-properties-costa-blanca/',
         element: (
           <ThemeProvider>
             <GolfProperties />
@@ -43,7 +43,7 @@ export const routes: RouteRecord[] = [
         ),
       },
       {
-        path: 'new-build-golf-properties-costa-blanca-golf-elegant',
+        path: 'new-build-golf-properties-costa-blanca-golf-elegant/',
         element: (
           <ThemeProvider routeTheme="golf-elegant">
             <GolfProperties />
@@ -51,11 +51,11 @@ export const routes: RouteRecord[] = [
         ),
       },
       {
-        path: 'style-editor',
+        path: 'style-editor/',
         element: <StyleEditor />,
       },
       ...developments.map((dev) => ({
-        path: `developments/${dev.id}`,
+        path: `developments/${dev.id}/`,
         element: (
           <ThemeProvider>
             <LandingPage data={dev} />

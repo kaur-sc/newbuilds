@@ -1,12 +1,16 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  # This matches your subdomain path staging.sunnycasas.com/newbuilds/
+
+  # Set the base path for all rewrite rules in this directory.
   RewriteBase /newbuilds/
 
-  # If the browser is asking for a real file (like a .css or .js file), serve it
-  RewriteCond %{REQUEST_FILENAME} -f
+  # 1. Do not apply rules to direct requests for files or directories that already exist.
+  # This is critical for serving your CSS, JS, images, and other assets correctly.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Otherwise, redirect to index.html so React can take over
-  RewriteRule . /newbuilds/index.html [L]
+  # 2. FALLBACK: If no pre-rendered directory/file is found, fall back to the main
+  # index.html to let the React app handle routing. This maintains SPA functionality.
+  RewriteRule . index.html [L]
 </IfModule>
