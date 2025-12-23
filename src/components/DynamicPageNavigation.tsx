@@ -45,40 +45,21 @@ export const DynamicPageNavigation = () => {
         
         if (fullPath === '/') {
           name = 'Home';
-        } else if (fullPath === 'new-build-golf-properties-costa-blanca') {
-          name = 'Golf';
         } else if (fullPath.includes('new-build-golf-properties-costa-blanca')) {
-          // Extract theme from ThemeProvider wrapper
-          const hasThemeProvider = route.element && 
-            route.element.type && 
-            route.element.type.name === 'ThemeProvider' && 
-            route.element.props.routeTheme;
-          if (hasThemeProvider) {
-            const themeName = route.element.props.routeTheme;
-            // Format theme name: "golf-elegant" -> "Golf-Elegant", "midnight" -> "Midnight"
-            name = themeName.split('-').map((part: string) => 
-              part.charAt(0).toUpperCase() + part.slice(1)
-            ).join('-');
+          const themeName = route.element?.props?.routeTheme;
+          if (themeName) {
+            name = themeName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
           } else {
             name = 'Golf';
           }
         } else if (fullPath.includes('style-editor')) {
           name = 'Style Editor';
         } else if (fullPath.includes('developments/')) {
-          // Extract development ID from path
           const devId = fullPath.split('developments/')[1];
-          if (devId) {
-            // Try to get development name from content
-            try {
-              const developments = getAllDevelopments();
-              const dev = developments.find(d => d.id === devId);
-              name = dev?.name || devId?.charAt(0).toUpperCase() + devId?.slice(1) || devId;
-            } catch (error) {
-              name = devId?.charAt(0).toUpperCase() + devId?.slice(1) || devId;
-            }
-          }
+          const developments = getAllDevelopments();
+          const dev = developments.find(d => d.id === devId);
+          name = dev?.name || devId?.charAt(0).toUpperCase() + devId?.slice(1) || devId;
         } else {
-          // Generate name from path
           const parts = fullPath.split('/').filter(Boolean);
           name = parts.map(part => 
             part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' ')

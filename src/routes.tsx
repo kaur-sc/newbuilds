@@ -28,7 +28,11 @@ export const routes: RouteRecord[] = [
     children: [
       {
         index: true,
-        element: <LandingPage data={getDevelopment('sunny-hills')!} />, // Default/Home
+        element: (
+          <ThemeProvider>
+            <LandingPage data={getDevelopment('sunny-hills')!} />
+          </ThemeProvider>
+        ), // Default/Home
       },
       {
         path: 'new-build-golf-properties-costa-blanca',
@@ -52,7 +56,11 @@ export const routes: RouteRecord[] = [
       },
       ...developments.map((dev) => ({
         path: `developments/${dev.id}`,
-        element: <LandingPage data={dev} />,
+        element: (
+          <ThemeProvider>
+            <LandingPage data={dev} />
+          </ThemeProvider>
+        ),
       })),
       {
         path: '*',

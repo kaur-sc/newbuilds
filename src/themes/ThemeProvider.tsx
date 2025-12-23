@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { resolveTheme, applyTheme } from './resolver';
 import { DEFAULT_THEME } from './index';
 import { getPageTheme } from '@/lib/pageThemeManager';
@@ -10,7 +10,7 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children, routeTheme }: ThemeProviderProps) {
-    useEffect(() => {
+    useLayoutEffect(() => {
         console.log(`🎨 [ThemeProvider] Initializing with routeTheme: "${routeTheme}"`);
         
         // Priority: routeTheme > saved theme > default theme
@@ -34,12 +34,7 @@ export function ThemeProvider({ children, routeTheme }: ThemeProviderProps) {
             }
         }
         
-        // Apply theme with a slight delay to ensure DOM is ready
-        const timer = setTimeout(() => {
-            applyTheme(finalThemeKey as any);
-        }, 50);
-        
-        return () => clearTimeout(timer);
+        applyTheme(finalThemeKey as any);
     }, [routeTheme]);
 
     return <>{children}</>;

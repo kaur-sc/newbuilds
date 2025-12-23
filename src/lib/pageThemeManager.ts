@@ -39,32 +39,21 @@ export const extractPagesFromRoutes = (): PageInfo[] => {
     
     if (fullPath === '/') {
       name = 'Home';
-    } else if (fullPath === 'new-build-golf-properties-costa-blanca') {
-      name = 'Golf Properties';
     } else if (fullPath.includes('new-build-golf-properties-costa-blanca')) {
-      // Extract theme from ThemeProvider wrapper
-      const hasThemeProvider = route.element && 
-        route.element.type && 
-        route.element.type.name === 'ThemeProvider' && 
-        route.element.props.routeTheme;
-      if (hasThemeProvider) {
-        const themeName = route.element.props.routeTheme;
-        name = themeName.split('-').map((part: string) => 
-          part.charAt(0).toUpperCase() + part.slice(1)
-        ).join('-');
+      const themeName = route.element?.props?.routeTheme;
+      if (themeName) {
+        name = themeName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
       } else {
         name = 'Golf Properties';
       }
     } else if (fullPath.includes('style-editor')) {
       name = 'Style Editor';
     } else if (fullPath.includes('developments/')) {
-      // Extract development ID from path
       const devId = fullPath.split('developments/')[1];
       if (devId) {
         name = devId.charAt(0).toUpperCase() + devId.slice(1);
       }
     } else {
-      // Generate name from path
       const parts = fullPath.split('/').filter(Boolean);
       name = parts.map(part => 
         part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' ')
@@ -111,19 +100,19 @@ export const getAvailableThemes = () => {
 
 // Helper function to detect if user is currently on the target page
 const isCurrentPage = (pagePath: string): boolean => {
-  const currentPath = window.location.pathname;
+  const currentPath = window.location.pathname.replace(/^\/|\/$/g, '');
   
   console.log(`🎨 [PageThemeManager] Checking if current path "${currentPath}" matches saved path "${pagePath}"`);
+  
+  // Handle root path
+  if (pagePath === '/' && currentPath === '') {
+    console.log(`🎨 [PageThemeManager] Root path match`);
+    return true;
+  }
   
   // Exact match
   if (currentPath === pagePath) {
     console.log(`🎨 [PageThemeManager] Exact match found`);
-    return true;
-  }
-  
-  // Handle root path
-  if (pagePath === '/' && currentPath === '/') {
-    console.log(`🎨 [PageThemeManager] Root path match`);
     return true;
   }
   
@@ -158,13 +147,6 @@ export const applyThemeToPage = (pagePath: string, themeId: ThemeKey): void => {
   if (isCurrentPage(pagePath)) {
     applyTheme(themeId);
     console.log(`✅ Applied theme "${themeId}" to current page "${pagePath}"`);
-    
-    // Force a re-render to ensure theme is applied
-    setTimeout(() => {
-      document.body.style.display = 'none';
-      document.body.offsetHeight; // Force reflow
-      document.body.style.display = '';
-    }, 100);
   } else {
     console.log(`📝 Assigned theme "${themeId}" to "${pagePath}" (navigate to see effect)`);
   }
@@ -182,7 +164,8 @@ export const getPageThemeAssignments = (): PageThemeAssignment[] => {
 
 // Get theme for a specific page
 export const getPageTheme = (pagePath: string): ThemeKey | undefined => {
+  const normalizedPath = pagePath.startsWith('/') ? pagePath.substring(1) : pagePath;
   const assignments = getPageThemeAssignments();
-  const assignment = assignments.find(a => a.pagePath === pagePath);
+  const assignment = assignments.find(a => a.pagePath === normalizedPath);
   return assignment?.themeId;
 };

@@ -1,6 +1,6 @@
 import { ViteReactSSG } from 'vite-react-ssg'
 import { routes } from './routes'
-import './i18n'; // Import and initialize i18n
+import { i18nPromise } from './i18n'; // Import and initialize i18n
 import './spec/themes' // Import all theme CSS for production bundling
 import './index.css'
 
@@ -12,7 +12,9 @@ export const createApp = ViteReactSSG(
 // we need to manually trigger the app mount.
 // The SSG process calls `createApp` directly.
 if (!import.meta.env.SSR) {
-  createApp()
+  i18nPromise.then(() => {
+    createApp()
+  })
 }
 
 export default createApp;
