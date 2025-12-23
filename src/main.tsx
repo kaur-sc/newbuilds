@@ -4,7 +4,7 @@ import { i18nPromise } from './i18n'; // Import and initialize i18n
 import './spec/themes' // Import all theme CSS for production bundling
 import './index.css'
 
-export const createApp = ViteReactSSG(
+export const createRoot = ViteReactSSG(
   { routes, basename: import.meta.env.BASE_URL }
 )
 
@@ -13,8 +13,8 @@ export const createApp = ViteReactSSG(
 // The SSG process calls `createApp` directly.
 if (!import.meta.env.SSR) {
   i18nPromise.then(() => {
-    createApp()
+    createRoot()
   })
 }
 
-export default createApp;
+export default createRoot;

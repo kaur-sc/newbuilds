@@ -5,7 +5,7 @@ import { HeroSection } from "@/sections/Hero";
 import { FeaturesSection } from "@/sections/Features";
 import { ContactSection } from "@/sections/Contact";
 import { Head } from 'vite-react-ssg';
-import React from "react";
+
 
 interface LandingPageProps {
   data: LandingPageData;

@@ -1,34 +1,27 @@
 {
   "name": "newbuilds",
-  "private": true,
   "version": "0.1.0",
-  "type": "module",
-  "author": "Kaur Martin",
+  "private": true,
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kaurmartin/newbuilds.git"
-  },
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite-react-ssg build && node scripts/validate-themes.js",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "spec": "node scripts/validate.js",
-    "validate-themes": "node scripts/validate-themes.js"
+    "serve": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "@types/js-yaml": "^4.0.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "cva": "^0.0.0",
+    "cva": "0.0.0",
     "framer-motion": "^12.23.26",
     "i18next": "^25.7.3",
     "i18next-http-backend": "^3.0.2",
     "js-yaml": "^4.1.1",
     "lucide-react": "^0.562.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-helmet-async": "^1.3.0",
     "react-i18next": "^16.5.0",
     "react-router-dom": "^6.30.2",
@@ -39,8 +32,8 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
-    "@types/react": "^19.2.5",
-    "@types/react-dom": "^19.2.3",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^5.1.1",
     "ajv": "^8.17.1",
     "autoprefixer": "^10.4.23",

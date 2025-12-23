@@ -1,16 +1,16 @@
-import { useLayoutEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { resolveTheme, applyTheme } from './resolver';
 import { DEFAULT_THEME } from './index';
 import { getPageTheme } from '@/lib/pageThemeManager';
 
 interface ThemeProviderProps {
-    children: React.ReactNode;
+    children: ReactNode;
     // Route metadata can be passed as prop
     routeTheme?: string;
 }
 
 export function ThemeProvider({ children, routeTheme }: ThemeProviderProps) {
-    useLayoutEffect(() => {
+    useEffect(() => {
         console.log(`🎨 [ThemeProvider] Initializing with routeTheme: "${routeTheme}"`);
         
         // Priority: routeTheme > saved theme > default theme

@@ -24,7 +24,7 @@
         "href": "#features",
         "variant": "primary"
       },
-      "media": "../assets/golf.jpg"
+      "media": "/assets/golf.jpg"
     },
     {
       "id": "features",

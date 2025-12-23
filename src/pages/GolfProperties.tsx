@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Container } from '@/components/ui/container';
@@ -243,7 +243,7 @@ export function GolfProperties() {
 }
 
 // Sub-components for this page
-function KeyPoint({ text, icon, light = false }: { text: string, icon?: React.ReactNode, light?: boolean }) {
+function KeyPoint({ text, icon, light = false }: { text: string, icon?: ReactNode, light?: boolean }) {
     return (
         <div className="flex items-start gap-3">
              <div className={`mt-1 min-w-5 ${light ? 'text-accent' : 'text-primary'}`}>
@@ -254,7 +254,7 @@ function KeyPoint({ text, icon, light = false }: { text: string, icon?: React.Re
     )
 }
 
-function Card({ title, description, icon }: { title: string, description: string, icon: React.ReactNode }) {
+function Card({ title, description, icon }: { title: string, description: string, icon: ReactNode }) {
     return (
         <div className="bg-muted p-8 rounded-2xl border border-border transition-shadow duration-300">
             <div className="h-12 w-12 bg-card rounded-xl flex items-center justify-center mb-6">

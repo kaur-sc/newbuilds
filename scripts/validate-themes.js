@@ -7,11 +7,32 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Read the generated CSS file to validate theme inclusion
-const cssPath = path.join(__dirname, '../dist/assets/app-D5iOcJNX.css');
-const htmlPath = path.join(__dirname, '../dist/new-build-golf-properties-costa-blanca.html');
+// Function to find the CSS file in the dist/assets directory
+const findCssFile = () => {
+    const assetsDir = path.join(__dirname, '../dist/assets');
+    if (!fs.existsSync(assetsDir)) {
+        return null;
+    }
+    const files = fs.readdirSync(assetsDir);
+    const cssFile = files.find(file => file.startsWith('app-') && file.endsWith('.css'));
+    return cssFile ? { name: cssFile, path: path.join(assetsDir, cssFile) } : null;
+};
+
+
+const htmlPath = path.join(__dirname, '../dist/new-build-golf-properties-costa-blanca/index.html');
 
 console.log('🔍 [ThemeValidator] Starting theme validation...');
+
+const cssFileInfo = findCssFile();
+
+if (!cssFileInfo) {
+    console.error(`❌ [ThemeValidator] Could not find CSS file in dist/assets`);
+    process.exit(1);
+}
+
+const cssPath = cssFileInfo.path;
+const cssFileName = cssFileInfo.name;
+
 
 // Validate CSS file exists and contains theme markers
 if (fs.existsSync(cssPath)) {
@@ -45,10 +66,12 @@ if (fs.existsSync(cssPath)) {
 if (fs.existsSync(htmlPath)) {
     const htmlContent = fs.readFileSync(htmlPath, 'utf8');
     
-    if (htmlContent.includes('/newbuilds/assets/app-D5iOcJNX.css')) {
+    const expectedCssPathInHtml = path.join('/newbuilds/assets', cssFileName).replace(/\\/g, '/');
+
+    if (htmlContent.includes(expectedCssPathInHtml)) {
         console.log('✅ [ThemeValidator] HTML correctly references CSS with base path');
     } else {
-        console.error('❌ [ThemeValidator] HTML does not reference CSS correctly');
+        console.error(`❌ [ThemeValidator] HTML does not reference CSS correctly. Expected to find ${expectedCssPathInHtml}`);
         process.exit(1);
     }
 } else {
