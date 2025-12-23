@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { Container } from './container';
+import { Container } from '@/components/ui/container';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
@@ -78,69 +78,55 @@ export function Gallery() {
   }, [lightboxOpen, handlePrev, handleNext]);
 
   return (
-    <section className="py-20 md:py-32 bg-white overflow-hidden">
+    <section className="py-20 md:py-32 overflow-hidden">
       <Container>
         <div className="text-center mb-12">
           <h2 className="h2 mb-6">
             {t('gallery.title')}
           </h2>
           
-          <div className="inline-flex p-1 bg-slate-100 rounded-xl mb-8">
+          <div className="gallery-tab-container mb-8">
             <button
               onClick={() => handleTabChange('photos')}
-              className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                activeTab === 'photos'
-                  ? 'bg-white text-emerald-600'
-                  : 'text-slate-500 hover:text-slate-700'
-              }`}
+              className={`gallery-tab ${activeTab === 'photos' ? 'active' : ''}`}
             >
               {t('gallery.tabs.photos')}
             </button>
             <button
               onClick={() => handleTabChange('plans')}
-              className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                activeTab === 'plans'
-                  ? 'bg-white text-emerald-600'
-                  : 'text-slate-500 hover:text-slate-700'
-              }`}
+              className={`gallery-tab ${activeTab === 'plans' ? 'active' : ''}`}
             >
               {t('gallery.tabs.plans')}
             </button>
           </div>
         </div>
 
-        {/* Carousel / Multi-image Grid */}
+        {/* Modern Grid Layout */}
         <div className="relative group">
-          <div className="flex gap-4 overflow-x-auto pb-8 scrollbar-hide snap-x no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-8">
             {activeContent.map((item, index) => (
               <motion.div
                 key={index}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex-none w-[85%] md:w-[45%] lg:w-[30%] snap-center cursor-pointer relative"
+                className="relative cursor-pointer"
                 onClick={() => handleOpenLightbox(index)}
               >
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100 relative group/item">
+                <div className="w-[120%] aspect-[4/3] rounded-2xl overflow-hidden border border-border relative group/item -ml-[10%]">
                   <img
                     src={item.src}
                     alt={item.alt}
                     className="w-full h-full object-cover transform transition-transform duration-700 group-hover/item:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover/item:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover/item:opacity-100">
-                    <Maximize2 className="text-white w-10 h-10" />
+                    <Maximize2 className="text-background w-10 h-10" />
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
           
-          {/* Visual indicators for carousel */}
-          <div className="flex justify-center gap-2 mt-4 md:hidden">
-              {activeContent.map((_, idx) => (
-                  <div key={idx} className="w-1.5 h-1.5 rounded-full bg-slate-200" />
-              ))}
-          </div>
         </div>
       </Container>
 
@@ -151,20 +137,20 @@ export function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center select-none"
+            className="fixed inset-0 z-[100] bg-background/95 flex flex-col items-center select-none text-foreground"
           >
             {/* Top Bar with Tab Switcher */}
-            <div className="w-full flex items-center justify-between p-4 md:p-6 text-white bg-black/50 backdrop-blur-md border-b border-white/10">
+            <div className="w-full flex items-center justify-between p-4 md:p-6 backdrop-blur-md border-b border-border">
                 <div className="flex gap-4 md:gap-8">
                     <button
                         onClick={() => handleTabChange('photos')}
-                        className={`text-sm md:text-base font-medium transition-colors ${activeTab === 'photos' ? 'text-emerald-400 border-b-2 border-emerald-400 pb-1' : 'text-gray-400 hover:text-white'}`}
+                        className={`gallery-tab ${activeTab === 'photos' ? 'active' : ''}`}
                     >
                         {t('gallery.tabs.photos')}
                     </button>
                     <button
                         onClick={() => handleTabChange('plans')}
-                        className={`text-sm md:text-base font-medium transition-colors ${activeTab === 'plans' ? 'text-emerald-400 border-b-2 border-emerald-400 pb-1' : 'text-gray-400 hover:text-white'}`}
+                        className={`gallery-tab ${activeTab === 'plans' ? 'active' : ''}`}
                     >
                         {t('gallery.tabs.plans')}
                     </button>
@@ -172,7 +158,7 @@ export function Gallery() {
                 
                 <button 
                   onClick={handleCloseLightbox}
-                  className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                  className="btn-ghost"
                 >
                     <X className="w-6 h-6 md:w-8 md:h-8" />
                 </button>
@@ -182,7 +168,7 @@ export function Gallery() {
             <div className="flex-1 w-full flex items-center justify-between px-4 md:px-12 relative overflow-hidden">
                 <button 
                   onClick={handlePrev}
-                  className="hidden md:flex p-3 bg-white/5 hover:bg-white/10 rounded-full text-white transition-all transform hover:scale-110"
+                  className="hidden md:flex btn-ghost"
                 >
                     <ChevronLeft className="w-8 h-8" />
                 </button>
@@ -204,30 +190,30 @@ export function Gallery() {
 
                 <button 
                   onClick={handleNext}
-                  className="hidden md:flex p-3 bg-white/5 hover:bg-white/10 rounded-full text-white transition-all transform hover:scale-110"
+                  className="hidden md:flex btn-ghost"
                 >
                     <ChevronRight className="w-8 h-8" />
                 </button>
                 
                 {/* Mobile Arrows */}
                 <div className="absolute inset-x-0 bottom-4 flex justify-between px-4 md:hidden">
-                    <button onClick={handlePrev} className="p-2 bg-black/40 rounded-full text-white"><ChevronLeft className="w-6 h-6" /></button>
-                    <button onClick={handleNext} className="p-2 bg-black/40 rounded-full text-white"><ChevronRight className="w-6 h-6" /></button>
+                    <button onClick={handlePrev} className="btn-ghost"><ChevronLeft className="w-6 h-6" /></button>
+                    <button onClick={handleNext} className="btn-ghost"><ChevronRight className="w-6 h-6" /></button>
                 </div>
             </div>
 
             {/* Bottom Thumbnail Strip */}
-            <div className="w-full h-24 md:h-32 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 md:p-4 gap-2 md:gap-4 overflow-x-auto border-t border-white/10">
+            <div className="w-full h-24 md:h-32 backdrop-blur-md flex items-center justify-center p-2 md:p-4 gap-2 md:gap-4 overflow-x-auto bg-background/80 border-t border-border">
                 {activeContent.map((item, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
                         className={`relative flex-none h-full aspect-square rounded-md overflow-hidden transition-all duration-300 ${
-                            currentIndex === index ? 'ring-2 ring-emerald-500 scale-110 z-10' : 'opacity-40 hover:opacity-100 scale-100'
+                            currentIndex === index ? 'ring-2 ring-primary scale-110 z-10' : 'opacity-40 hover:opacity-100 scale-100'
                         }`}
                     >
                         <img src={item.src} className="w-full h-full object-cover" alt={`Thumb ${index}`} />
-                        {currentIndex === index && <div className="absolute inset-0 bg-emerald-500/10" />}
+                        {currentIndex === index && <div className="absolute inset-0 bg-primary/10" />}
                     </button>
                 ))}
             </div>

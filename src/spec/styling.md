@@ -340,15 +340,7 @@ export default function FixedThemePage() {
   );
 }
 
-// Route configuration in routes.tsx
-{
-  path: "new-build-golf-properties-costa-blanca-golf-elegant",
-  element: (
-    <ThemeProvider routeTheme="golf-elegant">
-      <GolfProperties />
-    </ThemeProvider>
-  )
-}
+
 ```
 
 ### Pattern 4: Header/Navigation Components

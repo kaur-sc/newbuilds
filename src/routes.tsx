@@ -1,7 +1,8 @@
 import type { RouteRecord } from 'vite-react-ssg'
 import { LandingPage } from '@/pages/LandingPage'
-import { GolfProperties } from '@/pages/GolfProperties'
+import { GolfPropertiesModern } from '@/pages/GolfPropertiesModern'
 import { StyleEditor } from '@/style-editor'
+import { GolfPropertiesNewLayout } from '@/pages/GolfPropertiesNewLayout'
 import { getAllDevelopments, getDevelopment } from '@/lib/content'
 import { DynamicPageNavigation } from '@/components/DynamicPageNavigation'
 import { ThemeProvider } from '@/themes/ThemeProvider'
@@ -31,24 +32,24 @@ export const routes: RouteRecord[] = [
         element: <LandingPage data={getDevelopment('sunny-hills')!} />, // Default/Home
       },
       {
-        path: 'new-build-golf-properties-costa-blanca/',
+        path: 'new-build-golf-properties-costa-blanca-modern/',
         element: (
           <ThemeProvider>
-            <GolfProperties />
-          </ThemeProvider>
-        ),
-      },
-      {
-        path: 'new-build-golf-properties-costa-blanca-golf-elegant/',
-        element: (
-          <ThemeProvider routeTheme="golf-elegant">
-            <GolfProperties />
+            <GolfPropertiesModern />
           </ThemeProvider>
         ),
       },
       {
         path: 'style-editor/',
         element: <StyleEditor />,
+      },
+      {
+        path: 'golf-properties-new-layout/',
+        element: (
+          <ThemeProvider>
+            <GolfPropertiesNewLayout />
+          </ThemeProvider>
+        ),
       },
       ...developments.map((dev) => ({
         path: `developments/${dev.id}/`,

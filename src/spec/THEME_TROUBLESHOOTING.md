@@ -62,17 +62,7 @@ This issue is often caused by a race condition within the `ThemeProvider`'s stat
 
 **Solution:**
 
-```typescript
-// Correct route configuration
-{
-  path: 'new-build-golf-properties-costa-blanca-golf-elegant',
-  element: (
-    <ThemeProvider routeTheme="golf-elegant">
-      <GolfProperties />
-    </ThemeProvider>
-  ),
-}
-```
+```typescript```
 
 #### Issue: localStorage Theme Not Persisting
 
@@ -263,7 +253,6 @@ node scripts/validate-themes.js
 ```bash
 # 1. Test all theme URLs
 - /new-build-golf-properties-costa-blanca (golf theme)
-- /new-build-golf-properties-costa-blanca-golf-elegant (golf-elegant theme)
 
 # 2. Check browser console for errors
 # Look for theme-related logs and errors
