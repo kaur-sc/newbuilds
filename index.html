@@ -5,8 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Newbuilds</title>
-    <script>
-      console.log("DEBUG: index.html loaded");
+    <script id="theme-loader">
+      // This script runs synchronously before the page renders to prevent FOUC.
+      (function () {
+        try {
+          // 1. Determine the base path for localStorage key consistency.
+          // In production, paths are like '/newbuilds/page', so we need '/newbuilds/'.
+          // In development, it's just '/'.
+          const base = window.location.pathname.startsWith('/newbuilds/') ? '/newbuilds' : '';
+          const path = window.location.pathname.substring(base.length);
+          const themeKey = `theme:${path}`;
+
+          // 2. Get the saved theme from localStorage.
+          const savedTheme = localStorage.getItem(themeKey);
+
+          // 3. Apply the theme or fallback to a default.
+          const themeToApply = savedTheme || 'golf'; // Fallback to 'golf' if no theme is set
+          document.documentElement.setAttribute('data-theme', themeToApply);
+        } catch (e) {
+          // In case of any error (e.g., localStorage access denied), fallback gracefully.
+          document.documentElement.setAttribute('data-theme', 'golf');
+        }
+      })();
     </script>
   </head>
   <body>

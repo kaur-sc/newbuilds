@@ -1,5 +1,6 @@
 import { ViteReactSSG } from 'vite-react-ssg'
 import { routes } from './routes'
+import './spec/themes' // Import all theme CSS for production bundling
 import './index.css'
 import { i18nPromise } from './i18n'
 import { applyTheme, DEFAULT_THEME } from './themes'

@@ -39,17 +39,6 @@ interface PageProps {
 }
 
 export function PageName({/* props */}: PageProps) {
-    // Apply saved theme on page load
-    useEffect(() => {
-        const currentPath = window.location.pathname;
-        const savedTheme = getPageTheme(currentPath);
-
-        if (savedTheme) {
-            console.log(`🎨 Applying saved theme "${savedTheme}" to PageName`);
-            applyTheme(savedTheme);
-        }
-    }, []);
-
     return (
         <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
             <Head>
@@ -173,7 +162,7 @@ import { Footer } from "@/components/layout/Footer";
 
 ### New Page Checklist
 
-- [ ] Page component created with useEffect theme detection
+- [ ] Page component created using the template
 - [ ] Route added to src/routes.tsx
 - [ ] All styled elements use theme classes
 - [ ] No inline styles or CSS variable injection
@@ -182,6 +171,7 @@ import { Footer } from "@/components/layout/Footer";
 - [ ] Cross-theme compatibility verified
 - [ ] Mobile responsive design tested
 - [ ] SEO meta tags implemented
+- [ ] No `useEffect` for theme application (handled by `index.html` script)
 
 ---
 
@@ -194,7 +184,7 @@ across all pages.
 
 ### Step 1: Define Theme Configuration
 
-**File**: `src/themes/index.ts`
+**File**: `src/themes/definitions.ts` (or similar config file)
 
 **Add to themes object**:
 
@@ -854,12 +844,7 @@ export type ThemeKey = "golf" | "golf-elegant" | "midnight" | "new-theme";
 
 ### New Theme Checklist
 
-- [ ] Theme configuration added to src/themes/index.ts
-- [ ] Theme CSS file created with all variables and classes
-- [ ] Theme CSS imported in style-editor/index.tsx
-- [ ] Type definitions updated with new theme key
-- [ ] All theme classes defined in CSS
-- [ ] Mobile responsive variants included
+- [ ] Theme CSS file placed in `src/styles/` to be auto-bundled
 - [ ] Header background variables defined
 - [ ] Style Editor integration tested
 - [ ] Page theme switching tested
@@ -1246,13 +1231,7 @@ import type { ElementConfig, ElementMap, ThemeConfig } from "@/themes";
 
 ```tsx
 export function ComponentName() {
-    useEffect(() => {
-        const savedTheme = getPageTheme(window.location.pathname);
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        }
-    }, []);
-
+    // The theme is applied by a script in index.html before this component renders.
     return (
         <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
             {/* Content using theme classes only */}
@@ -1284,19 +1263,11 @@ export function SectionName({ data }: SectionProps) {
 
 ❌ **NEVER do this**:
 
-- Use inline styles: `style={{ color: 'red' }}`
-- Use Tailwind for theming: `className="bg-blue-600 text-white"`
-- Rely on tag selectors: `<h1>` without theme class
-- Skip theme detection: No useEffect for saved themes
-- Hardcode colors: Use CSS variables instead
+- Use `useEffect` for theme application: `useEffect(() => { applyTheme(...) })`
 
 ✅ **ALWAYS do this**:
 
-- Use theme classes: `className="h1 btn-primary"`
-- Include theme detection: Add useEffect hook
-- Follow responsive patterns: Use theme CSS media queries
-- Maintain type safety: Use proper TypeScript types
-- Test integration: Verify Page Theme Manager works
+- Rely on the synchronous `index.html` script for initial theme load.
 
 ### File Location Rules
 
@@ -1346,10 +1317,7 @@ Do not consider work complete until:
 
 **Development**:
 
-- [ ] Page component created with useEffect theme detection
-- [ ] All styled elements use theme classes
-- [ ] No inline styles or CSS variable injection
-- [ ] Semantic HTML5 elements used
+- [ ] Page component created using the template
 - [ ] Route configuration added
 - [ ] SEO meta tags implemented
 
@@ -1376,20 +1344,9 @@ Do not consider work complete until:
 **Pre-Development**:
 
 - [ ] Color palette defined
-- [ ] Typography scales planned
-- [ ] Component styles identified
-- [ ] Responsive requirements established
-- [ ] Cross-theme compatibility planned
+- [ ] Typography scales planned **Development**:
 
-**Development**:
-
-- [ ] Theme configuration added to index.ts
 - [ ] CSS file created with all variables
-- [ ] Theme classes implemented for all elements
-- [ ] Mobile responsive variants included
-- [ ] Header background variables defined
-- [ ] CSS imported in Style Editor
-- [ ] Type definitions updated
 
 **Testing**:
 
