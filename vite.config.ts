@@ -15,6 +15,9 @@ export default defineConfig(({ command }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
+    ssr: {
+      noExternal: ['lucide-react'],
+    },
     ssgOptions: {
       script: 'async',
       formatting: 'minify',

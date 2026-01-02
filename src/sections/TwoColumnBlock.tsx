@@ -23,7 +23,7 @@ export function TwoColumnBlock({ data, namespace }: TwoColumnBlockProps) {
       <div className="two-column-image flex-1 relative overflow-hidden min-h-[400px] md:min-h-[600px]">
         {data.media ? (
           <img
-            src={resolveAsset(data.media)}
+            src={data.media}
             alt={t(`${data.id}.title`)}
             className="absolute inset-0 w-full h-full object-cover"
           />
