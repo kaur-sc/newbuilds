@@ -537,7 +537,7 @@ span {
     --nav-mobile-gap: clamp(0.75rem, 2vw, 1rem);
 }
 
-.nav-desktop {
+.nav-desktop  {
     display: flex;
     align-items: center;
     gap: var(--nav-gap);
