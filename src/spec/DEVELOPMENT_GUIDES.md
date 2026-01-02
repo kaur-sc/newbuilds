@@ -1516,56 +1516,72 @@ This causes a "flash of unstyled content".
 - Use inline styles (`style={{...}}`) or Tailwind classes (`bg-blue-500`) for
   styling. **Always use theme classes.**
 
-### Asset Handling Guidelines
+### Asset Handling Guide
 
-- **Always use resolveAsset()** for all images:
-  `resolveAsset('/assets/filename.ext')`
-- **Import processed assets** from `src/assets/` when optimization is needed
-- **Never use direct paths**: Don't bypass the asset resolution system
-- **Never use relative paths**: Always use resolveAsset for consistent behavior
+> [!CRITICAL]
+> **This is a mandatory rule.** All static assets like images, videos, or documents
+> referenced in your components **MUST** use the `resolveAsset()` helper function.
+> Failure to do so **WILL** result in broken links on the staging and production
+> servers.
 
-### Asset Management Workflow
+#### Why is this mandatory?
 
-1. **Add new images** to `/public/assets/` folder
-2. **Use resolveAsset()** in components for consistent path handling
-3. **Test locally** to verify images load correctly
-4. **Test production build** to ensure paths work on external server
+The production application is served from a sub-directory (`/newbuilds/`). This
+means that a path like `/assets/image.jpg` will incorrectly point to the
+domain root instead of `/newbuilds/assets/image.jpg`.
 
-### Common Image Pitfalls to Avoid
+The `resolveAsset()` function automatically handles this by prepending the
+correct base path (`/newbuilds/` in production, `/` in development), ensuring
+asset paths work in all environments.
 
-- ❌ **Relative paths**: `../assets/image.jpg` breaks in production
-- ❌ **Wrong imports**: Importing from `/public/` instead of `src/`
-- ❌ **Hardcoded paths**: Not using asset management system
-- ❌ **Missing mapping**: Forgetting to use resolveAsset for new assets
+#### Asset Management Workflow
 
-### Image Implementation Examples
+1.  **Place new assets** in the `/public/assets/` directory. Create sub-folders
+    for organization (e.g., `/public/assets/developments/`).
+2.  **Reference assets in code** using the `resolveAsset()` function. Pass the
+    path starting from the `public` directory (e.g.,
+    `resolveAsset('/assets/golf.jpg')`).
+3.  **For assets requiring optimization** (e.g., bundling, processing), place them
+    in `src/assets/` and import them directly into your TypeScript files.
+
+#### Image Implementation Examples
 
 ```tsx
-// ✅ CORRECT: Public assets with resolveAsset
+// ✅ CORRECT: Using resolveAsset for a public asset.
+// This is the MANDATORY approach for most static images.
 import { resolveAsset } from '@/lib/assets';
 
-const galleryImages = [
-    {
-        src: resolveAsset("/assets/lvb/lvb-01-3d.jpg"),
-        alt: "Description",
-    },
-    {
-        src: resolveAsset("/assets/lvb/lvb-02-3d.jpg"),
-        alt: "Description",
-    },
-    // ... more images
-];
+function MyComponent() {
+  const imageUrl = resolveAsset('/assets/golf.jpg');
+  return <img src={imageUrl} alt="A beautiful golf course." />;
+}
 
-// ✅ CORRECT: Imported assets when processing is needed
-import optimizedImage from '@/assets/golf.jpg';
-<img src={optimizedImage} alt="Description" />
+// ✅ CORRECT: Importing an asset that requires build-time processing.
+import optimizedImage from '@/assets/react.svg';
 
-// ❌ WRONG: Direct absolute paths bypass asset resolution
-<img src="/assets/lvb/lvb-13-3d.jpg" alt="Description" />
+function AnotherComponent() {
+  return <img src={optimizedImage} alt="React Logo" />;
+}
 
-// ❌ WRONG: Relative paths break in production
-<img src="../assets/lvb/lvb-13-3d.jpg" alt="Description" />
+// ❌ WRONG: Direct, hardcoded absolute path.
+// This WILL FAIL in production.
+function BrokenComponent() {
+  return <img src="/assets/golf.jpg" alt="This image will be broken." />;
+}
+
+// ❌ WRONG: Relative path.
+// This is unreliable and will likely fail depending on the page route.
+function AlsoBroken() {
+  return <img src="../assets/golf.jpg" alt="This is also broken." />;
+}
 ```
+
+#### Quick Checklist for Assets
+
+-   [ ] Is the asset in the `/public/assets/` directory?
+-   [ ] Is the `src` attribute populated by calling `resolveAsset('/path/from/public')`?
+-   [ ] Have you verified the image appears correctly in local development?
+-   [ ] Do you understand that following this rule is essential for deployment?
 
 Following these guidelines ensures images work reliably in both development and
 production environments.

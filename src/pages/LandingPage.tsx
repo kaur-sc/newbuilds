@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import type { LandingPageData } from "@/models/landing-page";
+import { resolveAsset } from '@/lib/assets';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroBlock } from "@/sections/HeroBlock";
@@ -28,7 +29,7 @@ export function LandingPage({ data }: LandingPageProps) {
       <Head>
         <title>{data.seo.title}</title>
         <meta name="description" content={data.seo.description} />
-        {data.seo.ogImage && <meta property="og:image" content={data.seo.ogImage} />}
+        {data.seo.ogImage && <meta property="og:image" content={resolveAsset(data.seo.ogImage)} />}
       </Head>
 
       <Navbar data={data} />
@@ -43,7 +44,7 @@ export function LandingPage({ data }: LandingPageProps) {
         <HeroBlock
           data={{
             id: 'hero',
-            media: '/assets/golf.jpg',
+            media: resolveAsset('/assets/golf.jpg'),
             title: 'New Build Golf Properties in Costa Blanca',
             subtitle: 'New-Build Homes Surrounded by Championship Golf & Mediterranean Living',
             cta: { label: 'Contact Agent', href: '#contact' },
@@ -74,7 +75,7 @@ export function LandingPage({ data }: LandingPageProps) {
             title: 'Live where golf, sunshine, and modern comfort come together.',
             subtitle: 'Our hand-picked selection of new-build golf properties in Orihuela Costa offers a rare opportunity to enjoy year-round golfing in one of Spain\'s most established golf destinations.',
             content: 'Whether you are searching for a Mediterranean lifestyle home, a winter golf escape, or a smart lifestyle investment, Orihuela Costa delivers the perfect balance of quality living and long-term appeal.',
-            media: '/assets/golf.jpg'
+            media: resolveAsset('/assets/golf.jpg')
           }}
           namespace={data.id}
         />
@@ -103,7 +104,7 @@ export function LandingPage({ data }: LandingPageProps) {
         <FullWidthImageRightColText
           data={{
             id: 'climate',
-            media: '/assets/lvb/golf-06-s.jpg',
+            media: resolveAsset('/assets/lvb/golf-06-s.jpg'),
             title: 'A Climate Made for Golf & Outdoor Living',
             subtitle: 'One of the strongest reasons buyers choose Orihuela Costa is its Mediterranean climate.'
           }}
@@ -150,7 +151,7 @@ export function LandingPage({ data }: LandingPageProps) {
             title: 'Lifestyle & Investment Appeal Combined',
             subtitle: 'Golf properties in Orihuela Costa are popular with long-stay winter golfers, short-term holiday renters, and lifestyle buyers.',
             content: 'This creates consistent demand without relying on speculative promises. The combination of location and golf infrastructure makes these properties attractive.',
-            media: '/assets/golf.jpg'
+            media: resolveAsset('/assets/golf.jpg')
           }}
           namespace={data.id}
         />
@@ -159,7 +160,7 @@ export function LandingPage({ data }: LandingPageProps) {
         <CallToActionSection
           data={{
             id: 'cta',
-            media: '/assets/golf.jpg',
+            media: resolveAsset('/assets/golf.jpg'),
             title: 'Imagine Your Life Here',
             subtitle: 'Morning coffee on the terrace. A short drive to the first tee. Lunch by the sea. Evenings spent outdoors under warm Mediterranean skies.',
             cta: { label: 'View Collection', href: '#projects' }

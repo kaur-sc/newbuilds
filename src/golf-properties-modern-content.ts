@@ -1,4 +1,5 @@
 import type { LandingPageData } from '@/models/landing-page';
+import { resolveAsset } from '@/lib/assets';
 
 /**
  * Centralized configuration for the GolfPropertiesModern page.
@@ -38,7 +39,7 @@ export const golfPropertiesModernContent = {
    */
   hero: {
     image: {
-      src: '/assets/golf.jpg',
+      src: resolveAsset('/assets/golf.jpg'),
       alt: 'Modern new build villa overlooking a golf course in Costa Blanca',
     },
   },
@@ -61,7 +62,7 @@ export const golfPropertiesModernContent = {
   villas: {
     id: 'villas',
     image: {
-      src: '/assets/lvb/lvb-01-3d.jpg',
+      src: resolveAsset('/assets/lvb/lvb-01-3d.jpg'),
       alt: 'Modern villa interior design concept',
     },
   },
@@ -81,7 +82,7 @@ export const golfPropertiesModernContent = {
   golf: {
     id: 'golf',
     image: {
-      src: '/assets/lvb/golf-06-s.jpg',
+      src: resolveAsset('/assets/lvb/golf-06-s.jpg'),
       alt: 'Golf course at Orihuela Costa',
     },
   },
@@ -116,7 +117,7 @@ export const golfPropertiesModernContent = {
   lifestyle: {
     id: 'lifestyle',
     image: {
-      src: '/assets/lvb/lvb-13-3d.jpg',
+      src: resolveAsset('/assets/lvb/lvb-13-3d.jpg'),
       alt: 'Modern villa design with low-maintenance pool area',
     },
   },

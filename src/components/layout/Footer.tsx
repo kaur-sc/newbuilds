@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import type { LandingPageData } from "@/models/landing-page";
 import { Link, useLocation } from "react-router-dom";
+import { resolveAsset } from "@/lib/assets";
 
 interface FooterProps {
   data: LandingPageData;
@@ -29,7 +30,7 @@ export function Footer({ data }: FooterProps) {
             onClick={handleLogoClick}
           >
             <img 
-              src="/assets/SC-Logo-Horizontal.svg" 
+              src={resolveAsset("/assets/SC-Logo-Horizontal.svg")} 
               alt="Sunny Casas" 
               className="h-8 w-auto"
             />

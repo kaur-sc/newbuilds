@@ -109,7 +109,7 @@ export function CourseGrid({ data, namespace }: CourseGridProps) {
                   />
                 ) : (
                   <img
-                    src="/assets/golf.jpg"
+                    src={resolveAsset("/assets/golf.jpg")}
                     alt={course.title}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
