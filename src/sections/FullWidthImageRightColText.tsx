@@ -32,7 +32,7 @@ export function FullWidthImageRightColText({
         <div className="image-overlay-gradient">
           <div className="full-width-image-content">
             <Container className="h-full flex items-center justify-end">
-              <div className="full-width-image-text-content text-white max-w-[60%] min-h-[70vh] gap-6">
+              <div className="full-width-image-text-content text-white min-h-[70vh] gap-6">
                 <h2 className="h1 text-white">
                   {t(`${data.id}.title`, {
                     defaultValue: data.title,
