@@ -1,0 +1,80 @@
+{
+  "announcement": {
+    "title": "OFFRE EXCLUSIVE | ABONNEMENT DE GOLF OFFERT | DURÉE LIMITÉE"
+  },
+  "nav": {
+    "contact_agent": "Contacter l'Agent",
+    "logo_main": "Sunny Casas",
+    "logo_sub": "Propriétés de Golf"
+  },
+  "hero": {
+    "title": "Une vie digne d'être offerte",
+    "subtitle": "Découvrez le style de vie golfique ultime sur la Costa Blanca. Des propriétés neuves haut de gamme conçues pour une vie raffinée.",
+    "contact_agent": "Contacter l'Agent",
+    "explore": "Explorer les Communautés"
+  },
+  "developments": {
+    "title": "Développements Sélectionnés",
+    "subtitle": "Une sélection des projets neufs les plus prestigieux d'Orihuela Costa.",
+    "items": [
+      {
+        "title": "Vistabella Golf Homes",
+        "description": "Villas et appartements contemporains intégrés dans le paysage luxuriant de Vistabella Golf.",
+        "image": "assets/golf.jpg",
+        "cta": { "label": "Voir le Projet", "href": "/developments/vistabella" }
+      },
+      {
+        "title": "Las Colinas Residences",
+        "description": "Résidences de luxe primées dans une vallée privée, offrant une intimité extrême et un golf de classe mondiale.",
+        "image": "assets/golf.jpg",
+        "cta": { "label": "Voir le Projet", "href": "/developments/las-colinas" }
+      }
+    ]
+  },
+  "lifestyle": {
+    "title": "Le Style de Vie Golfique",
+    "subtitle": "Vivez là où vous jouez. Profitez d'équipements de classe mondiale et de vues imprenables.",
+    "items": [
+      {
+        "title": "Jouer toute l'année",
+        "description": "Avec plus de 300 jours de soleil, vivez votre passion chaque jour de l'année."
+      },
+      {
+        "title": "Équipements de Luxe",
+        "description": "Accès à des club-houses exclusifs, des spas et une cuisine raffinée à votre porte."
+      },
+      {
+        "title": "Valeur d'Investissement",
+        "description": "Les propriétés de golf sur la Costa Blanca maintiennent une forte demande et une excellente plus-value."
+      }
+    ]
+  },
+  "courses": {
+    "title": "Parcours de Golf de Premier Plan",
+    "subtitle": "Explorez les cinq parcours légendaires entourant votre nouvelle maison.",
+    "items": [
+      {
+        "title": "Las Colinas Golf",
+        "description": "Parcours de championnat conçu par Cabell B. Robinson dans une vallée naturelle.",
+        "image": "assets/golf.jpg"
+      },
+      {
+        "title": "Villamartin Golf",
+        "description": "L'un des parcours les plus établis et emblématiques de la côte.",
+        "image": "assets/golf.jpg"
+      },
+      {
+        "title": "Las Ramblas Golf",
+        "description": "Un parcours stimulant avec des paysages spectaculaires et des vues sur la Méditerranée.",
+        "image": "assets/golf.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Prêt pour le Départ ?",
+    "description": "Organisez une visite privée ou demandez notre brochure exclusive dès aujourd'hui.",
+    "cta": {
+      "label": "Contactez nos Experts"
+    }
+  }
+}

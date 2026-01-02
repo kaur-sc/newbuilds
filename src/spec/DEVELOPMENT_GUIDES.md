@@ -11,157 +11,82 @@ components while maintaining system consistency.
 4. [Asset Handling Guide](#asset-handling-guide)
 5. [AI Development Guidelines](#ai-development-guidelines)
 6. [Deployment & Server Configuration](#deployment--server-configuration)
+7. [Master Checklist: Creating a New Subpage](./NEW_PAGE_CHECKLIST.md)
 
 ---
 
 ## New Page Creation Guide
 
-### Overview
+### Standard Method: Spec Kit (JSON-based)
 
-This guide ensures new pages integrate seamlessly with the theme system and
-maintain consistency across the application.
+For all new subpages, use the JSON-based (Spec Kit) approach. This ensures rapid
+development, zero code drift, and perfect integration with the global theme
+system.
 
-### Step 1: Create Page Component
+**Source of Truth**:
+[Master Checklist: Creating a New Subpage](./NEW_PAGE_CHECKLIST.md)
 
-**Location**: `src/pages/[PageName].tsx`
+---
 
-**Template**:
+## Automatic List Population
 
-```tsx
-import React from "react";
+The system is designed with a "One File, Multiple Impacts" philosophy. When you
+add a new JSON file to `src/developments/`, the following elements are updated
+automatically:
 
-interface PageProps {
-    // Define your page props here
-}
+1. **Global Header**: The "Golf Developments" dropdown menu re-scans the
+   directory and adds the new development link using the `name` field from your
+   JSON.
+2. **Style Editor**: The "Select Page" dropdown in the Style Editor
+   automatically includes the new route, allowing you to customize the design
+   immediately.
+3. **Routing**: The page is instantly accessible at `/developments/[id]` (or at
+   the root if configured as the default).
 
-export function PageName({/* props */}: PageProps) {
-    return (
-        <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
-            {/* Page content using theme classes */}
-            <main className="flex-1">
-                {/* Your page content here */}
-            </main>
-        </div>
-    );
-}
+This automation eliminates manual menu maintenance and reduces the risk of
+broken links or missing design controls.
 
-export default PageName;
-```
+---
 
-### Step 2: Add Route Configuration
+## Styling & Theme Compatibility
 
-**Location**: `src/routes.tsx`
+> [!IMPORTANT]
+> To ensure a page responds to the **Style Editor**, do NOT use raw Tailwind
+> size/color classes (e.g., `text-4xl`, `bg-blue-500`) for primary elements. You
+> MUST use the **Theme Classes**.
 
-**Add to routes array**:
+### Typography Classes
 
-```tsx
-import { PageName } from '@/pages/PageName';
+| Class      | Purpose              |
+| :--------- | :------------------- |
+| `.h1`      | Primary heading      |
+| `.h2`      | Secondary heading    |
+| `.h3`      | Tertiary heading     |
+| `.body`    | Standard body text   |
+| `.body-l`  | Large body text      |
+| `.small`   | Small metadata/notes |
+| `.caption` | Captions and labels  |
 
-// Add this route object
-{
-  path: 'page-url-slug',
-  element: <PageName />,
-}
-```
+### Button & Link Classes
 
-**For Fixed Theme Pages**:
+| Class            | Purpose                   |
+| :--------------- | :------------------------ |
+| `.btn-primary`   | Main call to action       |
+| `.btn-secondary` | Secondary action          |
+| `.btn-outline`   | Outlined action           |
+| `.btn-ghost`     | Low-emphasis action       |
+| `.link-std`      | Standard underlined link  |
+| `.link-bold`     | Bold, non-underlined link |
 
-```tsx
-{
-  path: 'page-url-slug-with-theme',
-  element: (
-    <ThemeProvider routeTheme="golf-elegant">
-      <PageName />
-    </ThemeProvider>
-  ),
-}
-```
-
-### Step 3: Use Theme Classes Throughout
-
-**Typography**:
+### Usage Example
 
 ```tsx
-<h1 className="h1">Page Title</h1>
-<h2 className="h2">Section Title</h2>
-<h3 className="h3">Subsection Title</h3>
-<p className="body">Body paragraph text</p>
-<small className="small">Small text</small>
-<div className="caption">Caption text</div>
+<h1 className="h1">Modern Villas</h1>
+<p className="body-l">Experience luxury in Costa Blanca.</p>
+<button className="btn-primary">Book a Visit</button>
 ```
 
-**Buttons**:
-
-```tsx
-<button className="btn-primary">Primary Action</button>
-<button className="btn-secondary">Secondary Action</button>
-<button className="btn-outline">Outline Action</button>
-<button className="btn-ghost">Ghost Action</button>
-```
-
-**Colors and Layout**:
-
-```tsx
-<div className="bg-background text-foreground">Main container</div>
-<div className="bg-card border-border">Card component</div>
-<p className="text-muted-foreground">Muted text</p>
-<a className="text-primary">Primary link</a>
-```
-
-### Step 4: Test Integration
-
-**1. Theme Switching Test**:
-
-- Navigate to Style Editor → Page Theme Manager
-- Find your new page in the dropdown
-- Apply different themes
-- Verify immediate visual changes
-
-**2. Theme Persistence Test**:
-
-- Apply a theme to your page
-- Refresh the browser (F5)
-- Verify theme persists and is applied correctly
-
-**3. Cross-Theme Test**:
-
-- Test with all available themes (golf, golf-elegant, midnight)
-- Ensure all styling works correctly
-- Check responsive behavior on mobile/tablet/desktop
-
-### Step 5: Navigation Integration
-
-If page needs navigation components:
-
-**Include Navbar**:
-
-```tsx
-import { Navbar } from "@/components/layout/Navbar";
-
-// In your page component
-<Navbar data={pageData} />;
-```
-
-**Include Footer**:
-
-```tsx
-import { Footer } from "@/components/layout/Footer";
-
-// In your page component
-<Footer data={pageData} />;
-```
-
-### New Page Checklist
-
-- [ ] Page component created using the template
-- [ ] Route added to src/routes.tsx
-- [ ] All styled elements use theme classes
-- [ ] No inline styles or CSS variable injection
-- [ ] Page Theme Manager integration tested
-- [ ] Theme persistence tested
-- [ ] Cross-theme compatibility verified
-- [ ] Mobile responsive design tested
-- [ ] SEO meta tags implemented
+---
 
 ---
 
@@ -169,21 +94,30 @@ import { Footer } from "@/components/layout/Footer";
 
 ### Overview
 
-This guide explains how to correctly apply themes to pages using the `ThemeProvider` component. Adhering to these patterns is crucial for preventing bugs like theme flickering or incorrect theme application.
+This guide explains how to correctly apply themes to pages using the
+`ThemeProvider` component. Adhering to these patterns is crucial for preventing
+bugs like theme flickering or incorrect theme application.
 
 ### Core Concept
 
-The `<ThemeProvider>` component is the single source of truth for managing and applying themes across the application. It works by setting a `data-theme` attribute on the `<html>` element, which activates the corresponding theme styles from the global CSS bundle.
+The `<ThemeProvider>` component is the single source of truth for managing and
+applying themes across the application. It works by setting a `data-theme`
+attribute on the `<html>` element, which activates the corresponding theme
+styles from the global CSS bundle.
 
 ### How to Use `ThemeProvider`
 
-There are two ways to apply a theme to a page, both configured in `src/routes.tsx`.
+There are two ways to apply a theme to a page, both configured in
+`src/routes.tsx`.
 
 #### 1. Static Theme Assignment (For most pages)
 
-If a page should **always** use a specific theme, assign it directly in the routing configuration using the `routeTheme` prop. This is the most common and recommended approach.
+If a page should **always** use a specific theme, assign it directly in the
+routing configuration using the `routeTheme` prop. This is the most common and
+recommended approach.
 
 **Example from `src/routes.tsx`**:
+
 ```tsx
 // This route will always render the GolfProperties page with the 'golf-elegant' theme.
 {
@@ -198,15 +132,20 @@ If a page should **always** use a specific theme, assign it directly in the rout
 
 #### 2. Dynamic Theme Assignment
 
-If a page needs to have its theme user-selectable (e.g., via the `PageThemeSelector` component), you should still wrap it in `ThemeProvider` but **omit** the `routeTheme` prop.
+If a page needs to have its theme user-selectable (e.g., via the
+`PageThemeSelector` component), you should still wrap it in `ThemeProvider` but
+**omit** the `routeTheme` prop.
 
 When `routeTheme` is not provided, the `ThemeProvider` will:
-1.  Look for a theme preference for that page in the browser's `localStorage`.
-2.  If none is found, it will fall back to the default theme.
 
-This allows components like the `PageThemeSelector` to dynamically change and persist the theme for that specific page.
+1. Look for a theme preference for that page in the browser's `localStorage`.
+2. If none is found, it will fall back to the default theme.
+
+This allows components like the `PageThemeSelector` to dynamically change and
+persist the theme for that specific page.
 
 **Example from `src/routes.tsx`**:
+
 ```tsx
 // This route allows the LandingPage's theme to be changed by the user.
 {
@@ -221,11 +160,20 @@ This allows components like the `PageThemeSelector` to dynamically change and pe
 
 ### Best Practices to Avoid Issues
 
-1.  **Always Wrap Your Page Component**: Every page defined in `src/routes.tsx` must be wrapped in `<ThemeProvider>`. Forgetting to do so will result in a page with no theme applied.
+1. **Always Wrap Your Page Component**: Every page defined in `src/routes.tsx`
+   must be wrapped in `<ThemeProvider>`. Forgetting to do so will result in a
+   page with no theme applied.
 
-2.  **Choose Static or Dynamic**: Decide upfront if a page's theme should be fixed (`routeTheme="theme-name"`) or user-configurable (omit `routeTheme`).
+2. **Choose Static or Dynamic**: Decide upfront if a page's theme should be
+   fixed (`routeTheme="theme-name"`) or user-configurable (omit `routeTheme`).
 
-3.  **Flickering or Incorrect Themes**: If you encounter issues where a theme appears briefly and then disappears ("flickers"), it is almost always a sign of a problem in how the `ThemeProvider` is implemented or used. Please refer to the **[Theme Troubleshooting Guide](./THEME_TROUBLESHOOTING.md)** for detailed diagnostic steps. Do not attempt to solve these issues with local state or `useEffect` hooks within your page components, as this will lead to further instability.
+3. **Flickering or Incorrect Themes**: If you encounter issues where a theme
+   appears briefly and then disappears ("flickers"), it is almost always a sign
+   of a problem in how the `ThemeProvider` is implemented or used. Please refer
+   to the **[Theme Troubleshooting Guide](./THEME_TROUBLESHOOTING.md)** for
+   detailed diagnostic steps. Do not attempt to solve these issues with local
+   state or `useEffect` hooks within your page components, as this will lead to
+   further instability.
 
 ---
 
@@ -1241,11 +1189,14 @@ codebase to ensure consistency and maintainability.
 
 1. **Theme Classes Only**: Never use inline styles or Tailwind utilities for
    theming
-2. **Semantic HTML**: Use proper HTML5 elements with theme classes
-3. **Responsive via CSS**: Handle mobile/tablet/desktop in theme CSS media
-   queries
-4. **TypeScript Safety**: Maintain type safety across all components
-5. **Consistent Patterns**: Follow existing code patterns exactly
+2. **Fluid Design Only**: ALL sizing MUST use `clamp()` function - no fixed
+   pixels
+3. **Semantic HTML**: Use proper HTML5 elements with theme classes
+4. **Responsive via CSS**: Handle mobile/tablet/desktop in theme CSS media
+   queries (but sizing should be fluid, not breakpoint-based)
+5. **TypeScript Safety**: Maintain type safety across all components
+6. **Consistent Patterns**: Follow existing code patterns exactly +++++++
+   REPLACE
 
 ### Required Imports
 
@@ -1285,6 +1236,276 @@ export function ComponentName() {
     );
 }
 ```
+
+## Fluid Design Implementation Guide
+
+### Overview
+
+This guide ensures all new development uses the mandatory fluid design system
+with `clamp()` functions. This eliminates media query jumps and provides smooth
+scaling across all viewport sizes.
+
+### CRITICAL: Fluid Design Is Mandatory
+
+**ALL new components MUST use fluid sizing**. No exceptions allowed. This
+ensures consistent behavior across the entire application.
+
+### Step 1: Define Fluid CSS Variables
+
+**All new themes MUST include fluid variables**:
+
+```css
+[data-theme="new-theme"] {
+    /* Fluid Typography - MANDATORY */
+    --h1-size: clamp(2.25rem, 5vw, 4.75rem); /* 36px - 76px */
+    --h2-size: clamp(1.875rem, 4vw, 3rem); /* 30px - 48px */
+    --h3-size: clamp(1.5rem, 3vw, 1.875rem); /* 24px - 30px */
+    --body-size: clamp(1rem, 2.5vw, 1.25rem); /* 16px - 20px */
+    --body-l-size: clamp(1.125rem, 3vw, 1.5rem); /* 18px - 24px */
+    --small-size: clamp(0.8rem, 2vw, 0.875rem); /* 12.8px - 14px */
+    --caption-size: clamp(0.6875rem, 1.5vw, 0.75rem); /* 11px - 12px */
+
+    /* Fluid Component Sizing - MANDATORY */
+    --component-gap-small: clamp(0.5rem, 1.5vw, 1rem);
+    --component-gap-medium: clamp(1rem, 2vw, 1.5rem);
+    --component-gap-large: clamp(1.5rem, 3vw, 2rem);
+    --component-border-radius: clamp(0.375rem, 0.75vw, 0.5rem);
+
+    /* Fluid Button Sizing - MANDATORY */
+    --btn-primary-px: clamp(1rem, 3vw, 2rem);
+    --btn-primary-py: clamp(0.5rem, 1.5vw, 0.75rem);
+    --btn-primary-radius: clamp(0.25rem, 0.5vw, 0.5rem);
+
+    /* Fluid Layout Sizing - MANDATORY */
+    --container-padding: clamp(1rem, 5vw, 2rem);
+    --section-padding-y: clamp(2rem, 8vh, 8rem);
+    --section-margin-b: clamp(2rem, 4vw, 3rem);
+}
+```
+
+### Step 2: Component Implementation Pattern
+
+**ALL components MUST use fluid variables**:
+
+```tsx
+// ✅ CORRECT: Use CSS variables for all dimensions
+export function NewComponent({ data }) {
+    return (
+        <section
+            className="new-component"
+            style={{
+                padding: "var(--section-padding-y) 0",
+                marginBottom: "var(--section-margin-b)",
+                gap: "var(--component-gap-medium)",
+            }}
+        >
+            <Container style={{ padding: "var(--container-padding)" }}>
+                <h2
+                    className="h2"
+                    style={{ marginBottom: "var(--component-gap-small)" }}
+                >
+                    {data.title}
+                </h2>
+                <Button
+                    style={{
+                        padding: "var(--btn-primary-py) var(--btn-primary-px)",
+                        borderRadius: "var(--btn-primary-radius)",
+                    }}
+                >
+                    {data.cta}
+                </Button>
+            </Container>
+        </section>
+    );
+}
+
+// ❌ WRONG: Fixed pixel values or media queries
+export function BadComponent({ data }) {
+    return (
+        <section style={{ padding: "4rem 0", marginBottom: "3rem" }}>
+            <Container style={{ padding: "2rem" }}>
+                <h2 className="h2" style={{ marginBottom: "1rem" }}>
+                    {data.title}
+                </h2>
+                <Button style={{ padding: "16px 32px", borderRadius: "8px" }}>
+                    {data.cta}
+                </Button>
+            </Container>
+        </section>
+    );
+}
+```
+
+### Step 3: JavaScript Integration for Dynamic Values
+
+**Components with dynamic behavior MUST parse CSS variables**:
+
+```tsx
+// ✅ CORRECT: Parse CSS variable for numeric values
+import { useImperativeHandle, useRef } from "react";
+
+export function DynamicComponent() {
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    useImperativeHandle(ref, () => ({
+        scrollRight: () => {
+            if (scrollRef.current) {
+                const computedStyle = getComputedStyle(scrollRef.current);
+                const scrollAmount = computedStyle.getPropertyValue(
+                    "--carousel-scroll-amount",
+                );
+                const numericValue = parseFloat(scrollAmount) || 400;
+                scrollRef.current.scrollBy({
+                    left: numericValue,
+                    behavior: "smooth",
+                });
+            }
+        },
+    }));
+
+    return (
+        <div
+            ref={scrollRef}
+            style={{
+                "--carousel-scroll-amount": "clamp(300px, 40vw, 400px)",
+                gap: "var(--carousel-gap)",
+            }}
+        >
+            {/* Content */}
+        </div>
+    );
+}
+
+// ❌ WRONG: Hardcoded numeric values
+export function BadDynamicComponent() {
+    useImperativeHandle(ref, () => ({
+        scrollRight: () => {
+            if (scrollRef.current) {
+                scrollRef.current.scrollBy({
+                    left: 400, // Hardcoded value
+                    behavior: "smooth",
+                });
+            }
+        },
+    }));
+}
+```
+
+### Step 4: Component-Specific Fluid Variables
+
+**For new component types, define specific fluid variables**:
+
+```css
+[data-theme="new-theme"] {
+    /* Hero Section Sizing */
+    --hero-min-height: clamp(60vh, 85vh, 85vh);
+    --hero-button-min-width: clamp(140px, 20vw, 180px);
+    --hero-dropdown-width: clamp(200px, 30vw, 280px);
+    --hero-button-gap: clamp(1rem, 2vw, 1.5rem);
+
+    /* Card Component Sizing */
+    --card-width: clamp(280px, 35vw, 380px);
+    --card-padding: clamp(1.5rem, 3vw, 2rem);
+    --card-gap: clamp(1rem, 2vw, 1.5rem);
+    --card-button-height: clamp(2.5rem, 4vw, 3rem);
+
+    /* Icon Sizing */
+    --icon-xs: clamp(0.75rem, 1.5vw, 1rem);
+    --icon-sm: clamp(1rem, 2vw, 1.25rem);
+    --icon-md: clamp(1.25rem, 2.5vw, 1.5rem);
+    --icon-lg: clamp(1.5rem, 3vw, 2rem);
+}
+```
+
+### Step 5: Responsive Design Without Media Queries
+
+**Use fluid design instead of breakpoint media queries**:
+
+```css
+/* ❌ WRONG: Media query jumps */
+@media (max-width: 768px) {
+    .component {
+        width: 300px;
+        padding: 16px;
+    }
+}
+@media (min-width: 769px) {
+    .component {
+        width: 400px;
+        padding: 24px;
+    }
+}
+
+/* ✅ CORRECT: Fluid scaling */
+.component {
+    width: clamp(280px, 35vw, 380px);
+    padding: clamp(1rem, 3vw, 1.5rem);
+}
+```
+
+### Step 6: Testing Fluid Design
+
+**Test across viewport sizes**:
+
+1. **Resize browser smoothly** - No jumps or breaks
+2. **Test mobile (< 768px)** - Optimal sizing
+3. **Test tablet (768px - 1024px)** - Smooth scaling
+4. **Test desktop (> 1024px)** - Maximum sizes respected
+5. **Test ultra-wide** - Maximum sizes capped correctly
+
+### Fluid Design Quality Checklist
+
+**For all new components, ensure**:
+
+- [ ] **All dimensions use clamp()**: No fixed pixel values
+- [ ] **All spacing uses clamp()**: No fixed gaps or margins
+- [ ] **No media query sizing**: Remove breakpoint-based sizing
+- [ ] **CSS variables defined**: All clamp() values in theme CSS
+- [ ] **Components use variables**: Reference CSS variables, not fixed values
+- [ ] **JavaScript parsing**: Dynamic components parse CSS variables correctly
+- [ ] **Test across viewports**: Smooth scaling from mobile to desktop
+- [ ] **Semantic naming**: Variable names follow component-specific patterns
+
+### Common Fluid Design Mistakes
+
+**Avoid these patterns**:
+
+```tsx
+// ❌ WRONG: Fixed pixels
+<div style={{ width: "300px", height: "400px" }}>
+<button style={{ padding: "16px 24px" }}>
+
+// ❌ WRONG: Media queries for sizing
+@media (max-width: 768px) {
+    .component { width: 280px; }
+}
+
+// ❌ WRONG: Hardcoded JavaScript values
+scrollRef.current.scrollBy({ left: 400 });
+
+// ✅ CORRECT: Fluid design with clamp()
+<div style={{ width: "var(--card-width)", height: "var(--card-button-height)" }}>
+<button style={{ padding: "var(--btn-primary-py) var(--btn-primary-px)" }}>
+
+// ✅ CORRECT: Parse CSS variables
+const scrollAmount = parseFloat(getComputedStyle(element).getPropertyValue('--carousel-scroll-amount')) || 400;
+```
+
+### Migration Checklist for Existing Components
+
+**When updating existing components**:
+
+1. **Identify all fixed values**: Width, height, padding, margin, gap
+2. **Convert to clamp()**: Define appropriate min/max ranges
+3. **Add CSS variables**: Create semantic variable names in all theme files
+4. **Update components**: Replace fixed values with variable references
+5. **Remove media queries**: Delete breakpoint-based sizing overrides
+6. **Update JavaScript**: Parse CSS variables for dynamic behavior
+7. **Test thoroughly**: Verify smooth scaling across all viewports
+
+**This fluid design system is MANDATORY for all new development.** No exceptions
+will be allowed. All components must follow this pattern to ensure consistent,
+responsive behavior across the entire application. +++++++ REPLACE
 
 ### Forbidden Practices
 

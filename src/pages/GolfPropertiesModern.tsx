@@ -1,30 +1,15 @@
-import { type ReactNode, useEffect } from 'react';
+import { type ReactNode } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { Check, MapPin, Sun, Home, ArrowRight, Bed, Bath, Ruler, Waves, Coffee, ShoppingBag, Plane, Calendar, Star, ChevronRight } from 'lucide-react';
+import { Check, MapPin, Sun, Home, ArrowRight, Bed, Bath, Ruler, Waves, Coffee, ShoppingBag, Plane, Calendar, ChevronRight } from 'lucide-react';
 import type { LandingPageData } from '@/models/landing-page';
 import { Head } from 'vite-react-ssg';
 import { useTranslation, Trans } from 'react-i18next';
-import { getPageTheme } from "@/lib/pageThemeManager";
-import { applyTheme } from "@/themes/resolver";
 import { resolveAsset } from '@/lib/assets';
 import { Gallery } from '@/components/ui/Gallery';
 
 export function GolfPropertiesModern() {
   const { t } = useTranslation('costa-blanca');
-
-  // Apply saved theme on page load
-  useEffect(() => {
-    const currentPath = window.location.pathname;
-    const savedTheme = getPageTheme(currentPath);
-
-    if (savedTheme) {
-        console.log(
-            `🎨 Applying saved theme "${savedTheme}" to Golf Properties Modern page`,
-        );
-        applyTheme(savedTheme);
-    }
-  }, []);
 
   // Mock data for Navbar/Footer compatibility
   const pageData: LandingPageData = {
@@ -55,7 +40,7 @@ export function GolfPropertiesModern() {
         <title>{pageData.seo.title}</title>
         <meta name="description" content={pageData.seo.description} />
       </Head>
-      
+
       <Navbar data={pageData} />
 
       <main id="MainContent" className="flex-1" role="main" tabIndex={-1}>
@@ -99,15 +84,15 @@ export function GolfPropertiesModern() {
           <div className="flex gap-8 animate-fade-in whitespace-nowrap">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="flex items-center gap-8 small text-white">
-                <span>✦ 300+ Days of Sunshine</span>
-                <span>•</span>
-                <span>✦ 5 Golf Courses Within 10 min</span>
-                <span>•</span>
-                <span>✦ Mediterranean Lifestyle</span>
-                <span>•</span>
-                <span>✦ Lock-Up-and-Leave Ready</span>
-                <span>•</span>
-                <span>✦ From €449,900</span>
+                <span className="small">✦ 300+ Days of Sunshine</span>
+                <span className="small">•</span>
+                <span className="small">✦ 5 Golf Courses Within 10 min</span>
+                <span className="small">•</span>
+                <span className="small">✦ Mediterranean Lifestyle</span>
+                <span className="small">•</span>
+                <span className="small">✦ Lock-Up-and-Leave Ready</span>
+                <span className="small">•</span>
+                <span className="small">✦ From €449,900</span>
               </div>
             ))}
           </div>
@@ -118,7 +103,7 @@ export function GolfPropertiesModern() {
           <div className="container-modern max-w-4xl">
             <div className="text-center mb-16 animate-fade-in-up">
               <h2 className="h2 mb-6">Your Perfect Golf Life Starts Here</h2>
-              <p className="body-l text-muted-foreground">
+              <p className="body-l">
                 {t('hero.description')}
               </p>
             </div>
@@ -130,7 +115,7 @@ export function GolfPropertiesModern() {
                   <GolfIcon />
                 </div>
                 <h3 className="h3 mb-4">Multiple Golf Courses</h3>
-                <p className="body text-muted-foreground">
+                <p className="body">
                   5 championship courses within 10 minutes drive - never play the same course twice in a week. Rotate weekly, vary difficulty, keep your game fresh.
                 </p>
               </div>
@@ -139,7 +124,7 @@ export function GolfPropertiesModern() {
                   <Sun className="w-10 h-10 text-primary" />
                 </div>
                 <h3 className="h3 mb-4">Year-Round Climate</h3>
-                <p className="body text-muted-foreground">
+                <p className="body">
                   300+ sunny days annually - perfect golf weather from January to December. Mild winters mean you can escape cold and play year-round.
                 </p>
               </div>
@@ -148,7 +133,7 @@ export function GolfPropertiesModern() {
                   <Waves className="w-10 h-10 text-primary" />
                 </div>
                 <h3 className="h3 mb-4">Beach & Golf Combined</h3>
-                <p className="body text-muted-foreground">
+                <p className="body">
                   Sandy beaches just 5 minutes away - best of both worlds in one location. You don't have to choose between golf and beach lifestyle.
                 </p>
               </div>
@@ -161,7 +146,7 @@ export function GolfPropertiesModern() {
           <div className="container-modern">
             <div className="mb-12 text-center animate-fade-in-up">
               <h2 className="h2 mb-4">Modern Villas Built for Golfers</h2>
-              <p className="body-l text-muted-foreground max-w-2xl mx-auto">
+              <p className="body-l max-w-2xl mx-auto">
                 {t('villas.description_1')}
               </p>
             </div>
@@ -179,10 +164,10 @@ export function GolfPropertiesModern() {
 
             {/* Property Stats - Numeric Cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 animate-fade-in-up delay-200">
-              <StatCard icon={<Bed />} value="3" label={<span className="small">Bedrooms</span>} />
-              <StatCard icon={<Bath />} value="2" label={<span className="small">Bathrooms</span>} />
-              <StatCard icon={<Ruler />} value="106m²" label={<span className="small">Built Area</span>} />
-              <StatCard icon={<Home />} value="150m²" label={<span className="small">Garden</span>} />
+              <StatCard icon={<Bed />} value="3" label="Bedrooms" />
+              <StatCard icon={<Bath />} value="2" label="Bathrooms" />
+              <StatCard icon={<Ruler />} value="106m²" label="Built Area" />
+              <StatCard icon={<Home />} value="150m²" label="Garden" />
             </div>
 
             {/* Detailed Features - Plain Text */}
@@ -190,15 +175,15 @@ export function GolfPropertiesModern() {
               <div className="space-y-8">
                 <div>
                   <h3 className="h3 mb-3">Smart Layout</h3>
-                  <p className="body text-muted-foreground">{t('villas.points.layout')}</p>
+                  <p className="body">{t('villas.points.layout')}</p>
                 </div>
                 <div>
                   <h3 className="h3 mb-3">Generous Space</h3>
-                  <p className="body text-muted-foreground">{t('villas.points.space')}</p>
+                  <p className="body">{t('villas.points.space')}</p>
                 </div>
                 <div>
                   <h3 className="h3 mb-3">Private Plot</h3>
-                  <p className="body text-muted-foreground">{t('villas.points.garden')}</p>
+                  <p className="body">{t('villas.points.garden')}</p>
                 </div>
               </div>
             </div>
@@ -206,7 +191,7 @@ export function GolfPropertiesModern() {
             {/* Additional Info - Card */}
             <div className="bg-card rounded-2xl p-8 border border-border animate-fade-in-up delay-400">
               <h3 className="h3 mb-4">Why This Layout Works for You</h3>
-              <p className="body text-muted-foreground">
+              <p className="body">
                 {t('villas.description_2')}
               </p>
             </div>
@@ -218,7 +203,7 @@ export function GolfPropertiesModern() {
           <div className="container-modern">
             <div className="mb-12 text-center animate-fade-in">
               <h2 className="h2 mb-4">Explore Every Corner</h2>
-              <p className="body-l text-muted-foreground">See the quality, space, and attention to detail</p>
+              <p className="body-l">See quality, space, and attention to detail</p>
             </div>
             
             <Gallery />
@@ -230,7 +215,7 @@ export function GolfPropertiesModern() {
           <div className="container-modern">
             <div className="mb-12 text-center animate-fade-in-up">
               <h2 className="h2 mb-4">Your Base in Orihuela Costa Golf Belt</h2>
-              <p className="body-l text-muted-foreground max-w-3xl mx-auto">
+              <p className="body-l">
                 {t('golf.description_1')}
               </p>
             </div>
@@ -254,7 +239,7 @@ export function GolfPropertiesModern() {
                     <MapPin className="w-10 h-10 text-primary" />
                   </div>
                   <h3 className="h3 mb-4">Golf Course Cluster</h3>
-                  <p className="body text-muted-foreground">
+                  <p className="body">
                     Not just one course - choose from multiple 18-hole championship courses. Rotate weekly, vary difficulty, keep your game fresh. The variety keeps golf exciting.
                   </p>
                 </div>
@@ -263,8 +248,8 @@ export function GolfPropertiesModern() {
                     <Calendar className="w-10 h-10 text-primary" />
                   </div>
                   <h3 className="h3 mb-4">Extended Season</h3>
-                  <p className="body text-muted-foreground">
-                    Mild winters mean year-round golf. Escape the cold, play in perfect conditions from January through December. No more winter off-season.
+                  <p className="body">
+                    Mild winters mean year-round golf. Escape cold, play in perfect conditions from January through December. No more winter off-season.
                   </p>
                 </div>
                 <div>
@@ -272,7 +257,7 @@ export function GolfPropertiesModern() {
                     <Sun className="w-10 h-10 text-primary" />
                   </div>
                   <h3 className="h3 mb-4">Perfect Routine</h3>
-                  <p className="body text-muted-foreground">
+                  <p className="body">
                     Golf in the morning, terrace lunch, beach afternoon - or siesta, sunset, dinner. Your pace, your choice. Build your ideal daily routine.
                   </p>
                 </div>
@@ -282,7 +267,7 @@ export function GolfPropertiesModern() {
             {/* Season Info - Card */}
             <div className="bg-card rounded-2xl p-8 border border-border animate-fade-in-up delay-300">
               <h3 className="h3 mb-4">Winter Golf Paradise</h3>
-              <p className="body text-muted-foreground">
+              <p className="body">
                 {t('golf.description_2')}
               </p>
             </div>
@@ -294,10 +279,10 @@ export function GolfPropertiesModern() {
           <div className="container-modern">
             <div className="mb-12 text-center animate-fade-in-up">
               <h2 className="h2 mb-4">La Zenia: Everything You Need Within Reach</h2>
-              <p className="body-l text-muted-foreground max-w-3xl mx-auto mb-6">
+              <p className="body-l">
                 {t('location.description')}
               </p>
-              <p className="body text-muted-foreground">
+              <p className="body">
                 {t('location.note')}
               </p>
             </div>
@@ -335,15 +320,15 @@ export function GolfPropertiesModern() {
               <div className="space-y-8">
                 <div>
                   <h3 className="h3 mb-3">{t('location.points.services.title')}</h3>
-                  <p className="body text-muted-foreground">{t('location.points.services.description')}</p>
+                  <p className="body">{t('location.points.services.description')}</p>
                 </div>
                 <div>
                   <h3 className="h3 mb-3">{t('location.points.beaches.title')}</h3>
-                  <p className="body text-muted-foreground">{t('location.points.beaches.description')}</p>
+                  <p className="body">{t('location.points.beaches.description')}</p>
                 </div>
                 <div>
                   <h3 className="h3 mb-3">{t('location.points.year_round.title')}</h3>
-                  <p className="body text-muted-foreground">{t('location.points.year_round.description')}</p>
+                  <p className="body">{t('location.points.year_round.description')}</p>
                 </div>
               </div>
             </div>
@@ -444,10 +429,10 @@ export function GolfPropertiesModern() {
                 ⚠️ {t('contact.warning')}
               </div>
               
-              <p className="body-l mb-8 text-muted-foreground">
+              <p className="body-l">
                 {t('contact.cta_intro')}
               </p>
-              
+
               <div className="space-y-4 max-w-md mx-auto">
                 <button className="btn-primary w-full">
                   {t('contact.cta_brochure')}
@@ -460,7 +445,7 @@ export function GolfPropertiesModern() {
                 </button>
               </div>
 
-              <div className="mt-12 flex flex-wrap justify-center gap-8 small text-muted-foreground">
+              <div className="mt-12 flex flex-wrap justify-center gap-8 small">
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-primary" />
                   <span>Free Brochure</span>
@@ -489,11 +474,11 @@ export function GolfPropertiesModern() {
 function StatCard({ icon, value, label }: { icon: ReactNode, value: string, label: string }) {
   return (
     <div className="bg-card rounded-2xl p-6 border border-border text-center">
-      <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+      <div className="h-12 w-12 rounded-xl flex items-center justify-center mx-auto mb-4 icon-container">
         {icon}
       </div>
-      <div className="display-md text-primary mb-1">{value}</div>
-      <div className="small text-muted-foreground">{label}</div>
+      <div className="h2 text-primary mb-1">{value}</div>
+      <div className="caption">{label}</div>
     </div>
   );
 }
@@ -501,19 +486,19 @@ function StatCard({ icon, value, label }: { icon: ReactNode, value: string, labe
 function DistanceCard({ icon, title, items, distance }: { icon: ReactNode, title: string, items: string[], distance: string }) {
   return (
     <div className="bg-card rounded-2xl p-6 border border-border">
-      <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+      <div className="h-12 w-12 rounded-xl flex items-center justify-center mb-4 icon-container">
         {icon}
       </div>
       <h3 className="h3 mb-4">{title}</h3>
       <ul className="space-y-2 mb-4">
         {items.map((item, i) => (
-          <li key={i} className="flex items-center gap-2 small text-muted-foreground">
+          <li key={i} className="flex items-center gap-2 small">
             <div className="w-1.5 h-1.5 bg-primary/50 rounded-full"></div>
             {item}
           </li>
         ))}
       </ul>
-      <div className="flex items-center gap-2 small text-primary">
+      <div className="flex items-center gap-2 small">
         <MapPin className="w-4 h-4" />
         {distance}
       </div>
@@ -525,7 +510,7 @@ function TrustItem({ text }: { text: string }) {
   return (
     <div className="flex items-start gap-3">
       <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-      <span className="body text-foreground">{text}</span>
+      <span className="body">{text}</span>
     </div>
   );
 }

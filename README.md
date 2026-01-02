@@ -40,6 +40,11 @@ Built with React, Vite, TailwindCSS, and Spec Kit.
 
 ## 📝 How to Add a New Development
 
+For a complete, step-by-step, checkbox-based guide, please use the:
+**[Master Checklist: Creating a New Subpage](./src/spec/NEW_PAGE_CHECKLIST.md)**
+
+### Brief Overview:
+
 1. Create a new JSON file in `src/developments/` (e.g., `ocean-view.json`).
 2. Copy the structure from `sunny-hills.json`:
    ```json

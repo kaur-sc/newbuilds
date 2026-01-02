@@ -1,0 +1,156 @@
+{
+  "id": "new-build-golf-properties-costa-blanca",
+  "name": "Costa Blanca Golf Properties",
+  "brand": {
+    "colors": {
+      "primary": "216 100% 17%",
+      "secondary": "44 76% 58%"
+    }
+  },
+  "seo": {
+    "title": "Golf Properties in Orihuela Costa | New-Build Golf Homes",
+    "description": "Discover carefully selected new-build golf properties in Orihuela Costa. Homes surrounded by championship golf courses and Mediterranean living.",
+    "ogImage": "/assets/golf.jpg"
+  },
+  "sections": [
+    {
+      "id": "announcement",
+      "type": "banner",
+      "enabled": true,
+      "order": 0,
+      "title": "Complimentary Golf Membership | Limited Time Offer"
+    },
+    {
+      "id": "hero",
+      "type": "hero",
+      "enabled": true,
+      "order": 1,
+      "title": "New Build Golf Properties in Costa Blanca",
+      "subtitle": "New-Build Homes Surrounded by Championship Golf & Mediterranean Living",
+      "media": "assets/golf.jpg",
+      "layout": "left-aligned",
+      "cta": {
+        "label": "Contact Agent",
+        "href": "#contact"
+      }
+    },
+    {
+      "id": "intro",
+      "type": "features",
+      "enabled": true,
+      "order": 2,
+      "title": "Live where golf, sunshine, and modern comfort come together.",
+      "subtitle": "Selection of premium properties in Spain's premier golf destination.",
+      "layout": "split",
+      "media": "assets/golf.jpg"
+    },
+    {
+      "id": "developments",
+      "type": "features",
+      "enabled": true,
+      "order": 3,
+      "title": "Carefully Selected New-Build Golf Developments",
+      "subtitle": "We work with a curated portfolio of new-build developments located on or close to established golf courses.",
+      "layout": "carousel"
+    },
+    {
+      "id": "courses",
+      "type": "features",
+      "enabled": true,
+      "order": 4,
+      "title": "Why Orihuela Costa Is One of Costa Blanca’s Top Golf Locations",
+      "subtitle": "Concentration of high-quality golf courses and international atmosphere.",
+      "layout": "grid",
+      "columns": 3
+    },
+    {
+      "id": "climate",
+      "type": "features",
+      "enabled": true,
+      "order": 5,
+      "title": "A Climate Made for Golf & Outdoor Living",
+      "subtitle": "300+ days of sun per year for year-round golf enjoyment.",
+      "layout": "grid",
+      "columns": 3
+    },
+    {
+      "id": "benefits",
+      "type": "features",
+      "enabled": true,
+      "order": 6,
+      "title": "Key Benefits of Owning a Golf Property",
+      "subtitle": "Quality living and long-term appeal combined.",
+      "layout": "grid",
+      "columns": 2,
+      "items": [
+        { 
+          "title": "Golf at Your Doorstep", 
+          "description": "Live within minutes of several championship courses. Play more often, drive less.",
+          "icon": "LandPlot"
+        },
+        { 
+          "title": "Modern Comfort", 
+          "description": "New-build properties offer contemporary design, energy efficiency, and low maintenance.",
+          "icon": "Armchair" 
+        },
+        { 
+          "title": "International Community", 
+          "description": "Strong international population with excellent services and healthcare access.",
+          "icon": "Globe" 
+        },
+        { 
+          "title": "Easy Access", 
+          "description": "Alicante and Murcia airports are both within easy reach with frequent flights.",
+          "icon": "Plane" 
+        },
+        { 
+          "title": "Lifestyle Flexibility", 
+          "description": "Enjoy the property yourself, rent it out seasonally, or combine both.",
+          "icon": "BadgeEuro" 
+        }
+      ]
+    },
+    {
+      "id": "collection",
+      "type": "features",
+      "enabled": true,
+      "order": 7,
+      "title": "Explore Our Golf Property Collection",
+      "subtitle": "Detailed information about properties, surroundings, and lifestyle opportunities.",
+      "layout": "grid",
+      "columns": 2
+    },
+    {
+      "id": "appeal",
+      "type": "features",
+      "enabled": true,
+      "order": 8,
+      "title": "Lifestyle & Investment Appeal Combined",
+      "subtitle": "Consistent demand from golfers and lifestyle buyers.",
+      "layout": "split",
+      "media": "assets/golf.jpg"
+    },
+    {
+      "id": "imagine",
+      "type": "hero",
+      "enabled": true,
+      "order": 9,
+      "title": "Imagine Your Life Here",
+      "subtitle": "Morning coffee, first tee, lunch by the sea.",
+      "media": "assets/golf.jpg",
+      "layout": "centered"
+    },
+    {
+      "id": "contact",
+      "type": "contact",
+      "enabled": true,
+      "order": 10,
+      "title": "Speak directly with a local property specialist",
+      "content": "Contact us today and let's find the golf property in Orihuela Costa that truly fits your lifestyle.",
+      "cta": {
+        "label": "Contact Us Today",
+        "href": "#contact"
+      }
+    }
+  ]
+}

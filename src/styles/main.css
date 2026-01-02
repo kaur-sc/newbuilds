@@ -1,0 +1,983 @@
+/* Main Styles - Fluid Responsive Design with Clamp() */
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+/* Root Variables */
+:root {
+    /* Colors */
+    --primary: 160 84% 39%; /* #10b981 */
+    --primary-foreground: 0 0% 100%; /* #ffffff */
+    --secondary: 210 40% 96%; /* #f1f5f9 */
+    --secondary-foreground: 222 47% 11%; /* #0f172a */
+    --accent: 210 40% 96%; /* #f1f5f9 */
+    --accent-foreground: 222 47% 11%; /* #0f172a */
+    --muted: 0 0% 94%; /* #f0f0f0 */
+    --muted-foreground: 215 16% 47%; /* #64748b */
+    --background: 0 0% 100%; /* #ffffff */
+    --foreground: 222 47% 11%; /* #0f172a */
+    --card: 0 0% 100%; /* #ffffff */
+    --card-foreground: 222 47% 11%; /* #0f172a */
+    --popover: 0 0% 100%; /* #ffffff */
+    --popover-foreground: 222 47% 11%; /* #0f172a */
+    --border: 210 40% 96%; /* #f1f5f9 */
+    --input: 210 40% 96%; /* #f1f5f9 */
+    --ring: 222 47% 11%; /* #0f172a */
+    --radius: 0 0% 0%; /* 0.5rem */
+    --destructive: 0 84% 60%; /* #ef4444 */
+    --destructive-foreground: 0 0% 100%; /* #ffffff */
+    
+    /* Global Typography */
+    --font-base-size: 16px;
+    --font-base-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY - FLUID RESPONSIVE WITH CLAMP()
+   ========================================================================== */
+
+/* Granular Element Styles */
+:root {
+    /* Fluid Typography - scales smoothly between viewport sizes */
+    --h1-size: clamp(2.25rem, 5vw + 2rem, 4.75rem);
+    --h1-weight: 200;
+    --h1-line-height: 1;
+    --h1-letter-spacing: 0.00em;
+    --h1-color: var(--foreground);
+
+    --h2-size: clamp(1.875rem, 4vw + 1rem, 3rem);
+    --h2-weight: 100;
+    --h2-line-height: 1;
+    --h2-letter-spacing: 0.00em;
+    --h2-color: var(--foreground);
+
+    --h3-size: clamp(1.5rem, 3vw, 1.875rem);
+    --h3-weight: 200;
+    --h3-line-height: 2.25rem;
+    --h3-letter-spacing: 0;
+    --h3-color: var(--foreground);
+
+    --body-size: clamp(1rem, 2.5vw, 1.25rem);
+    --body-weight: 200;
+    --body-line-height: 1.75rem;
+    --body-letter-spacing: 0;
+    --body-color: var(--foreground);
+
+    --body-l-size: clamp(1.125rem, 3vw, 1.5rem);
+    --body-l-weight: 200;
+    --body-l-line-height: 2.0rem;
+    --body-l-letter-spacing: 0;
+
+    --small-size: clamp(0.9rem, 2vw, 1.0rem);
+    --small-weight: 300;
+    --small-line-height: 1.5;
+    --small-letter-spacing: 0.0em;
+    --small-color: var(--foreground);
+
+    --caption-size: clamp(0.6875rem, 1.5vw, 0.75rem);
+    --caption-weight: 200;
+    --caption-line-height: 1.4;
+    --caption-letter-spacing: 0.00em;
+    --caption-color: var(--foreground);
+}
+
+/* Typography Classes */
+.h1 {
+    font-size: var(--h1-size);
+    font-weight: var(--h1-weight);
+    line-height: var(--h1-line-height);
+    letter-spacing: var(--h1-letter-spacing);
+    color: hsl(var(--h1-color));
+}
+
+.h2 {
+    font-size: var(--h2-size);
+    font-weight: var(--h2-weight);
+    line-height: var(--h2-line-height);
+    letter-spacing: var(--h2-letter-spacing);
+    color: hsl(var(--h2-color));
+}
+
+.h3 {
+    font-size: var(--h3-size);
+    font-weight: var(--h3-weight);
+    line-height: var(--h3-line-height);
+    letter-spacing: var(--h3-letter-spacing);
+    color: hsl(var(--h3-color));
+}
+
+.body {
+    font-size: var(--body-size);
+    font-weight: var(--body-weight);
+    line-height: var(--body-line-height);
+    letter-spacing: var(--body-letter-spacing);
+    color: hsl(var(--body-color));
+}
+
+.body-l {
+    font-size: var(--body-l-size);
+    font-weight: var(--body-l-weight);
+    line-height: var(--body-l-line-height);
+    letter-spacing: var(--body-l-letter-spacing);
+    color: hsl(var(--body-color));
+}
+
+.small {
+    font-size: var(--small-size);
+    font-weight: var(--small-weight);
+    line-height: var(--small-line-height);
+    letter-spacing: var(--small-letter-spacing);
+    color: hsl(var(--small-color));
+}
+
+.caption {
+    font-size: var(--caption-size);
+    font-weight: var(--caption-weight);
+    line-height: var(--caption-line-height);
+    letter-spacing: var(--caption-letter-spacing);
+    color: hsl(var(--caption-color));
+}
+
+/* Typography Elements - Style by tag name for consistency */
+h1 {
+    font-size: var(--h1-size);
+    font-weight: var(--h1-weight);
+    line-height: var(--h1-line-height);
+    letter-spacing: var(--h1-letter-spacing);
+    color: hsl(var(--h1-color));
+}
+
+h2 {
+    font-size: var(--h2-size);
+    font-weight: var(--h2-weight);
+    line-height: var(--h2-line-height);
+    letter-spacing: var(--h2-letter-spacing);
+    color: hsl(var(--h2-color));
+}
+
+h3 {
+    font-size: var(--h3-size);
+    font-weight: var(--h3-weight);
+    line-height: var(--h3-line-height);
+    letter-spacing: var(--h3-letter-spacing);
+    color: hsl(var(--h3-color));
+}
+
+p {
+    font-size: var(--body-size);
+    font-weight: var(--body-weight);
+    line-height: var(--body-line-height);
+    letter-spacing: var(--body-letter-spacing);
+    color: hsl(var(--body-color));
+}
+
+small {
+    font-size: var(--small-size);
+    font-weight: var(--small-weight);
+    line-height: var(--small-line-height);
+    letter-spacing: var(--small-letter-spacing);
+    color: hsl(var(--small-color));
+}
+
+span {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+}
+
+/* ==========================================================================
+   COLORS
+   ========================================================================== */
+
+/* Fluid Button Spacing with Clamp() */
+:root {
+    --btn-primary-bg: var(--primary);
+    --btn-primary-text: white;
+    --btn-primary-radius: clamp(0.25rem, 0.5vw, 0.5rem);
+    --btn-primary-px: clamp(1rem, 3vw, 2rem);
+    --btn-primary-py: clamp(0.75rem, 1.5vw, 0.95rem);
+    --btn-primary-weight: 700;
+    --btn-primary-hoverBg: 163 94% 24%;
+    --btn-primary-hoverText: white;
+    --btn-primary-hoverScale: 1.05;
+    --btn-primary-activeBg: var(--primary);
+    --btn-primary-activeText: white;
+    --btn-primary-activeScale: 0.95;
+
+    --btn-secondary-bg: var(--secondary);
+    --btn-secondary-text: var(--secondary-foreground);
+    --btn-secondary-radius: clamp(0.25rem, 0.5vw, 0.5rem);
+    --btn-secondary-px: clamp(1rem, 3vw, 2rem);
+    --btn-secondary-py: clamp(0.5rem, 1.5vw, 0.75rem);
+    --btn-secondary-weight: 700;
+    --btn-secondary-hoverBg: var(--secondary);
+    --btn-secondary-hoverText: var(--secondary-foreground);
+    --btn-secondary-hoverScale: 1.05;
+    --btn-secondary-activeBg: var(--secondary);
+    --btn-secondary-activeText: var(--secondary-foreground);
+    --btn-secondary-activeScale: 0.95;
+
+    --btn-outline-bg: transparent;
+    --btn-outline-text: var(--primary);
+    --btn-outline-radius: clamp(0.25rem, 0.5vw, 0.5rem);
+    --btn-outline-px: clamp(1rem, 3vw, 2rem);
+    --btn-outline-py: clamp(0.5rem, 1.5vw, 0.75rem);
+    --btn-outline-border: var(--border);
+    --btn-outline-weight: 700;
+    --btn-outline-hoverBg: var(--primary);
+    --btn-outline-hoverText: var(--primary-foreground);
+    --btn-outline-hoverBorder: var(--primary);
+    --btn-outline-hoverScale: 1.05;
+    --btn-outline-activeBg: var(--primary);
+    --btn-outline-activeText: var(--primary-foreground);
+    --btn-outline-activeBorder: var(--primary);
+    --btn-outline-activeScale: 0.95;
+
+    --btn-ghost-bg: transparent;
+    --btn-ghost-text: var(--primary);
+    --btn-ghost-radius: clamp(0.25rem, 0.5vw, 0.5rem);
+    --btn-ghost-px: clamp(1rem, 3vw, 2rem);
+    --btn-ghost-py: clamp(0.5rem, 1.5vw, 0.75rem);
+    --btn-ghost-weight: 700;
+    --btn-ghost-hoverBg: var(--primary);
+    --btn-ghost-hoverText: var(--primary);
+    --btn-ghost-hoverScale: 1.05;
+    --btn-ghost-activeBg: var(--primary);
+    --btn-ghost-activeText: var(--primary);
+    --btn-ghost-activeScale: 0.95;
+}
+
+/* Link Colors */
+:root {
+    --link-std-text: var(--primary);
+    --link-std-weight: 500;
+    --link-std-under: underline;
+    --link-std-hoverText: var(--primary);
+    --link-std-hoverScale: 1.02;
+    --link-std-activeText: var(--primary);
+    --link-std-activeScale: 0.98;
+
+    --link-bold-text: var(--primary);
+    --link-bold-weight: 700;
+    --link-bold-under: none;
+    --link-bold-hoverText: var(--primary);
+    --link-bold-hoverScale: 1.02;
+    --link-bold-activeText: var(--primary);
+    --link-bold-activeScale: 0.98;
+}
+
+/* ==========================================================================
+   COMPONENTS
+   ========================================================================== */
+
+/* Buttons */
+.btn-primary {
+    background: hsl(var(--btn-primary-bg));
+    color: hsl(var(--btn-primary-text));
+    border-radius: var(--btn-primary-radius);
+    padding: var(--btn-primary-py) var(--btn-primary-px);
+    font-weight: var(--btn-primary-weight);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: hsl(var(--btn-primary-hover-bg));
+    color: hsl(var(--btn-primary-hover-text));
+    transform: scale(var(--btn-primary-hover-scale));
+}
+
+.btn-primary:active {
+    background: hsl(var(--btn-primary-active-bg));
+    color: hsl(var(--btn-primary-active-text));
+    transform: scale(var(--btn-primary-active-scale));
+}
+
+.button a {
+    font-size: clamp(1rem, 3vw, 1.15rem);
+}
+
+.btn-secondary {
+    background: hsl(var(--btn-secondary-bg));
+    color: hsl(var(--btn-secondary-text));
+    border-radius: var(--btn-secondary-radius);
+    padding: var(--btn-secondary-py) var(--btn-secondary-px);
+    font-weight: var(--btn-secondary-weight);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: hsl(var(--btn-secondary-hover-bg));
+    color: hsl(var(--btn-secondary-hover-text));
+    transform: scale(var(--btn-secondary-hover-scale));
+}
+
+.btn-secondary:active {
+    background: hsl(var(--btn-secondary-active-bg));
+    color: hsl(var(--btn-secondary-active-text));
+    transform: scale(var(--btn-secondary-active-scale));
+}
+
+.btn-outline {
+    background: hsl(var(--btn-outline-bg));
+    color: hsl(var(--btn-outline-text));
+    border-radius: var(--btn-outline-radius);
+    padding: var(--btn-outline-py) var(--btn-outline-px);
+    font-weight: var(--btn-outline-weight);
+    border: 1px solid hsl(var(--btn-outline-border));
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-outline:hover {
+    background: hsl(var(--btn-outline-hover-bg));
+    color: hsl(var(--btn-outline-hover-text));
+    border-color: hsl(var(--btn-outline-hover-border));
+    transform: scale(var(--btn-outline-hover-scale));
+}
+
+.btn-outline:active {
+    background: hsl(var(--btn-outline-active-bg));
+    color: hsl(var(--btn-outline-active-text));
+    border-color: hsl(var(--btn-outline-active-border));
+    transform: scale(var(--btn-outline-active-scale));
+}
+
+.btn-ghost {
+    background: hsl(var(--btn-ghost-bg));
+    color: hsl(var(--btn-ghost-text));
+    border-radius: var(--btn-ghost-radius);
+    padding: var(--btn-ghost-py) var(--btn-ghost-px);
+    font-weight: var(--btn-ghost-weight);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-ghost:hover {
+    background: hsl(var(--btn-ghost-hover-bg));
+    color: hsl(var(--btn-ghost-hover-text));
+    transform: scale(var(--btn-ghost-hover-scale));
+}
+
+.btn-ghost:active {
+    background: hsl(var(--btn-ghost-active-bg));
+    color: hsl(var(--btn-ghost-active-text));
+    transform: scale(var(--btn-ghost-active-scale));
+}
+
+/* Links */
+.link-std {
+    color: hsl(var(--link-std-text));
+    font-weight: var(--link-std-weight);
+    text-decoration: var(--link-std-under);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.link-std:hover {
+    color: hsl(var(--link-std-hover-text));
+    transform: scale(var(--link-std-hover-scale));
+}
+
+.link-std:active {
+    color: hsl(var(--link-std-active-text));
+    transform: scale(var(--link-std-active-scale));
+}
+
+.link-bold {
+    color: hsl(var(--link-bold-text));
+    font-weight: var(--link-bold-weight);
+    text-decoration: var(--link-bold-under);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.link-bold:hover {
+    color: hsl(var(--link-bold-hover-text));
+    transform: scale(var(--link-bold-hover-scale));
+}
+
+.link-bold:active {
+    color: hsl(var(--link-bold-active-text));
+    transform: scale(var(--link-bold-active-scale));
+}
+
+/* Navigation */
+:root {
+    --header-title-size: clamp(1.25rem, 3vw, 1.5rem);
+    --header-title-weight: 600;
+    --header-title-line-height: 1.2;
+    --header-title-letter-spacing: -0.01em;
+
+    --header-subtitle-size: clamp(0.8rem, 2vw, 0.875rem);
+    --header-subtitle-weight: 400;
+    --header-subtitle-line-height: 1.4;
+    --header-subtitle-letter-spacing: 0.01em;
+
+    --header-nav-size: clamp(0.85rem, 2vw, 0.9rem);
+    --header-nav-weight: 500;
+    --header-nav-line-height: 1.5;
+    --header-nav-letter-spacing: 0;
+
+    --site-title-size: clamp(1.125rem, 3vw, 1.25rem);
+    --site-title-weight: 700;
+    --site-title-line-height: 1.2;
+    --site-title-letter-spacing: -0.01em;
+
+    --mobile-menu-btn-size: clamp(0.8rem, 2vw, 0.875rem);
+    --mobile-menu-btn-weight: 600;
+    --mobile-menu-btn-line-height: 1.4;
+    --mobile-menu-btn-letter-spacing: 0.01em;
+
+    --mobile-menu-links-size: clamp(0.9rem, 2vw, 1rem);
+    --mobile-menu-links-weight: 500;
+    --mobile-menu-links-line-height: 1.5;
+    --mobile-menu-links-letter-spacing: 0;
+}
+
+.site-title {
+    font-size: var(--site-title-size);
+    font-weight: var(--site-title-weight);
+    line-height: var(--site-title-line-height);
+    letter-spacing: var(--site-title-letter-spacing);
+    color: hsl(var(--foreground));
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.site-title:hover {
+    color: hsl(var(--primary));
+}
+
+/* Site Logo Text Styles */
+.site-logo-text {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    gap: var(--site-logo-gap, clamp(0.125rem, 0.5vw, 0.25rem));
+}
+
+.site-logo-main {
+    font-size: var(--site-logo-main-size, var(--site-logo-size));
+    font-weight: var(--site-logo-main-weight, var(--site-logo-weight));
+    line-height: var(--site-logo-main-line-height, var(--site-logo-line-height));
+    letter-spacing: var(--site-logo-main-letter-spacing, var(--site-logo-letter-spacing));
+    color: hsl(var(--foreground));
+    transition: color 0.2s ease;
+}
+
+.site-logo-sub {
+    font-size: var(--site-logo-sub-size, clamp(0.75rem, 2vw, 0.875rem));
+    font-weight: var(--site-logo-sub-weight, 400);
+    line-height: var(--site-logo-sub-line-height, 1.2);
+    letter-spacing: var(--site-logo-sub-letter-spacing, 0.05em);
+    color: hsl(var(--muted-foreground));
+    transition: color 0.2s ease;
+}
+
+.site-logo-text:hover .site-logo-main {
+    color: hsl(var(--primary));
+}
+
+.site-logo-text:hover .site-logo-sub {
+    color: hsl(var(--primary));
+}
+
+.site-logo-text:hover {
+    transform: scale(var(--site-logo-hover-scale, 1.02));
+}
+
+.mobile-menu-btn {
+    font-size: var(--mobile-menu-btn-size);
+    font-weight: var(--mobile-menu-btn-weight);
+    line-height: var(--mobile-menu-btn-line-height);
+    letter-spacing: var(--mobile-menu-btn-letter-spacing);
+    color: hsl(var(--foreground));
+}
+
+.mobile-menu-links {
+    font-size: var(--mobile-menu-links-size);
+    font-weight: var(--mobile-menu-links-weight);
+    line-height: var(--mobile-menu-links-line-height);
+    letter-spacing: var(--mobile-menu-links-letter-spacing);
+    color: hsl(var(--foreground));
+    transition: color 0.2s ease;
+}
+
+/* Navigation Layout Variables */
+:root {
+    --nav-gap: clamp(1rem, 3vw, 1.5rem);
+    --nav-separator-padding: clamp(0.25rem, 1vw, 0.5rem);
+    --nav-separator-margin: clamp(0.25rem, 1vw, 0.5rem);
+    --nav-mobile-padding: clamp(0.75rem, 2vw, 1rem);
+    --nav-mobile-gap: clamp(0.75rem, 2vw, 1rem);
+}
+
+.nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: var(--nav-gap);
+}
+
+.nav-desktop-mobile {
+    display: none;
+}
+
+/* Hamburger menu button - hidden by default, overridden in mobile */
+.nav-desktop-mobile-show {
+    display: none !important;
+}
+
+.nav-language-separator {
+    padding-left: var(--nav-separator-padding);
+    border-left: 1px solid hsl(var(--border));
+    margin-left: var(--nav-separator-margin);
+}
+
+.nav-mobile-padding {
+    padding: var(--nav-mobile-padding);
+}
+
+.nav-mobile-gap {
+    gap: var(--nav-mobile-gap);
+}
+
+.nav-mobile-center {
+    display: flex;
+    justify-content: center;
+}
+
+/* Header/Navigation Variables */
+:root {
+    --navbar-bg-color: 0 0% 100%; /* Base color */
+    --navbar-bg-transparency: 0.8; /* Transparency level */
+    --navbar-bg-blur: 12px; /* Blur amount */
+    --navbar-border: hsl(var(--border));
+    --navbar-text: hsl(var(--foreground));
+    --navbar-height: clamp(3rem, 8vw, 4rem);
+    --navbar-logo-size: var(--site-title-size);
+    --navbar-logo-weight: var(--site-title-weight);
+    --navbar-logo-line-height: var(--site-title-line-height);
+    --navbar-logo-letter-spacing: var(--site-title-letter-spacing);
+    --navbar-link-size: var(--header-nav-size);
+    --navbar-link-weight: var(--header-nav-weight);
+    --navbar-link-line-height: var(--header-nav-line-height);
+    --navbar-link-letter-spacing: var(--header-nav-letter-spacing);
+    --navbar-mobile-bg: hsl(var(--background)); /* Solid for mobile */
+    --navbar-mobile-border: hsl(var(--border));
+}
+
+.navbar {
+    background: hsla(var(--navbar-bg-color) / var(--navbar-bg-transparency));
+    border-bottom: 1px solid hsl(var(--navbar-border));
+    backdrop-filter: blur(var(--navbar-bg-blur));
+    -webkit-backdrop-filter: blur(var(--navbar-bg-blur));
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.navbar-container {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-link {
+    font-size: var(--navbar-link-size);
+    font-weight: var(--navbar-link-weight);
+    line-height: var(--navbar-link-line-height);
+    letter-spacing: var(--navbar-link-letter-spacing);
+    color: hsl(var(--navbar-text));
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: hsl(var(--primary));
+}
+
+.mobile-menu {
+    background: hsl(var(--navbar-mobile-bg));
+    border-top: 1px solid hsl(var(--navbar-mobile-border));
+}
+
+/* Gallery Tab Variables */
+:root {
+    --gallery-tab-container-bg: var(--muted);
+    --gallery-tab-container-px: clamp(0.125rem, 0.5vw, 0.25rem);
+    --gallery-tab-container-py: clamp(0.125rem, 0.5vw, 0.25rem);
+    --gallery-tab-container-radius: clamp(0.5rem, 1vw, 0.75rem);
+    --gallery-tab-container-gap: clamp(0.125rem, 0.5vw, 0.25rem);
+
+    --gallery-tab-px: clamp(1rem, 3vw, 1.5rem);
+    --gallery-tab-py: clamp(0.5rem, 1.5vw, 0.625rem);
+    --gallery-tab-radius: clamp(0.375rem, 0.75vw, 0.5rem);
+    --gallery-tab-weight: 600;
+    --gallery-tab-size: clamp(0.8rem, 2vw, 0.875rem);
+    --gallery-tab-letter-spacing: 0.025em;
+    --gallery-tab-bg: transparent;
+    --gallery-tab-text: var(--muted-foreground);
+    --gallery-tab-hover-bg: var(--background);
+    --gallery-tab-hover-text: var(--foreground);
+    --gallery-tab-active-bg: var(--background);
+    --gallery-tab-active-text: var(--primary);
+    --gallery-tab-transition: 200ms;
+}
+
+.gallery-tab-container {
+    background: hsl(var(--gallery-tab-container-bg));
+    padding: var(--gallery-tab-container-py) var(--gallery-tab-container-px);
+    border-radius: var(--gallery-tab-container-radius);
+    display: inline-flex;
+    gap: var(--gallery-tab-container-gap);
+}
+
+.gallery-tab {
+    background: hsl(var(--gallery-tab-bg));
+    color: hsl(var(--gallery-tab-text));
+    border-radius: var(--gallery-tab-radius);
+    padding: var(--gallery-tab-py) var(--gallery-tab-px);
+    font-weight: var(--gallery-tab-weight);
+    font-size: var(--gallery-tab-size);
+    letter-spacing: var(--gallery-tab-letter-spacing);
+    transition: all var(--gallery-tab-transition) ease;
+    cursor: pointer;
+    border: none;
+}
+
+.gallery-tab:hover {
+    background: hsl(var(--gallery-tab-hover-bg));
+    color: hsl(var(--gallery-tab-hover-text));
+}
+
+.gallery-tab.active {
+    background: hsl(var(--gallery-tab-active-bg));
+    color: hsl(var(--gallery-tab-active-text));
+}
+
+/* Features Grid - Fluid Gaps */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 30vw, 380px), 1fr));
+    gap: clamp(1.5rem, 4vw, 2rem);
+}
+
+.feature-icon {
+    height: clamp(2rem, 4vw, 2.5rem);
+    width: clamp(2rem, 4vw, 2.5rem);
+    border-radius: 9999px;
+    background-color: hsla(var(--primary) / 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--primary));
+}
+
+/* ==========================================================================
+   COMPONENT-SPECIFIC FLUID VARIABLES
+   ========================================================================== */
+
+/* Project Grid Variables */
+:root {
+    /* Project Section Layout */
+    --project-section-padding-y: clamp(4rem, 12vh, 12rem);
+    --project-section-margin-b: clamp(2rem, 4vw, 3rem);
+    --project-header-gap: clamp(1rem, 2vw, 1.5rem);
+    --project-controls-gap: clamp(0.5rem, 1.5vw, 1rem);
+    
+    /* Project Card Sizing */
+    --project-card-width: clamp(280px, 35vw, 380px);
+    --project-card-padding: clamp(1.5rem, 3vw, 2rem);
+    --project-card-gap: clamp(1rem, 2vw, 1.5rem);
+    --project-card-button-height: clamp(2.5rem, 4vw, 3rem);
+    
+    /* Project Card Controls */
+    --project-card-control-size: clamp(2.5rem, 4vw, 3rem);
+    --project-card-control-icon: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+/* Hero Block Variables */
+:root {
+    /* Hero Section Layout */
+    --hero-min-height: clamp(60vh, 85vh, 85vh);
+    --hero-button-min-width: clamp(140px, 20vw, 180px);
+    --hero-dropdown-width: clamp(200px, 30vw, 280px);
+    --hero-button-gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Carousel Variables */
+:root {
+    --carousel-scroll-amount: clamp(300px, 40vw, 400px);
+    --carousel-gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* ==========================================================================
+   FULL-WIDTH IMAGE RIGHT COLUMN TEXT
+   ========================================================================== */
+
+.full-width-image-right-col-text {
+    position: relative;
+    min-height: clamp(24rem, 60vh, 32rem);
+}
+
+.full-width-image-text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: clamp(20rem, 50vw, 40rem);
+    padding: clamp(2rem, 5vw, 4rem);
+    box-sizing: border-box;
+}
+
+.full-width-image-text-content > * {
+    color: hsl(var(--primary-foreground));
+}
+
+.full-width-image-text-content .h2,
+.full-width-image-text-content .body-l,
+.full-width-image-text-content .body,
+.full-width-image-text-content p {
+    color: hsl(var(--primary-foreground));
+}
+
+.full-width-image-text-content > :first-child {
+    margin-top: 0;
+}
+
+.full-width-image-text-content > :last-child {
+    margin-bottom: 0;
+}
+
+
+.full-width-image-background {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.image-overlay-gradient {
+    position: relative;
+    height: 100%;
+}
+
+.full-width-image-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    min-height: clamp(24rem, 60vh, 32rem);
+}
+
+/* ==========================================================================
+   IMAGE OVERLAYS
+   ========================================================================== */
+
+/* Gradient overlay for full-width images to improve text legibility */
+.image-overlay-gradient {
+    position: relative;
+}
+
+.image-overlay-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.1) 30%,
+        rgba(0, 0, 0, 0.3) 60%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Alternative gradient for lighter images */
+.image-overlay-gradient-light::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.05) 30%,
+        rgba(255, 255, 255, 0.15) 60%,
+        rgba(255, 255, 255, 0.3) 100%
+    );
+}
+
+/* Stronger gradient for high-contrast text */
+.image-overlay-gradient-strong::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.2) 20%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+/* Feature Bar Animation */
+.feature-bar {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: clamp(6rem, 12vh, 8rem);
+    display: flex;
+    align-items: center;
+    background-color: hsl(var(--background));
+}
+
+.feature-bar-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.feature-bar-animated {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    animation: scroll-left 30s linear infinite;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 1.25rem);
+    margin: 0 clamp(0.5rem, 1.5vw, 0.75rem);
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Additional Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   LAYOUT - FLUID CONTAINERS AND SPACING
+   ========================================================================== */
+
+/* Container - Fluid with Clamp() */
+.container {
+    margin: 0 auto;
+    width: 100%;
+    padding: clamp(1rem, 5vw, 2rem);
+    max-width: clamp(100%, 90vw, 80rem);
+}
+
+/* Fluid Section Spacing */
+.modern-section {
+    padding: clamp(2rem, 8vh, 8rem) 0;
+}
+
+.split-layout {
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+/* Project Grid Styles */
+.project-grid-title {
+    font-size: var(--h2-size);
+    font-weight: var(--h2-weight);
+    line-height: var(--h2-line-height);
+    letter-spacing: var(--h2-letter-spacing);
+    color: hsl(var(--h2-color));
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+}
+
+/* Fluid Button Spacing - Applied Globally */
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.dropdown-btn-large,
+.btn-ghost {
+    padding: clamp(0.5rem 1rem, 2vw 3vw, 0.75rem 2rem);
+}
+
+/* ==========================================================================
+   RESPONSIVE MOBILE VARIANTS - MINIMAL OVERRIDES
+   ========================================================================== */
+
+/* ==========================================================================
+   FLUID RESPONSIVE - NO MORE MEDIA QUERY JUMPS!
+   ========================================================================== */
+
+/* Typography is now fluid with clamp() - no need for mobile overrides */
+/* All scaling happens smoothly between viewport sizes */
+
+/* Fluid Typography - DONE! */
+.h1 { font-size: var(--h1-size); }
+.h2 { font-size: var(--h2-size); }
+.h3 { font-size: var(--h3-size); }
+.body { font-size: var(--body-size); }
+.body-l { font-size: var(--body-l-size); }
+.small { font-size: var(--small-size); }
+.caption { font-size: var(--caption-size); }
+
+/* Custom Dropdown Button Large */
+.dropdown-btn-large {
+    font-size: clamp(1.0rem, 2.0vw, 1.25rem) !important;
+    font-weight: 600;
+}

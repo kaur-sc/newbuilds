@@ -1,0 +1,111 @@
+{
+  "announcement": {
+    "title": "Complimentary Golf Membership | Limited Time Offer"
+  },
+  "nav": {
+    "contact_agent": "Contact Agent",
+    "logo_main": "Sunny Casas",
+    "logo_sub": "Golf Properties"
+  },
+  "hero": {
+    "title": "New Build Golf Properties in Costa Blanca",
+    "subtitle": "New-Build Homes Surrounded by Championship Golf & Mediterranean Living",
+    "contact_agent": "Contact Agent"
+  },
+  "intro": {
+    "title": "Live where golf, sunshine, and modern comfort come together.",
+    "subtitle": "Our hand-picked selection of new-build golf properties in Orihuela Costa offers a rare opportunity to enjoy year-round golfing in one of Spain’s most established golf destinations.",
+    "description": "Whether you are searching for a Mediterranean lifestyle home, a winter golf escape, or a smart lifestyle investment, Orihuela Costa delivers the perfect balance of quality living and long-term appeal."
+  },
+  "developments": {
+    "title": "Carefully Selected New-Build Golf Developments",
+    "subtitle": "We work with a curated portfolio of new-build developments selected for their proximity to multiple golf courses, modern architecture, and strong lifestyle appeal.",
+    "items": [
+      {
+        "title": "Vistabella Golf Homes",
+        "description": "Contemporary villas and apartments integrated into the lush landscape of Vistabella Golf.",
+        "image": "assets/golf.jpg",
+        "cta": { "label": "View Project", "href": "/developments/vistabella" }
+      },
+      {
+        "title": "Las Colinas Residences",
+        "description": "Award-winning luxury residences within a private valley, offering extreme privacy and world-class golf.",
+        "image": "assets/golf.jpg",
+        "cta": { "label": "View Project", "href": "/developments/las-colinas" }
+      },
+      {
+        "title": "Sunny Hills Residences",
+        "description": "Modern apartments with stunning views of the golf course and the Mediterranean.",
+        "image": "assets/golf.jpg",
+        "cta": { "label": "View Project", "href": "/developments/sunny-hills" }
+      },
+      {
+        "title": "Lo Romero Park",
+        "description": "New release near Lo Romero Golf with spacious terraces and private pools.",
+        "image": "assets/golf.jpg",
+        "cta": { "label": "View Project", "href": "#" }
+      },
+      {
+        "title": "Villamartin Gardens",
+        "description": "Beautiful landscaped gardens and modern properties in the heart of Villamartin.",
+        "image": "assets/golf.jpg",
+        "cta": { "label": "View Project", "href": "#" }
+      }
+    ]
+  },
+  "courses": {
+    "title": "Why Orihuela Costa Is One of Costa Blanca’s Top Golf Locations",
+    "subtitle": "Orihuela Costa is widely known for its concentration of high-quality golf courses, excellent infrastructure, and international atmosphere.",
+    "items": [
+      { "title": "Villamartín Golf", "description": "Established and iconic course with a vibrant community." },
+      { "title": "Las Ramblas Golf", "description": "Challenging course with dramatic landscapes and views." },
+      { "title": "Real Club de Golf Campoamor", "description": "Championship course with mature surroundings." },
+      { "title": "Las Colinas Golf & Country Club", "description": "Private valley setting with world-class facilities." },
+      { "title": "Lo Romero Golf", "description": "Beautiful 18th hole island green and stunning vistas." }
+    ]
+  },
+  "climate": {
+    "title": "A Climate Made for Golf & Outdoor Living",
+    "subtitle": "One of the strongest reasons buyers choose Orihuela Costa is the Mediterranean climate.",
+    "items": [
+      { "title": "300+ Sunny Days", "description": "More than 300 sunny days per year for year-round outdoor enjoyment." },
+      { "title": "Mild Winters", "description": "Comfortable daytime temperatures even in the middle of winter." },
+      { "title": "Outdoor Lifestyle", "description": "Long seasons ideal for golf, walking, and terrace living." }
+    ]
+  },
+  "benefits": {
+    "title": "Key Benefits of Owning a Golf Property in Orihuela Costa",
+    "subtitle": "Everything you need for a premium lifestyle and smart investment.",
+    "items": [
+      { "title": "Golf at Your Doorstep", "description": "Live within minutes of several championship courses. Play more often, drive less." },
+      { "title": "Modern Comfort", "description": "New-build properties offer contemporary design, energy efficiency, and low maintenance." },
+      { "title": "International Community", "description": "Strong international population with excellent services and healthcare access." },
+      { "title": "Easy Access", "description": "Alicante and Murcia airports are both within easy reach with frequent flights." },
+      { "title": "Lifestyle Flexibility", "description": "Enjoy the property yourself, rent it out seasonally, or combine both." }
+    ]
+  },
+  "collection": {
+    "title": "Explore Our Golf Property Collection",
+    "subtitle": "Detailed information about properties, surroundings, and lifestyle opportunities.",
+    "items": [
+      { "title": "Project overview & location" },
+      { "title": "Property types and options" },
+      { "title": "Nearby golf courses" },
+      { "title": "Lifestyle suitability" }
+    ]
+  },
+  "appeal": {
+    "title": "Lifestyle & Investment Appeal Combined",
+    "subtitle": "Golf properties in Orihuela Costa are popular with long-stay winter golfers, short-term holiday renters, and lifestyle buyers.",
+    "description": "This creates consistent demand without relying on speculative promises. The combination of location and golf infrastructure makes these properties attractive."
+  },
+  "imagine": {
+    "title": "Imagine Your Life Here",
+    "subtitle": "Morning coffee on the terrace. A short drive to the first tee. Lunch by the sea. Evenings spent outdoors under warm Mediterranean skies."
+  },
+  "contact": {
+    "title": "Speak directly with a local property specialist",
+    "description": "We’ll help you compare developments, understand the buying process, and arrange viewings or virtual tours. Contact us today and let’s find the golf property in Orihuela Costa that truly fits your lifestyle.",
+    "cta": "Contact Us Today"
+  }
+}

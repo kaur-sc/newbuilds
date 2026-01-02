@@ -79,13 +79,13 @@ export function Gallery() {
 
   return (
     <section className="py-20 md:py-32 overflow-hidden">
-      <Container>
-        <div className="text-center mb-12">
+      <Container className="mb-12">
+        <div className="text-center">
           <h2 className="h2 mb-6">
             {t('gallery.title')}
           </h2>
           
-          <div className="gallery-tab-container mb-8">
+          <div className="gallery-tab-container inline-flex">
             <button
               onClick={() => handleTabChange('photos')}
               className={`gallery-tab ${activeTab === 'photos' ? 'active' : ''}`}
@@ -100,35 +100,40 @@ export function Gallery() {
             </button>
           </div>
         </div>
-
-        {/* Modern Grid Layout */}
-        <div className="relative group">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-8">
-            {activeContent.map((item, index) => (
-              <motion.div
-                key={index}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="relative cursor-pointer"
-                onClick={() => handleOpenLightbox(index)}
-              >
-                <div className="w-[120%] aspect-[4/3] rounded-2xl overflow-hidden border border-border relative group/item -ml-[10%]">
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-cover transform transition-transform duration-700 group-hover/item:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover/item:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover/item:opacity-100">
-                    <Maximize2 className="text-background w-10 h-10" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-        </div>
       </Container>
+
+      {/* Gallery Grid - Left aligned with title */}
+      <div className="w-full">
+        {/* Outer container: full width, no max constraint */}
+        <div className="w-full">
+          {/* Inner container: calculate left offset to match centered Container */}
+          <div className="ml-[max(1rem,calc((100vw-80rem)/2+1rem))] sm:ml-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] lg:ml-[max(2rem,calc((100vw-80rem)/2+2rem)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-8">
+              {activeContent.map((item, index) => (
+                <motion.div
+                  key={index}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="relative cursor-pointer"
+                  onClick={() => handleOpenLightbox(index)}
+                >
+                  <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-border relative group/item">
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="w-full h-full object-cover transform transition-transform duration-700 group-hover/item:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover/item:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover/item:opacity-100">
+                      <Maximize2 className="text-background w-10 h-10" />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Lightbox Overlay */}
       <AnimatePresence>

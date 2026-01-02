@@ -1,0 +1,20 @@
+/* 
+  Define default values for icon styles.
+  These can be overridden by each theme (golf, midnight, etc.) 
+  or by the IconStyleEditor component.
+*/
+:root {
+  --icon-container-bg-color: hsl(var(--primary));
+  --icon-container-bg-opacity: 0.1;
+  --icon-container-radius: 0.75rem; /* 12px */
+  --icon-color: hsl(var(--primary));
+}
+
+.icon-container {
+  background-color: hsla(var(--icon-container-bg-color), var(--icon-container-bg-opacity));
+  border-radius: var(--icon-container-radius);
+}
+
+.icon-container > svg {
+  color: var(--icon-color);
+}

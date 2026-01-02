@@ -33,7 +33,7 @@
         "required": ["id", "type", "enabled", "order"],
         "properties": {
           "id": { "type": "string" },
-          "type": { "type": "string", "enum": ["hero", "features", "location", "gallery", "floor_plans", "testimonials", "faq", "contact"] },
+          "type": { "type": "string", "enum": ["hero", "features", "location", "gallery", "floor_plans", "testimonials", "faq", "contact", "banner"] },
           "enabled": { "type": "boolean" },
           "order": { "type": "number" },
           "title": { "type": "string" },

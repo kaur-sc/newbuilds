@@ -6,7 +6,7 @@ export interface CTA {
 
 export interface Section {
   id: string;
-  type: 'hero' | 'features' | 'location' | 'gallery' | 'floor_plans' | 'testimonials' | 'faq' | 'contact';
+  type: 'hero' | 'features' | 'location' | 'gallery' | 'floor_plans' | 'testimonials' | 'faq' | 'contact' | 'banner';
   enabled: boolean;
   order: number;
   title?: string;
@@ -15,6 +15,9 @@ export interface Section {
   items?: any[]; // Flexible for different section types
   cta?: CTA;
   media?: string | string[];
+  layout?: 'grid' | 'carousel' | 'split' | 'banner' | 'left-aligned' | 'centered';
+  variant?: 'light' | 'dark' | 'muted';
+  columns?: number;
 }
 
 export interface SEO {

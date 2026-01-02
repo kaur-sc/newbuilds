@@ -13,7 +13,8 @@ src/spec/
 ├── README.md                    # This file - System overview
 ├── SYSTEM_ARCHITECTURE.md         # Complete system architecture and connections
 ├── styling.md                     # Core styling rules and implementation patterns
-└── DEVELOPMENT_GUIDES.md          # Step-by-step development guides
+├── DEVELOPMENT_GUIDES.md          # Step-by-step development guides
+└── NEW_PAGE_CHECKLIST.md          # Master checklist for creating new subpages
 ```
 
 ## Quick Start Guide
@@ -22,7 +23,8 @@ src/spec/
 
 1. **Read SYSTEM_ARCHITECTURE.md** - Understand how pieces connect
 2. **Read styling.md** - Learn core styling rules
-3. **Use DEVELOPMENT_GUIDES.md** - Follow step-by-step guides
+3. **Use NEW_PAGE_CHECKLIST.md** - Follow the master checkbox guide
+4. **Use DEVELOPMENT_GUIDES.md** - Reference detailed templates
 
 ### For Theme Development
 
@@ -50,23 +52,34 @@ src/spec/
 - **NEVER rely on tag selectors alone for styling**
 - **NO exceptions**: Tag-only styling is forbidden
 
-### 2. CSS Variable System
+### 2. Fluid Design Is MANDATORY (NEW)
+
+- **ALL sizing MUST use `clamp()` functions** - no fixed pixels
+- **ALL components MUST use fluid CSS variables**
+- **NO media query sizing** - use fluid scaling instead
+- **NO exceptions**: Fluid design is required for all new development
+
+### 3. CSS Variable System
 
 - **Colors**: HSL format for Tailwind compatibility
 - **Consumption**: Use `hsl(var(--variable-name))` in theme classes
 - **Fallbacks**: Always provide default values in theme CSS
+- **Fluid Sizing**: All sizing variables use `clamp(min, preferred, max)`
 
-### 3. Responsive Design via CSS
+### 4. Responsive Design via Fluid CSS
 
-- **Mobile variants**: Handled in theme CSS media queries
-- **NO preview hacks**: Mobile variants handled in theme CSS only
-- **Breakpoint**: 768px (mobile < 768px, desktop ≥ 768px)
+- **Fluid scaling**: Use `clamp()` instead of media queries for sizing
+- **Smooth transitions**: No jumps at breakpoints
+- **Viewport-based**: Scale smoothly between min/max sizes
+- **Mobile variants**: Only for layout changes, not sizing
 
-### 4. Component Integration
+### 5. Component Integration
 
 - **Theme detection**: All pages must implement useEffect hook
 - **PageTheme Manager**: Integration required for all pages
 - **No inline styles**: Remove CSS variable injection and style attributes
+- **JavaScript parsing**: Dynamic components must parse CSS variables +++++++
+  REPLACE
 
 ## Critical Rules Summary
 

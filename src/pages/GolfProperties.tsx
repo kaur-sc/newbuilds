@@ -52,7 +52,7 @@ export function GolfProperties() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
+    <div className="">
       <Head>
         <title>{pageData.seo.title}</title>
         <meta name="description" content={pageData.seo.description} />
@@ -60,32 +60,31 @@ export function GolfProperties() {
       
       <Navbar data={pageData} />
 
-      <main className="flex-1">
+      <main>
         
         {/* HERO SECTION */}
-        <section className="relative min-h-[600px] flex items-center overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-secondary/20">
-          <div className="absolute inset-0">
+        <section>
+          <div>
             <img 
               src={resolveAsset('/assets/golf.jpg')} 
               alt="Modern new build villa overlooking a golf course in Costa Blanca" 
-              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+            <div />
           </div>
 
-          <Container className="relative z-10 py-20">
-            <div className="max-w-3xl">
-              <h1 className="h1 mb-6 text-white">
-                {t('hero.title_start')} {t('hero.title_middle')} <span className="text-accent">{t('hero.title_highlight')}</span>
+          <Container>
+            <div>
+              <h1>
+                {t('hero.title_start')} {t('hero.title_middle')} <span>{t('hero.title_highlight')}</span>
               </h1>
-              <p className="body-l mb-8 max-w-2xl text-white/90">
+              <p>
                 {t('hero.description')}
               </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="#contact" className="btn-primary">
+              <div>
+                <a href="#contact">
                   {t('hero.cta_brochure')}
                 </a>
-                <a href="#villas" className="btn-outline bg-white/10 text-white border-white/30 hover:bg-white/20">
+                <a href="#villas">
                   {t('hero.cta_explore')}
                 </a>
               </div>
@@ -94,28 +93,27 @@ export function GolfProperties() {
         </section>
 
         {/* VILLAS SECTION */}
-        <section id="villas" className="py-20 bg-card">
+        <section id="villas">
           <Container>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
               <div>
-                <h2 className="h2 mb-6">{t('villas.title')}</h2>
-                <p className="body mb-6">
+                <h2>{t('villas.title')}</h2>
+                <p>
                   {t('villas.description_1')}
                 </p>
-                <p className="body mb-8">
+                <p>
                   {t('villas.description_2')}
                 </p>
-                <div className="space-y-4">
+                <div>
                   <FeatureItem text={t('villas.points.layout')} />
                   <FeatureItem text={t('villas.points.space')} />
                   <FeatureItem text={t('villas.points.garden')} />
                 </div>
               </div>
-              <div className="h-[500px] rounded-2xl overflow-hidden">
+              <div>
                 <img 
                   src={resolveAsset('/assets/lvb/lvb-01-3d.jpg')} 
                   alt="Modern villa interior design concept" 
-                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
@@ -123,35 +121,34 @@ export function GolfProperties() {
         </section>
 
         {/* GALLERY SECTION */}
-        <section className="py-20 bg-muted">
+        <section>
             <Container>
                 <Gallery />
             </Container>
         </section>
 
         {/* GOLF SECTION */}
-        <section id="golf" className="py-20 bg-card">
+        <section id="golf">
           <Container>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="h-[500px] rounded-2xl overflow-hidden order-2 lg:order-1">
+            <div>
+              <div>
                 <img 
                   src={resolveAsset('/assets/lvb/golf-06-s.jpg')} 
                   alt="Golf course at Orihuela Costa" 
-                  className="w-full h-full object-cover"
                 />
               </div>
-              <div className="order-1 lg:order-2">
-                <h2 className="h2 mb-6">{t('golf.title')}</h2>
-                <p className="body mb-6">
+              <div>
+                <h2>{t('golf.title')}</h2>
+                <p>
                   {t('golf.description_1')}
                 </p>
-                <p className="body mb-8">
+                <p>
                   {t('golf.description_2')}
                 </p>
-                <div className="space-y-4 bg-muted p-8 rounded-xl border border-border">
-                  <FeatureItem text={t('golf.points.cluster')} icon={<MapPin className="w-5 h-5" />} />
-                  <FeatureItem text={t('golf.points.season')} icon={<Sun className="w-5 h-5" />} />
-                  <FeatureItem text={t('golf.points.routine')} icon={<Check className="w-5 h-5" />} />
+                <div>
+                  <FeatureItem text={t('golf.points.cluster')} icon={<MapPin />} />
+                  <FeatureItem text={t('golf.points.season')} icon={<Sun />} />
+                  <FeatureItem text={t('golf.points.routine')} icon={<Check />} />
                 </div>
               </div>
             </div>
@@ -159,55 +156,54 @@ export function GolfProperties() {
         </section>
 
         {/* LOCATION SECTION */}
-        <section id="location" className="py-20 bg-muted">
+        <section id="location">
           <Container>
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2 className="h2 mb-6">{t('location.title')}</h2>
-              <p className="body-l">
+            <div>
+              <h2>{t('location.title')}</h2>
+              <p>
                 {t('location.description')}
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div>
               <FeatureCard 
                 title={t('location.points.services.title')} 
                 description={t('location.points.services.description')} 
-                icon={<Home className="w-6 h-6" />} 
+                icon={<Home />} 
               />
               <FeatureCard 
                 title={t('location.points.beaches.title')} 
                 description={t('location.points.beaches.description')} 
-                icon={<MapPin className="w-6 h-6" />} 
+                icon={<MapPin />} 
               />
               <FeatureCard 
                 title={t('location.points.year_round.title')} 
                 description={t('location.points.year_round.description')} 
-                icon={<Sun className="w-6 h-6" />} 
+                icon={<Sun />} 
               />
             </div>
           </Container>
         </section>
 
         {/* LIFESTYLE SECTION */}
-        <section id="lifestyle" className="py-20 bg-card">
+        <section id="lifestyle">
           <Container>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="h-[500px] rounded-2xl overflow-hidden">
+            <div>
+              <div>
                 <img 
                   src={resolveAsset('/assets/lvb/lvb-13-3d.jpg')} 
                   alt="Modern villa design with low-maintenance pool area" 
-                  className="w-full h-full object-cover"
                 />
               </div>
               <div>
-                <h2 className="h2 mb-6">{t('lifestyle.title')}</h2>
-                <p className="body mb-6">
+                <h2>{t('lifestyle.title')}</h2>
+                <p>
                   {t('lifestyle.description_1')}
                 </p>
-                <p className="body mb-8">
+                <p>
                   {t('lifestyle.description_2')}
                 </p>
-                <div className="space-y-4">
+                <div>
                   <FeatureItem text={t('lifestyle.points.construction')} />
                   <FeatureItem text={t('lifestyle.points.outdoor')} />
                   <FeatureItem text={t('lifestyle.points.maintenance')} />
@@ -218,43 +214,43 @@ export function GolfProperties() {
         </section>
 
         {/* CONTACT/CTA SECTION */}
-        <section id="contact" className="py-24 bg-gradient-to-br from-primary to-primary/90">
+        <section id="contact">
           <Container>
-            <div className="max-w-4xl mx-auto bg-card rounded-3xl p-8 md:p-16 text-center border border-border">
-              <h2 className="h2 mb-6">{t('contact.title')}</h2>
-              <p className="body-l mb-8 max-w-2xl mx-auto">
-                <Trans i18nKey="contact.price_info" t={t} components={[<span className="text-primary" key="0" />]} />
+            <div>
+              <h2>{t('contact.title')}</h2>
+              <p>
+                <Trans i18nKey="contact.price_info" t={t} components={[<span key="0" />]} />
               </p>
               
-              <div className="bg-muted px-6 py-4 rounded-xl mb-10 inline-block small">
+              <div>
                 ⚠️ {t('contact.warning')}
               </div>
 
-              <div className="space-y-4 max-w-md mx-auto">
-                <p className="mb-6">{t('contact.cta_intro')}</p>
+              <div>
+                <p>{t('contact.cta_intro')}</p>
                 
-                <button className="btn-primary w-full">
+                <button>
                   {t('contact.cta_brochure')}
                 </button>
-                <button className="btn-outline w-full">
+                <button>
                   {t('contact.cta_availability')}
                 </button>
-                <button className="btn-ghost w-full">
-                  {t('contact.cta_visit')} <ArrowRight className="ml-2 w-4 h-4" />
+                <button>
+                  {t('contact.cta_visit')} <ArrowRight />
                 </button>
               </div>
 
-              <div className="mt-12 flex flex-wrap justify-center gap-8 small text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary" />
+              <div>
+                <div>
+                  <Check />
                   <span>Free Brochure</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary" />
+                <div>
+                  <Check />
                   <span>No Obligation</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary" />
+                <div>
+                  <Check />
                   <span>Local Support</span>
                 </div>
               </div>
@@ -272,11 +268,11 @@ export function GolfProperties() {
 // Feature item component
 function FeatureItem({ text, icon, light = false }: { text: string, icon?: ReactNode, light?: boolean }) {
   return (
-    <div className="flex items-start gap-3">
-      <div className={`mt-1 min-w-5 ${light ? 'text-accent' : 'text-primary'}`}>
-        {icon || <Check className="w-5 h-5" />}
+    <div>
+      <div>
+        {icon || <Check />}
       </div>
-      <span className={`body ${light ? 'text-muted-foreground' : 'text-foreground'}`}>{text}</span>
+      <span>{text}</span>
     </div>
   );
 }
@@ -284,12 +280,12 @@ function FeatureItem({ text, icon, light = false }: { text: string, icon?: React
 // Feature card component
 function FeatureCard({ title, description, icon }: { title: string, description: string, icon: ReactNode }) {
   return (
-    <div className="bg-card p-8 rounded-2xl border border-border transition-shadow duration-300">
-      <div className="h-12 w-12 bg-muted rounded-xl flex items-center justify-center mb-6">
+    <div>
+      <div>
         {icon}
       </div>
-      <h3 className="h3 mb-3">{title}</h3>
-      <p className="body">
+      <h3>{title}</h3>
+      <p>
         {description}
       </p>
     </div>

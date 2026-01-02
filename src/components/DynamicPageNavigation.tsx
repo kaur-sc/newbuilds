@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom';
-import { routes } from '@/routes';
 import { getAllDevelopments } from '@/lib/content';
 
 interface RouteInfo {
@@ -8,7 +7,11 @@ interface RouteInfo {
   current: boolean;
 }
 
-export const DynamicPageNavigation = () => {
+interface DynamicPageNavigationProps {
+  routes: any[];
+}
+
+export const DynamicPageNavigation = ({ routes }: DynamicPageNavigationProps) => {
   const location = useLocation();
   
   // Only show on the index page (home page)

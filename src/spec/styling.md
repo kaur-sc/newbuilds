@@ -48,16 +48,27 @@ persists these assignments across sessions.
 - `--foreground`: Main text color
 - Additional semantic colors (muted, accent, border, etc.)
 
-#### Typography Variables
+#### Fluid Typography Variables (Using clamp())
 
-- `--h1-size`, `--h1-weight`, `--h1-line-height`, `--h1-letter-spacing`
-- `--h2-size`, `--h2-weight`, `--h2-line-height`, `--h2-letter-spacing`
-- `--h3-size`, `--h3-weight`, `--h3-line-height`, `--h3-letter-spacing`
-- `--body-size`, `--body-weight`, `--body-line-height`, `--body-letter-spacing`
-- `--small-size`, `--small-weight`, `--small-line-height`,
-  `--small-letter-spacing`
-- `--caption-size`, `--caption-weight`, `--caption-line-height`,
-  `--caption-letter-spacing`
+**MANDATORY**: All typography MUST use fluid sizing with `clamp()` function.
+
+- `--h1-size: clamp(2.25rem, 5vw, 4.75rem)` - Fluid from 36px to 76px
+- `--h2-size: clamp(1.875rem, 4vw, 3rem)` - Fluid from 30px to 48px
+- `--h3-size: clamp(1.5rem, 3vw, 1.875rem)` - Fluid from 24px to 30px
+- `--body-size: clamp(1rem, 2.5vw, 1.25rem)` - Fluid from 16px to 20px
+- `--body-l-size: clamp(1.125rem, 3vw, 1.5rem)` - Fluid from 18px to 24px
+- `--small-size: clamp(0.8rem, 2vw, 0.875rem)` - Fluid from 12.8px to 14px
+- `--caption-size: clamp(0.6875rem, 1.5vw, 0.75rem)` - Fluid from 11px to 12px
+
+**Weight and other properties remain fixed**:
+
+- `--h1-weight`, `--h1-line-height`, `--h1-letter-spacing`
+- `--h2-weight`, `--h2-line-height`, `--h2-letter-spacing`
+- `--h3-weight`, `--h3-line-height`, `--h3-letter-spacing`
+- `--body-weight`, `--body-line-height`, `--body-letter-spacing`
+- `--small-weight`, `--small-line-height`, `--small-letter-spacing`
+- `--caption-weight`, `--caption-line-height`, `--caption-letter-spacing`
+  +++++++ REPLACE
 
 #### Button Variables
 
@@ -77,14 +88,6 @@ persists these assignments across sessions.
 - `--site-title-size`, `--site-title-weight`, `--site-title-line-height`
 - `--mobile-menu-btn-size`, `--mobile-menu-btn-weight`
 - `--mobile-menu-links-size`, `--mobile-menu-links-weight`
-
-### Mobile Responsive Variables
-
-Mobile-specific variables use pattern:
-
-- `--h1-mobile-size`, `--h1-mobile-line-height`
-- `--btn-primary-mobile-px`, `--btn-primary-mobile-py`
-- etc.
 
 ### Theme Class Definitions
 
@@ -216,6 +219,258 @@ import "../styles/another-theme.css"; // Future themes
 - **Consumption**: Use `hsl(var(--variable-name))` in theme classes
 - **Fallbacks**: Always provide default values in theme CSS
 
+## 12. 🌊 Fluid First Design System (MANDATORY)
+
+### CRITICAL: All Sizing Must Use clamp() Function
+
+**NEW SYSTEM REQUIREMENT**: All fixed dimensions MUST use fluid sizing with
+`clamp()` function. This eliminates media query jumps and provides smooth
+scaling across all viewport sizes.
+
+### clamp() Function Syntax
+
+```css
+clamp(minimum, preferred, maximum)
+```
+
+- **minimum**: Smallest size (mobile)
+- **preferred**: Fluid scaling using viewport units (vw, vh)
+- **maximum**: Largest size (desktop)
+
+### Fluid Typography Implementation
+
+**MANDATORY**: All text sizing MUST use clamp():
+
+```css
+:root {
+    /* Fluid Typography - scales smoothly between viewport sizes */
+    --h1-size: clamp(2.25rem, 5vw, 4.75rem); /* 36px - 76px */
+    --h2-size: clamp(1.875rem, 4vw, 3rem); /* 30px - 48px */
+    --h3-size: clamp(1.5rem, 3vw, 1.875rem); /* 24px - 30px */
+    --body-size: clamp(1rem, 2.5vw, 1.25rem); /* 16px - 20px */
+    --body-l-size: clamp(1.125rem, 3vw, 1.5rem); /* 18px - 24px */
+    --small-size: clamp(0.8rem, 2vw, 0.875rem); /* 12.8px - 14px */
+    --caption-size: clamp(0.6875rem, 1.5vw, 0.75rem); /* 11px - 12px */
+}
+```
+
+### Fluid Component Sizing
+
+**MANDATORY**: All component dimensions MUST use clamp():
+
+```css
+:root {
+    /* Hero Section Sizing */
+    --hero-min-height: clamp(60vh, 85vh, 85vh);
+    --hero-button-min-width: clamp(140px, 20vw, 180px);
+    --hero-dropdown-width: clamp(200px, 30vw, 280px);
+    --hero-button-gap: clamp(1rem, 2vw, 1.5rem);
+
+    /* Project Grid Sizing */
+    --project-card-width: clamp(280px, 35vw, 380px);
+    --project-card-padding: clamp(1.5rem, 3vw, 2rem);
+    --project-card-gap: clamp(1rem, 2vw, 1.5rem);
+    --project-card-button-height: clamp(2.5rem, 4vw, 3rem);
+    --project-card-control-size: clamp(2.5rem, 4vw, 3rem);
+
+    /* Carousel Sizing */
+    --carousel-scroll-amount: clamp(300px, 40vw, 400px);
+    --carousel-gap: clamp(1rem, 2vw, 1.5rem);
+
+    /* General Component Sizing */
+    --component-gap-small: clamp(0.5rem, 1.5vw, 1rem);
+    --component-gap-medium: clamp(1rem, 2vw, 1.5rem);
+    --component-gap-large: clamp(1.5rem, 3vw, 2rem);
+    --component-border-radius: clamp(0.375rem, 0.75vw, 0.5rem);
+
+    /* Icon Sizing */
+    --icon-xs: clamp(0.75rem, 1.5vw, 1rem);
+    --icon-sm: clamp(1rem, 2vw, 1.25rem);
+    --icon-md: clamp(1.25rem, 2.5vw, 1.5rem);
+    --icon-lg: clamp(1.5rem, 3vw, 2rem);
+}
+```
+
+### Fluid Button System
+
+**MANDATORY**: All button spacing MUST use clamp():
+
+```css
+:root {
+    --btn-primary-px: clamp(1rem, 3vw, 2rem);
+    --btn-primary-py: clamp(0.5rem, 1.5vw, 0.75rem);
+    --btn-primary-radius: clamp(0.25rem, 0.5vw, 0.5rem);
+
+    /* Same pattern for secondary, outline, ghost variants */
+}
+```
+
+### Fluid Layout System
+
+**MANDATORY**: All layout spacing MUST use clamp():
+
+```css
+:root {
+    /* Container System */
+    --container-padding: clamp(1rem, 5vw, 2rem);
+    --container-max-width: clamp(100%, 90vw, 80rem);
+
+    /* Section Spacing */
+    --section-padding-y: clamp(2rem, 8vh, 8rem);
+    --section-margin-b: clamp(2rem, 4vw, 3rem);
+
+    /* Navigation Sizing */
+    --navbar-height: clamp(3rem, 8vw, 4rem);
+    --nav-gap: clamp(1rem, 3vw, 1.5rem);
+}
+```
+
+### Implementation Rules for Fluid Design
+
+#### 1. NEVER Use Fixed Pixels
+
+```tsx
+// ❌ WRONG: Fixed pixel values
+<div style={{ width: "300px", height: "400px" }}>
+<button style={{ padding: "16px 24px" }}>
+
+// ✅ CORRECT: Use CSS variables with clamp()
+<div style={{ width: "var(--project-card-width)", height: "var(--project-card-button-height)" }}>
+<button style={{ padding: "var(--btn-primary-py) var(--btn-primary-px)" }}>
+```
+
+#### 2. NEVER Use Media Queries
+
+```css
+/* ❌ WRONG: Media query jumps */
+@media (max-width: 768px) {
+    .btn {
+        padding: 12px 16px;
+    }
+}
+@media (min-width: 769px) {
+    .btn {
+        padding: 16px 24px;
+    }
+}
+
+/* ✅ CORRECT: Fluid scaling */
+:root {
+    --btn-padding: clamp(12px, 3vw, 24px);
+}
+.btn {
+    padding: var(--btn-padding);
+}
+```
+
+#### 3. Component Implementation Pattern
+
+```tsx
+// ✅ CORRECT: Use CSS variables for all dimensions
+export function ProjectCard({ project }) {
+    return (
+        <div
+            className="project-card"
+            style={{
+                width: "var(--project-card-width)",
+                padding: "var(--project-card-padding)",
+                gap: "var(--project-card-gap)",
+            }}
+        >
+            <h3 className="h3">{project.title}</h3>
+            <Button
+                style={{
+                    height: "var(--project-card-button-height)",
+                    minWidth: "var(--project-card-button-min-width)",
+                }}
+            >
+                View Project
+            </Button>
+        </div>
+    );
+}
+```
+
+#### 4. JavaScript Integration for Dynamic Values
+
+For components that need numeric values (like carousel scroll):
+
+```tsx
+// ✅ CORRECT: Parse CSS variable value
+useImperativeHandle(ref, () => ({
+    scrollRight: () => {
+        if (scrollRef.current) {
+            const computedStyle = getComputedStyle(scrollRef.current);
+            const scrollAmount = computedStyle.getPropertyValue(
+                "--carousel-scroll-amount",
+            );
+            const numericValue = parseFloat(scrollAmount) || 400;
+            scrollRef.current.scrollBy({
+                left: numericValue,
+                behavior: "smooth",
+            });
+        }
+    },
+}));
+```
+
+### Fluid Design Benefits
+
+1. **No Media Query Jumps**: Smooth scaling between viewport sizes
+2. **Perfect Mobile Experience**: Optimal sizing at every screen width
+3. **Future-Proof**: Automatically adapts to new devices
+4. **Better Performance**: No layout reflows on breakpoint changes
+5. **Consistent UX**: Predictable scaling behavior
+
+### Quality Assurance Checklist
+
+**For all new components, ensure:**
+
+- [ ] **All dimensions use clamp()**: No fixed pixel values
+- [ ] **All spacing uses clamp()**: No fixed gaps or margins
+- [ ] **No media query sizing**: Remove breakpoint-based sizing
+- [ ] **CSS variables defined**: All clamp() values in :root
+- [ ] **Components use variables**: Reference CSS variables, not fixed values
+- [ ] **JavaScript parsing**: Dynamic components parse CSS variables correctly
+- [ ] **Test across viewports**: Smooth scaling from mobile to desktop
+
+### Migration Rules
+
+**When updating existing components:**
+
+1. **Identify all fixed values**: Width, height, padding, margin, gap
+2. **Convert to clamp()**: Define appropriate min/max ranges
+3. **Add CSS variables**: Create semantic variable names
+4. **Update components**: Replace fixed values with variable references
+5. **Remove media queries**: Delete breakpoint-based sizing overrides
+6. **Test thoroughly**: Verify smooth scaling across all viewports
+
+### Examples of clamp() Values
+
+```css
+/* Text Scaling */
+--text-xs: clamp(0.75rem, 1.5vw, 0.875rem); /* 12px - 14px */
+--text-sm: clamp(0.875rem, 2vw, 1rem); /* 14px - 16px */
+--text-base: clamp(1rem, 2.5vw, 1.125rem); /* 16px - 18px */
+--text-lg: clamp(1.125rem, 3vw, 1.25rem); /* 18px - 20px */
+
+/* Spacing */
+--gap-xs: clamp(0.25rem, 0.5vw, 0.5rem); /* 4px - 8px */
+--gap-sm: clamp(0.5rem, 1vw, 1rem); /* 8px - 16px */
+--gap-md: clamp(0.75rem, 1.5vw, 1.5rem); /* 12px - 24px */
+--gap-lg: clamp(1rem, 2vw, 2rem); /* 16px - 32px */
+
+/* Sizing */
+--size-xs: clamp(1.5rem, 3vw, 2rem); /* 24px - 32px */
+--size-sm: clamp(2rem, 4vw, 2.5rem); /* 32px - 40px */
+--size-md: clamp(2.5rem, 5vw, 3rem); /* 40px - 48px */
+--size-lg: clamp(3rem, 6vw, 4rem); /* 48px - 64px */
+```
+
+**This fluid design system is MANDATORY for all new development.** No exceptions
+will be allowed. All components must follow this pattern to ensure consistent,
+responsive behavior across the entire application. +++++++ REPLACE
+
 ### 4. Theme File Structure
 
 ```css
@@ -235,16 +490,6 @@ import "../styles/another-theme.css"; // Future themes
     /* consume --btn-primary-* variables */
 }
 /* ... all other theme classes */
-
-/* Responsive Mobile Variants */
-@media (max-width: 768px) {
-    .h1 {
-        /* consume --h1-mobile-* variables */
-    }
-    .btn-primary {
-        /* consume --btn-primary-mobile-* variables */
-    }
-}
 ```
 
 ### 5. Style Editor Guidelines
@@ -329,18 +574,16 @@ export function LandingPage({ data }: LandingPageProps) {
 Pages with predefined themes should use ThemeProvider:
 
 ```tsx
-import { ThemeProvider } from '@/themes/ThemeProvider';
-import { CustomPage } from './CustomPage';
+import { ThemeProvider } from "@/themes/ThemeProvider";
+import { CustomPage } from "./CustomPage";
 
 export default function FixedThemePage() {
-  return (
-    <ThemeProvider routeTheme="golf-elegant">
-      <CustomPage />
-    </ThemeProvider>
-  );
+    return (
+        <ThemeProvider routeTheme="golf-elegant">
+            <CustomPage />
+        </ThemeProvider>
+    );
 }
-
-
 ```
 
 ### Pattern 4: Header/Navigation Components
@@ -532,8 +775,6 @@ When creating a new page, follow this exact workflow:
 - [ ] **Semantic HTML**: Use proper tags with theme classes
 - [ ] **Theme Detection**: Include useEffect hook for saved themes
 - [ ] **Test Integration**: Verify Page Theme Manager works
-- [ ] **Responsive Design**: Use theme CSS media queries, not Tailwind
-      responsive
 
 ### Theme Development Rules
 

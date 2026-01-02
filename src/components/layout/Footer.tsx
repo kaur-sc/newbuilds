@@ -24,14 +24,18 @@ export function Footer({ data }: FooterProps) {
       <Container className="flex flex-col md:flex-row justify-between items-center gap-6">
         <div>
           <Link 
-            to={homePath} 
-            className="font-bold text-lg hover:text-primary transition-colors"
+            to="/" 
+            className="block hover:opacity-80 transition-opacity"
             onClick={handleLogoClick}
           >
-            {data.name}
+            <img 
+              src="/assets/SC-Logo-Horizontal.svg" 
+              alt="Sunny Casas" 
+              className="h-8 w-auto"
+            />
           </Link>
-          <p className="text-sm text-muted-foreground mt-2">
-            © {new Date().getFullYear()} {data.name}. All rights reserved.
+          <p className="small text-muted-foreground mt-2">
+            © {new Date().getFullYear()} SUNNY CASAS. All rights reserved.
           </p>
         </div>
         <div className="flex gap-6 text-sm text-muted-foreground">
