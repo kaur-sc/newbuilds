@@ -27,7 +27,7 @@ export function FullWidthImageRightColText({
     <section className="full-width-image-right-col-text">
       <div 
         className="full-width-image-background"
-        style={{ backgroundImage: `url(${media})` }}
+        style={{ backgroundImage: `url(${resolveAsset(media)})` }}
       >
         <div className="image-overlay-gradient">
           <div className="full-width-image-content">
