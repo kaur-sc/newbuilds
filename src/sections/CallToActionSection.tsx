@@ -43,7 +43,7 @@ export function CallToActionSection({ data, namespace }: CallToActionSectionProp
       <div className="cta-background relative h-[56.25rem] w-full">
         {data.media ? (
           <img
-            src={resolveAsset(data.media)}
+            src={data.media}
             alt={t(`${data.id}.title`)}
             className="w-full h-full object-cover"
           />

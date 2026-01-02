@@ -3,8 +3,8 @@ import type { LandingPageData } from "@/models/landing-page";
 import { resolveAsset } from '@/lib/assets';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-// import { HeroBlock } from "@/sections/HeroBlock"; // Commented out for testing
-import { TestImage } from "@/components/TestImage"; // Added for testing
+import { HeroBlock } from "@/sections/HeroBlock";
+
 import { FeatureBar } from "@/sections/FeatureBar";
 import { TwoColumnBlock } from "@/sections/TwoColumnBlock";
 import { ProjectGrid } from "@/sections/ProjectGrid";
@@ -41,21 +41,17 @@ export function LandingPage({ data }: LandingPageProps) {
       </div>
 
       <main className="flex-1">
-        {/* Test Image Component */}
-        <TestImage />
-
-        {/* Hero Block - Commented out for testing */}
-        {/* <HeroBlock
+        <HeroBlock
           data={{
             id: 'hero',
-            media: resolveAsset('/assets/golf.jpg'),
+            media: '/assets/golf.jpg',
             title: 'New Build Golf Properties in Costa Blanca',
             subtitle: 'New-Build Homes Surrounded by Championship Golf & Mediterranean Living',
             cta: { label: 'Contact Agent', href: '#contact' },
             cta_secondary: { label: 'View Collection', href: '#projects' }
           }}
           namespace={data.id}
-        /> */}
+        />
 
         {/* Feature Bar */}
         <FeatureBar
@@ -108,7 +104,7 @@ export function LandingPage({ data }: LandingPageProps) {
         <FullWidthImageRightColText
           data={{
             id: 'climate',
-            media: resolveAsset('/assets/lvb/golf-06-s.jpg'),
+            media: '/assets/lvb/golf-06-s.jpg',
             title: 'A Climate Made for Golf & Outdoor Living',
             subtitle: 'One of the strongest reasons buyers choose Orihuela Costa is its Mediterranean climate.'
           }}
