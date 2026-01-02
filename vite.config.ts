@@ -19,7 +19,6 @@ export default defineConfig(({ command }) => {
       script: 'async',
       formatting: 'minify',
       // Adding base here ensures the pre-rendered HTML files use the correct prefix
-      base: base,
     },
   }
 })
