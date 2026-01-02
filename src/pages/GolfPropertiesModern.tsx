@@ -74,10 +74,6 @@ export function GolfPropertiesModern() {
           <div className="absolute inset-0 z-10 flex items-center justify-center">
             <div className="container-modern text-center">
               <div className="animate-fade-in-up">
-                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white small mb-6">
-                  <Star className="w-4 h-4 fill-current" />
-                  <span>Limited Opportunity • Exclusive Location</span>
-                </div>
                 <h1 className="h1 text-white mb-6">
                   Imagine Waking Up to<br/>18-Hole Golf Views<br/>
                   <span className="text-accent">Every Single Morning</span>
@@ -358,8 +354,8 @@ export function GolfPropertiesModern() {
         <section id="lifestyle" className="modern-section bg-foreground text-background">
           <div className="container-modern">
             <div className="mb-12 text-center animate-fade-in-up">
-              <h2 className="h2 mb-4 text-gray-200">Built for Your Lifestyle</h2>
-              <p className="body-l text-gray-400 max-w-3xl mx-auto mb-6">
+              <h2 className="h2 mb-4 text-background">Built for Your Lifestyle</h2>
+              <p className="body-l text-background max-w-3xl mx-auto mb-6">
                 {t('lifestyle.description_1')}
               </p>
             </div>
@@ -382,8 +378,8 @@ export function GolfPropertiesModern() {
                   <div className="mb-6">
                     <Home className="w-10 h-10 text-primary" />
                   </div>
-                  <h3 className="h3 mb-4 text-gray-200">New Construction</h3>
-                  <p className="body text-gray-400">
+                  <h3 className="h3 mb-4 text-background">New Construction</h3>
+                  <p className="body text-background/70">
                     {t('lifestyle.points.construction')} Modern materials and equipment ensure quality and durability for years to come.
                   </p>
                 </div>
@@ -391,17 +387,17 @@ export function GolfPropertiesModern() {
                   <div className="mb-6">
                     <Sun className="w-10 h-10 text-primary" />
                   </div>
-                  <h3 className="h3 mb-4 text-gray-200">Outdoor Living</h3>
-                  <p className="body text-gray-400">
-                    {t('lifestyle.points.outdoor')} Spaces designed for al fresco dining, relaxing, and entertaining in the Spanish sunshine.
+                  <h3 className="h3 mb-4 text-background">Outdoor Living</h3>
+                  <p className="body text-background/70">
+                    {t('lifestyle.points.outdoor')} Spaces designed for al fresco dining, relaxing, and entertaining in Spanish sunshine.
                   </p>
                 </div>
                 <div>
                   <div className="mb-6">
                     <Plane className="w-10 h-10 text-primary" />
                   </div>
-                  <h3 className="h3 mb-4 text-gray-200">Hassle-Free</h3>
-                  <p className="body text-gray-400">
+                  <h3 className="h3 mb-4 text-background">Hassle-Free</h3>
+                  <p className="body text-background/70">
                     {t('lifestyle.points.maintenance')} A home that's easy to close, leave, and open again several times a year.
                   </p>
                 </div>
@@ -410,8 +406,8 @@ export function GolfPropertiesModern() {
 
             {/* Additional Info - Card */}
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 animate-fade-in-up delay-300">
-              <h3 className="h3 mb-4 text-gray-200">The Perfect Balance</h3>
-              <p className="body text-gray-400">
+              <h3 className="h3 mb-4 text-background">The Perfect Balance</h3>
+              <p className="body text-background/70">
                 {t('lifestyle.description_2')}
               </p>
             </div>
@@ -421,42 +417,14 @@ export function GolfPropertiesModern() {
         {/* WHY CHOOSE US - Trust & Scarcity */}
         <section className="modern-section bg-gradient-to-br from-primary/5 to-secondary/5">
           <div className="container-modern max-w-5xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="animate-fade-in-up">
-                <h2 className="h2 mb-6">Why Costa Blanca?</h2>
-                <div className="space-y-4">
-                  <TrustItem text="Exclusive development - only a limited number of villas" />
-                  <TrustItem text="Prime location in La Zenia - established residential area" />
-                  <TrustItem text="Proven developer track record" />
-                  <TrustItem text="Designed specifically for international buyers" />
-                  <TrustItem text="Turnkey delivery - move-in ready" />
-                </div>
-              </div>
-
-              <div className="animate-fade-in-up delay-200">
-                <div className="bg-card rounded-3xl p-8 border-2 border-primary/20">
-                  <div className="text-center mb-8">
-                    <span className="text-5xl text-primary mb-2 block">Few</span>
-                    <span className="text-muted-foreground">Units Remaining</span>
-                  </div>
-                  <div className="space-y-4 mb-8">
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Total Villas</span>
-                      <span>Small Development</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Price Range</span>
-                      <span className="text-primary">€449,900 - €479,900</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Ready</span>
-                      <span className="text-green-600">Move-In Ready</span>
-                    </div>
-                  </div>
-                  <a href="#contact" className="btn-primary">
-                    Check Current Availability
-                  </a>
-                </div>
+            <div className="animate-fade-in-up">
+              <h2 className="h2 mb-6 text-center">Why Costa Blanca?</h2>
+              <div className="max-w-2xl mx-auto space-y-4">
+                <TrustItem text="Exclusive development - only a limited number of villas" />
+                <TrustItem text="Prime location in La Zenia - established residential area" />
+                <TrustItem text="Proven developer track record" />
+                <TrustItem text="Designed specifically for international buyers" />
+                <TrustItem text="Turnkey delivery - move-in ready" />
               </div>
             </div>
           </div>
@@ -469,7 +437,7 @@ export function GolfPropertiesModern() {
               <h2 className="h2 mb-6">{t('contact.title')}</h2>
               
               <div className="bg-card rounded-3xl p-8 md:p-12 border border-border mb-8">
-                <Trans i18nKey="contact.price_info" t={t} components={[<span className="text-2xl text-primary mx-2" key="0" />]} />
+                <Trans i18nKey="contact.price_info" t={t} components={[<span className="display-md text-primary mx-2" key="0" />]} />
               </div>
               
               <div className="bg-secondary text-secondary-foreground px-6 py-4 rounded-xl mb-8 inline-block body">
@@ -524,7 +492,7 @@ function StatCard({ icon, value, label }: { icon: ReactNode, value: string, labe
       <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
         {icon}
       </div>
-      <div className="text-3xl text-primary mb-1">{value}</div>
+      <div className="display-md text-primary mb-1">{value}</div>
       <div className="small text-muted-foreground">{label}</div>
     </div>
   );
