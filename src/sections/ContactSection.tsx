@@ -38,11 +38,11 @@ export function ContactSection({ data, namespace }: ContactSectionProps) {
       id={data.id}
       className="relative bg-[#10b77f] w-full flex flex-col justify-start items-center flex-nowrap py-24 px-4 sm:px-8"
     >
-      <div className="w-full max-w-[90rem] flex flex-col justify-start items-center flex-nowrap gap-6">
+      <div className="max-w-[75vw] flex flex-col justify-start items-center flex-nowrap gap-6">
         
         {/* Title */}
         <div className="relative w-full flex flex-col justify-start items-center flex-nowrap">
-          <div className="flex justify-center text-center items-center w-full max-w-[54.125rem] relative">
+          <div className="flex justify-center text-center items-center w-full relative">
             <h2 
               className="h2 text-white"
               style={{ fontFamily: "Inter, sans-serif" }}

@@ -54,7 +54,7 @@ export function CallToActionSection({ data, namespace }: CallToActionSectionProp
         <div className="cta-overlay absolute inset-0 z-10" />
 
         <div className="cta-content absolute inset-0 z-20 flex flex-col justify-center items-center pb-24 md:pt-32">
-          <div className="cta-text-content max-w-2xl text-center text-white">
+          <div className="cta-text-content max-w-[75vw] text-center text-white">
             <h1 className="cta-title h1 mb-4 text-white">
               {t(`${data.id}.title`, { defaultValue: data.title })}
             </h1>

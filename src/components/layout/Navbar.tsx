@@ -31,7 +31,7 @@ export function Navbar({ data }: NavbarProps) {
   }, []);
 
   return (
-    <nav className="navbar bg-white border-b border-gray-100 z-50 sticky top-0">
+    <nav className="navbar border-b border-gray-100 z-50 sticky top-0">
       <Container className="navbar-container h-20 flex items-center justify-between">
         <Link 
           to="/" 

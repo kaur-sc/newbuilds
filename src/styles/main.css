@@ -41,45 +41,58 @@
 :root {
     /* Fluid Typography - scales smoothly between viewport sizes */
     --h1-size: clamp(2.25rem, 5vw + 2rem, 4.75rem);
-    --h1-weight: 200;
+    --h1-weight: 200; /* Mobile only */
     --h1-line-height: 1;
     --h1-letter-spacing: 0.00em;
     --h1-color: var(--foreground);
 
     --h2-size: clamp(1.875rem, 4vw + 1rem, 3rem);
-    --h2-weight: 100;
+    --h2-weight: 200; /* Mobile only */
     --h2-line-height: 1;
     --h2-letter-spacing: 0.00em;
     --h2-color: var(--foreground);
 
     --h3-size: clamp(1.5rem, 3vw, 1.875rem);
-    --h3-weight: 200;
-    --h3-line-height: 2.25rem;
+    --h3-weight: 200; /* Mobile only */
+    --h3-line-height: 1;
     --h3-letter-spacing: 0;
     --h3-color: var(--foreground);
 
     --body-size: clamp(1rem, 2.5vw, 1.25rem);
-    --body-weight: 200;
-    --body-line-height: 1.75rem;
+    --body-weight: 300; /* Mobile only */
+    --body-line-height: 1.5;
     --body-letter-spacing: 0;
     --body-color: var(--foreground);
 
     --body-l-size: clamp(1.125rem, 3vw, 1.5rem);
-    --body-l-weight: 200;
-    --body-l-line-height: 2.0rem;
+    --body-l-weight: 300; /* Mobile only */
+    --body-l-line-height: 1.5;
     --body-l-letter-spacing: 0;
 
     --small-size: clamp(0.9rem, 2vw, 1.0rem);
-    --small-weight: 300;
+    --small-weight: 300; /* Mobile only */
     --small-line-height: 1.5;
     --small-letter-spacing: 0.0em;
     --small-color: var(--foreground);
 
     --caption-size: clamp(0.6875rem, 1.5vw, 0.75rem);
-    --caption-weight: 200;
-    --caption-line-height: 1.4;
+    --caption-weight: 400; /* Mobile only */
+    --caption-line-height: 1.5;
     --caption-letter-spacing: 0.00em;
     --caption-color: var(--foreground);
+}
+
+/* Media Queries - Font Weight - Desktop */
+@media (min-width: 768px) {
+    :root {
+        --h1-weight: 200;
+        --h2-weight: 200;
+        --h3-weight: 200;
+        --body-weight: 200;
+        --body-l-weight: 200;
+        --small-weight: 300;
+        --caption-weight: 200;
+    }
 }
 
 /* Typography Classes */
@@ -302,7 +315,7 @@ span {
 }
 
 .button a {
-    font-size: clamp(1rem, 3vw, 1.15rem);
+    font-size: clamp(1rem, 3vw, 1.1rem);
 }
 
 .btn-secondary {
@@ -482,19 +495,19 @@ span {
 }
 
 .site-logo-main {
-    font-size: var(--site-logo-main-size, var(--site-logo-size));
-    font-weight: var(--site-logo-main-weight, var(--site-logo-weight));
-    line-height: var(--site-logo-main-line-height, var(--site-logo-line-height));
-    letter-spacing: var(--site-logo-main-letter-spacing, var(--site-logo-letter-spacing));
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: 0.0em;
     color: hsl(var(--foreground));
     transition: color 0.2s ease;
 }
 
 .site-logo-sub {
-    font-size: var(--site-logo-sub-size, clamp(0.75rem, 2vw, 0.875rem));
-    font-weight: var(--site-logo-sub-weight, 400);
-    line-height: var(--site-logo-sub-line-height, 1.2);
-    letter-spacing: var(--site-logo-sub-letter-spacing, 0.05em);
+    font-size: clamp(0.5rem, 2vw, 0.75rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: 0.0em;
     color: hsl(var(--muted-foreground));
     transition: color 0.2s ease;
 }
